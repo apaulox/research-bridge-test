@@ -55,16 +55,19 @@ Root/
 └── FAIR-Play/
     ├── audios/                    # Training binaural audios
     │   ├── 000001.wav
-    │   │   
+    │   ├── ...
     │   └── 001871.wav
     │
-    ├── frames/                    # Training images extracted from video (10fps)
-    │   ├── 000001/                # 98 frames for video id = 000001
-    │   │   ├── 000001.png
-    │   │   │   
-    │   │   └── 000098.png
-    │   │   
-    │   └── 001871/
+    └── frames/                    # Training images extracted from video (10fps)
+        ├── 000001/                # 98 frames for video id = 000001
+        │   ├── 000001.png
+        │   ├── ...
+        │   └── 000098.png
+        ├── ...
+        └── 001871/                # 99 frames for video id = 001871
+            ├── 000001.png
+            ├── ...
+            └── 000099.png
 ```
 Make sure that you set your dataset directory correctly on @DenseSSL/options/base_options.py
 
