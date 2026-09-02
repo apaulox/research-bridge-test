@@ -45,19 +45,45 @@ Project Root
 ```bash
 cd .../DenseSSL
 ```
-Make sure that you set your dataset directory correctly on @base_options.py
+
+```
+Root/
+│   # DenseSSL
+├── DenseSSL/
+│
+│   # FAIR-Play
+└── FAIR-Play/
+    ├── audios/                    # Training binaural audios
+    │   ├── 000001.wav
+    │   │   
+    │   └── 001871.wav
+    │
+    ├── frames/                    # Training images extracted from video (10fps)
+    │   ├── 000001/                # 98 frames for video id = 000001
+    │   │   ├── 000001.png
+    │   │   │   
+    │   │   └── 000098.png
+    │   │   
+    │   └── 001871/
+```
+Make sure that you set your dataset directory correctly on @DenseSSL/options/base_options.py
 
 Train
 ```bash
-./train.sh CHECKPOINT_NAME
+./train.sh <CHECKPOINT_NAME>
 ```
 
 Infernce
 ```bash
-./test.sh CHECKPOINT_NAME
+./test.sh <CHECKPOINT_NAME>
 ```
 
 Evaluate
 ```bash
-./evaluate.sh CHECKPOINT_NAME
+./evaluate.sh <CHECKPOINT_NAME>
+```
+
+Qualitative Visualization
+```bash
+./vis_hwmax.sh <CHECKPOINT_NAME>
 ```

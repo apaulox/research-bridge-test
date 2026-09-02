@@ -1,6 +1,5 @@
 #!/bin/bash
 # Usage: ./train.sh <CHECKPOINT_NAME>
-# 예시: ./train.sh my_experiment
 
 if [ -z "$1" ]; then
   echo "Error: Checkpoint name is required."
