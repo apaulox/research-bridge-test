@@ -1,0 +1,610 @@
+[
+  {
+    "ID": "FUS_0000",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0000.wav",
+    "label_file_fake": 0,
+    "scenario": "voice0_music0",
+    "sources": [
+      "LA_D_8623607",
+      "G2JDDwIuNrQ"
+    ]
+  },
+  {
+    "ID": "FUS_0001",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0001.wav",
+    "label_file_fake": 0,
+    "scenario": "voice0_music0",
+    "sources": [
+      "LA_D_5107120",
+      "Z9hnLYpypCU"
+    ]
+  },
+  {
+    "ID": "FUS_0002",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0002.wav",
+    "label_file_fake": 0,
+    "scenario": "voice0_music0",
+    "sources": [
+      "LA_D_7057765",
+      "vOU-qA25xNM"
+    ]
+  },
+  {
+    "ID": "FUS_0003",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0003.wav",
+    "label_file_fake": 0,
+    "scenario": "voice0_music0",
+    "sources": [
+      "LA_D_7058100",
+      "K5ilD6nEJ-g"
+    ]
+  },
+  {
+    "ID": "FUS_0004",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0004.wav",
+    "label_file_fake": 0,
+    "scenario": "voice0_music0",
+    "sources": [
+      "LA_D_7556469",
+      "YTZK9FNgK74"
+    ]
+  },
+  {
+    "ID": "FUS_0005",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0005.wav",
+    "label_file_fake": 0,
+    "scenario": "voice0_music0",
+    "sources": [
+      "LA_D_6646969",
+      "YW4AKwkpYxs"
+    ]
+  },
+  {
+    "ID": "FUS_0006",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0006.wav",
+    "label_file_fake": 0,
+    "scenario": "voice0_music0",
+    "sources": [
+      "LA_D_8522983",
+      "PN3Lx8RutmI"
+    ]
+  },
+  {
+    "ID": "FUS_0007",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0007.wav",
+    "label_file_fake": 0,
+    "scenario": "voice0_music0",
+    "sources": [
+      "LA_D_8364855",
+      "Y5RVYmf3uWc"
+    ]
+  },
+  {
+    "ID": "FUS_0008",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0008.wav",
+    "label_file_fake": 1,
+    "scenario": "voice0_music1",
+    "sources": [
+      "LA_D_8623607",
+      "TTM04_dPM24O4my-Q"
+    ]
+  },
+  {
+    "ID": "FUS_0009",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0009.wav",
+    "label_file_fake": 1,
+    "scenario": "voice0_music1",
+    "sources": [
+      "LA_D_5107120",
+      "TTM05_ucSF9NIxK8A"
+    ]
+  },
+  {
+    "ID": "FUS_0010",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0010.wav",
+    "label_file_fake": 1,
+    "scenario": "voice0_music1",
+    "sources": [
+      "LA_D_7057765",
+      "TTM01_E6JR3htwgyE"
+    ]
+  },
+  {
+    "ID": "FUS_0011",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0011.wav",
+    "label_file_fake": 1,
+    "scenario": "voice0_music1",
+    "sources": [
+      "LA_D_7058100",
+      "TTM03_COe_UKKVpVo"
+    ]
+  },
+  {
+    "ID": "FUS_0012",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0012.wav",
+    "label_file_fake": 1,
+    "scenario": "voice0_music1",
+    "sources": [
+      "LA_D_7556469",
+      "TTM03_5a_Qxd4ECTo"
+    ]
+  },
+  {
+    "ID": "FUS_0013",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0013.wav",
+    "label_file_fake": 1,
+    "scenario": "voice0_music1",
+    "sources": [
+      "LA_D_6646969",
+      "TTM02_YvFY7xU2kGk"
+    ]
+  },
+  {
+    "ID": "FUS_0014",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0014.wav",
+    "label_file_fake": 1,
+    "scenario": "voice0_music1",
+    "sources": [
+      "LA_D_8522983",
+      "TTM01_Tsmx6Pb7CnU"
+    ]
+  },
+  {
+    "ID": "FUS_0015",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0015.wav",
+    "label_file_fake": 1,
+    "scenario": "voice0_music1",
+    "sources": [
+      "LA_D_8364855",
+      "TTM04_dSs4xfvATjc"
+    ]
+  },
+  {
+    "ID": "FUS_0016",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0016.wav",
+    "label_file_fake": 1,
+    "scenario": "voice1_music0",
+    "sources": [
+      "LA_D_8909496",
+      "G2JDDwIuNrQ"
+    ]
+  },
+  {
+    "ID": "FUS_0017",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0017.wav",
+    "label_file_fake": 1,
+    "scenario": "voice1_music0",
+    "sources": [
+      "LA_D_6723637",
+      "Z9hnLYpypCU"
+    ]
+  },
+  {
+    "ID": "FUS_0018",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0018.wav",
+    "label_file_fake": 1,
+    "scenario": "voice1_music0",
+    "sources": [
+      "LA_D_9895494",
+      "vOU-qA25xNM"
+    ]
+  },
+  {
+    "ID": "FUS_0019",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0019.wav",
+    "label_file_fake": 1,
+    "scenario": "voice1_music0",
+    "sources": [
+      "LA_D_1562924",
+      "K5ilD6nEJ-g"
+    ]
+  },
+  {
+    "ID": "FUS_0020",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0020.wav",
+    "label_file_fake": 1,
+    "scenario": "voice1_music0",
+    "sources": [
+      "LA_D_1860158",
+      "YTZK9FNgK74"
+    ]
+  },
+  {
+    "ID": "FUS_0021",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0021.wav",
+    "label_file_fake": 1,
+    "scenario": "voice1_music0",
+    "sources": [
+      "LA_D_3594249",
+      "YW4AKwkpYxs"
+    ]
+  },
+  {
+    "ID": "FUS_0022",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0022.wav",
+    "label_file_fake": 1,
+    "scenario": "voice1_music0",
+    "sources": [
+      "LA_D_4936338",
+      "PN3Lx8RutmI"
+    ]
+  },
+  {
+    "ID": "FUS_0023",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0023.wav",
+    "label_file_fake": 1,
+    "scenario": "voice1_music0",
+    "sources": [
+      "LA_D_5894140",
+      "Y5RVYmf3uWc"
+    ]
+  },
+  {
+    "ID": "FUS_0024",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0024.wav",
+    "label_file_fake": 1,
+    "scenario": "voice1_music1",
+    "sources": [
+      "LA_D_8909496",
+      "TTM04_dPM24O4my-Q"
+    ]
+  },
+  {
+    "ID": "FUS_0025",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0025.wav",
+    "label_file_fake": 1,
+    "scenario": "voice1_music1",
+    "sources": [
+      "LA_D_6723637",
+      "TTM05_ucSF9NIxK8A"
+    ]
+  },
+  {
+    "ID": "FUS_0026",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0026.wav",
+    "label_file_fake": 1,
+    "scenario": "voice1_music1",
+    "sources": [
+      "LA_D_9895494",
+      "TTM01_E6JR3htwgyE"
+    ]
+  },
+  {
+    "ID": "FUS_0027",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0027.wav",
+    "label_file_fake": 1,
+    "scenario": "voice1_music1",
+    "sources": [
+      "LA_D_1562924",
+      "TTM03_COe_UKKVpVo"
+    ]
+  },
+  {
+    "ID": "FUS_0028",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0028.wav",
+    "label_file_fake": 1,
+    "scenario": "voice1_music1",
+    "sources": [
+      "LA_D_1860158",
+      "TTM03_5a_Qxd4ECTo"
+    ]
+  },
+  {
+    "ID": "FUS_0029",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0029.wav",
+    "label_file_fake": 1,
+    "scenario": "voice1_music1",
+    "sources": [
+      "LA_D_3594249",
+      "TTM02_YvFY7xU2kGk"
+    ]
+  },
+  {
+    "ID": "FUS_0030",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0030.wav",
+    "label_file_fake": 1,
+    "scenario": "voice1_music1",
+    "sources": [
+      "LA_D_4936338",
+      "TTM01_Tsmx6Pb7CnU"
+    ]
+  },
+  {
+    "ID": "FUS_0031",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0031.wav",
+    "label_file_fake": 1,
+    "scenario": "voice1_music1",
+    "sources": [
+      "LA_D_5894140",
+      "TTM04_dSs4xfvATjc"
+    ]
+  },
+  {
+    "ID": "FUS_0032",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0032.wav",
+    "label_file_fake": 0,
+    "scenario": "speech_only",
+    "sources": [
+      "LA_D_8623607"
+    ]
+  },
+  {
+    "ID": "FUS_0033",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0033.wav",
+    "label_file_fake": 0,
+    "scenario": "speech_only",
+    "sources": [
+      "LA_D_5107120"
+    ]
+  },
+  {
+    "ID": "FUS_0034",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0034.wav",
+    "label_file_fake": 0,
+    "scenario": "speech_only",
+    "sources": [
+      "LA_D_7057765"
+    ]
+  },
+  {
+    "ID": "FUS_0035",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0035.wav",
+    "label_file_fake": 0,
+    "scenario": "speech_only",
+    "sources": [
+      "LA_D_7058100"
+    ]
+  },
+  {
+    "ID": "FUS_0036",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0036.wav",
+    "label_file_fake": 0,
+    "scenario": "speech_only",
+    "sources": [
+      "LA_D_7556469"
+    ]
+  },
+  {
+    "ID": "FUS_0037",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0037.wav",
+    "label_file_fake": 0,
+    "scenario": "speech_only",
+    "sources": [
+      "LA_D_6646969"
+    ]
+  },
+  {
+    "ID": "FUS_0038",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0038.wav",
+    "label_file_fake": 0,
+    "scenario": "speech_only",
+    "sources": [
+      "LA_D_8522983"
+    ]
+  },
+  {
+    "ID": "FUS_0039",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0039.wav",
+    "label_file_fake": 0,
+    "scenario": "speech_only",
+    "sources": [
+      "LA_D_8364855"
+    ]
+  },
+  {
+    "ID": "FUS_0040",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0040.wav",
+    "label_file_fake": 0,
+    "scenario": "original_music_clip",
+    "sources": [
+      "G2JDDwIuNrQ"
+    ]
+  },
+  {
+    "ID": "FUS_0041",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0041.wav",
+    "label_file_fake": 0,
+    "scenario": "original_music_clip",
+    "sources": [
+      "Z9hnLYpypCU"
+    ]
+  },
+  {
+    "ID": "FUS_0042",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0042.wav",
+    "label_file_fake": 0,
+    "scenario": "original_music_clip",
+    "sources": [
+      "vOU-qA25xNM"
+    ]
+  },
+  {
+    "ID": "FUS_0043",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0043.wav",
+    "label_file_fake": 0,
+    "scenario": "original_music_clip",
+    "sources": [
+      "K5ilD6nEJ-g"
+    ]
+  },
+  {
+    "ID": "FUS_0044",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0044.wav",
+    "label_file_fake": 0,
+    "scenario": "original_music_clip",
+    "sources": [
+      "YTZK9FNgK74"
+    ]
+  },
+  {
+    "ID": "FUS_0045",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0045.wav",
+    "label_file_fake": 0,
+    "scenario": "original_music_clip",
+    "sources": [
+      "YW4AKwkpYxs"
+    ]
+  },
+  {
+    "ID": "FUS_0046",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0046.wav",
+    "label_file_fake": 0,
+    "scenario": "original_music_clip",
+    "sources": [
+      "PN3Lx8RutmI"
+    ]
+  },
+  {
+    "ID": "FUS_0047",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0047.wav",
+    "label_file_fake": 0,
+    "scenario": "original_music_clip",
+    "sources": [
+      "Y5RVYmf3uWc"
+    ]
+  },
+  {
+    "ID": "FUS_0048",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0048.wav",
+    "label_file_fake": 1,
+    "scenario": "speech_only",
+    "sources": [
+      "LA_D_8909496"
+    ]
+  },
+  {
+    "ID": "FUS_0049",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0049.wav",
+    "label_file_fake": 1,
+    "scenario": "speech_only",
+    "sources": [
+      "LA_D_6723637"
+    ]
+  },
+  {
+    "ID": "FUS_0050",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0050.wav",
+    "label_file_fake": 1,
+    "scenario": "speech_only",
+    "sources": [
+      "LA_D_9895494"
+    ]
+  },
+  {
+    "ID": "FUS_0051",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0051.wav",
+    "label_file_fake": 1,
+    "scenario": "speech_only",
+    "sources": [
+      "LA_D_1562924"
+    ]
+  },
+  {
+    "ID": "FUS_0052",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0052.wav",
+    "label_file_fake": 1,
+    "scenario": "speech_only",
+    "sources": [
+      "LA_D_1860158"
+    ]
+  },
+  {
+    "ID": "FUS_0053",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0053.wav",
+    "label_file_fake": 1,
+    "scenario": "speech_only",
+    "sources": [
+      "LA_D_3594249"
+    ]
+  },
+  {
+    "ID": "FUS_0054",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0054.wav",
+    "label_file_fake": 1,
+    "scenario": "speech_only",
+    "sources": [
+      "LA_D_4936338"
+    ]
+  },
+  {
+    "ID": "FUS_0055",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0055.wav",
+    "label_file_fake": 1,
+    "scenario": "speech_only",
+    "sources": [
+      "LA_D_5894140"
+    ]
+  },
+  {
+    "ID": "FUS_0056",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0056.wav",
+    "label_file_fake": 1,
+    "scenario": "original_music_clip",
+    "sources": [
+      "TTM04_dPM24O4my-Q"
+    ]
+  },
+  {
+    "ID": "FUS_0057",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0057.wav",
+    "label_file_fake": 1,
+    "scenario": "original_music_clip",
+    "sources": [
+      "TTM05_ucSF9NIxK8A"
+    ]
+  },
+  {
+    "ID": "FUS_0058",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0058.wav",
+    "label_file_fake": 1,
+    "scenario": "original_music_clip",
+    "sources": [
+      "TTM01_E6JR3htwgyE"
+    ]
+  },
+  {
+    "ID": "FUS_0059",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0059.wav",
+    "label_file_fake": 1,
+    "scenario": "original_music_clip",
+    "sources": [
+      "TTM03_COe_UKKVpVo"
+    ]
+  },
+  {
+    "ID": "FUS_0060",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0060.wav",
+    "label_file_fake": 1,
+    "scenario": "original_music_clip",
+    "sources": [
+      "TTM03_5a_Qxd4ECTo"
+    ]
+  },
+  {
+    "ID": "FUS_0061",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0061.wav",
+    "label_file_fake": 1,
+    "scenario": "original_music_clip",
+    "sources": [
+      "TTM02_YvFY7xU2kGk"
+    ]
+  },
+  {
+    "ID": "FUS_0062",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0062.wav",
+    "label_file_fake": 1,
+    "scenario": "original_music_clip",
+    "sources": [
+      "TTM01_Tsmx6Pb7CnU"
+    ]
+  },
+  {
+    "ID": "FUS_0063",
+    "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/fusion_diagnostic/audio/FUS_0063.wav",
+    "label_file_fake": 1,
+    "scenario": "original_music_clip",
+    "sources": [
+      "TTM04_dSs4xfvATjc"
+    ]
+  }
+]

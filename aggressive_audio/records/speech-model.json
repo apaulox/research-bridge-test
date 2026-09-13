@@ -1,0 +1,14 @@
+{
+  "repo": "nii-yamagishilab/xls-r-1b-anti-deepfake",
+  "revision": "60c96543210117bdb256636e7961e16463f99291",
+  "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/assets/speech_xlsr1b",
+  "license": "CC-BY-NC-SA-4.0",
+  "official_author_checkpoint": true,
+  "backbone": "wav2vec2 XLS-R 1B",
+  "head": "temporal mean + Linear(1280,2)",
+  "class_order": [
+    "fake",
+    "real"
+  ],
+  "prior_augmentation": "RawBoost (1)+(2)"
+}

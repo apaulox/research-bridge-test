@@ -1,0 +1,11 @@
+{
+  "music": "EAT+AASIST only; original mix first 64000 samples",
+  "speech": "AntiDeepfake XLS-R1B+linear probe; Demucs vocals; 64600 samples; segment max",
+  "mean_formula": "(VOICE_PRESENT_PROB*VOICE_FAKE_PROB + MUSIC_PRESENT_PROB*MUSIC_FAKE_PROB)/2",
+  "comparison": "Identical cached component predictions for mean and max",
+  "note": "Local experimental runner; not yet a portable, server-validated submission ZIP",
+  "music_adaptation": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/runs/music_head_channel_1024_v1/best_adaptation.pt",
+  "speech_adaptation": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/runs/speech_probe_channel_v1/best_adaptation.pt",
+  "elapsed_seconds": 57.61530027800018,
+  "max_gpu_allocated_gib": 4.269670009613037
+}

@@ -1,0 +1,8 @@
+{
+  "branch": "music",
+  "batch_independence_max_abs_error": 4.3392181396484375e-05,
+  "probe_optimizer_step_changed_weights": true,
+  "loss": 3.0702998638153076,
+  "input": "synthetic waveform, execution check only",
+  "performance_evidence": false
+}

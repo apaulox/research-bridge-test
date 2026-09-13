@@ -1,0 +1,23 @@
+{
+  "max_absolute_probability_changes": {
+    "FILE_FAKE_PROB": 0.18598748981106505,
+    "VOICE_FAKE_PROB": 0.012019038200378418,
+    "MUSIC_FAKE_PROB": 0.0,
+    "VOICE_PRESENT_PROB": 0.3374265432357788,
+    "MUSIC_PRESENT_PROB": 0.5115645602345467
+  },
+  "original_cnn14_file_eer": 0.17083333333333334,
+  "resnet38_file_eer": 0.15833333333333333,
+  "voice_labels": 19,
+  "music_labels": 117,
+  "added_voice_label": "A capella",
+  "ads_weights_changed": false,
+  "runtime_note": "Speech moved from fairseq to torchaudio with math SDPA. Same-backend original/conversion probability difference <1e-6 on conversion probes. Relative to the earlier fused-backend diagnostic, speech probabilities differ by up to the measured value; not bitwise-identical inference.",
+  "scope": "64 reused-source external FILE diagnostic; no DACON CPS labels or score available.",
+  "user_reported_score": {
+    "total": 0.6899,
+    "ads": 0.656,
+    "cps": 0.995,
+    "new_zip_result": false
+  }
+}

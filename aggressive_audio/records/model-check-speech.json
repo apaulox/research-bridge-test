@@ -1,0 +1,8 @@
+{
+  "branch": "speech",
+  "batch_independence_max_abs_error": 1.9311904907226562e-05,
+  "probe_optimizer_step_changed_weights": true,
+  "loss": 1.711305022239685,
+  "input": "synthetic waveform, execution check only",
+  "performance_evidence": false
+}

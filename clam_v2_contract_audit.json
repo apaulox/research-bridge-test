@@ -1,0 +1,34 @@
+{
+  "baseline_identical_functions": [
+    "select_device",
+    "find_audio_files",
+    "read_sample_submission",
+    "order_audio_files",
+    "load_audio",
+    "get_segment_starts",
+    "extract_segment",
+    "prepare_panns_labels",
+    "load_panns_model",
+    "make_panns_segments",
+    "predict_presence",
+    "predict_presence_for_all_files",
+    "load_htdemucs_model",
+    "separate_voice_and_music",
+    "load_df_arena_model",
+    "calculate_rms",
+    "predict_fake",
+    "combine_file_fake_score",
+    "save_submission"
+  ],
+  "baseline_intentional_differences": [
+    "parse_arguments",
+    "predict_fake_scores_for_all_files",
+    "main"
+  ],
+  "axis_fix_single_vs_v1_max_logit_delta": 0.0,
+  "axis_fix_batch16_vs_v1_single_max_logit_delta": 1.52587890625e-05,
+  "official_batch16_vs_v1_single_max_logit_delta": 42.21195983886719,
+  "port_vs_official_batch16_max_logit_delta": 0.0,
+  "official_forward_vs_training_max_logit_delta": 0.0,
+  "interpretation": "Axis correction preserves v1 per-file predictions; batch16 reproduces published head behavior but retains peer dependence."
+}

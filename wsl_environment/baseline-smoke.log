@@ -1,0 +1,5 @@
+Checkpoint path: /home/huskypaul/dacon/baseline/model/panns/Cnn14_mAP=0.431.pth
+GPU number: 1
+Presence:   0%|          | 0/3 [00:00<?, ?it/s]Presence:  33%|███▎      | 1/3 [00:00<00:01,  1.13it/s]Presence: 100%|██████████| 3/3 [00:00<00:00,  3.33it/s]
+Components:   0%|          | 0/3 [00:00<?, ?it/s]Components:  33%|███▎      | 1/3 [00:00<00:01,  1.12it/s]Components:  67%|██████▋   | 2/3 [00:01<00:00,  1.61it/s]Components: 100%|██████████| 3/3 [00:01<00:00,  1.90it/s]Components: 100%|██████████| 3/3 [00:01<00:00,  1.73it/s]
+Saved 3 predictions to output/submission.csv

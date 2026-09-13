@@ -1,0 +1,11 @@
+{
+  "identical_component_predictions": true,
+  "files": 64,
+  "scope": "Small paired external FILE diagnostic; not DACON score; upstream overlap possible",
+  "mean": {
+    "file_eer": 0.17083333333333334
+  },
+  "max": {
+    "file_eer": 0.17083333333333334
+  }
+}

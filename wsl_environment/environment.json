@@ -1,0 +1,26 @@
+{
+  "python": "3.10.21 | packaged by conda-forge | (main, Aug 21 2026, 22:42:31) [GCC 14.4.0]",
+  "executable": "/home/huskypaul/miniforge3/envs/dacon-cu128/bin/python",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "packages": {
+    "torch": "2.7.1+cu128",
+    "torchaudio": "2.7.1+cu128",
+    "librosa": "0.10.2.post1",
+    "numpy": "1.24.3",
+    "transformers": "4.46.3",
+    "demucs": "4.0.1",
+    "panns-inference": "0.1.1"
+  },
+  "ffmpeg": "/usr/bin/ffmpeg",
+  "baseline_dir": "/home/huskypaul/dacon/baseline",
+  "baseline_files": {
+    "script.py": true,
+    "requirements.txt": true,
+    "model/df_arena_1b": true,
+    "model/htdemucs": true,
+    "model/panns": true,
+    "data/test": true,
+    "data/sample_submission.csv": true
+  },
+  "gpu": "NVIDIA GeForce RTX 5080, 16303 MiB, 591.86"
+}

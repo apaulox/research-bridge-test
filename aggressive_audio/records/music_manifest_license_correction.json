@@ -1,0 +1,7 @@
+{
+  "date": "2026-09-12",
+  "correction": "FMC license is CC-BY-NC-4.0, confirmed from official Zenodo API metadata; earlier pilot manifest incorrectly said CC-BY-4.0.",
+  "source": "https://zenodo.org/api/records/15063698",
+  "affected_runs": ["music_clean_pilot_v1", "music_channel_pilot_v1"],
+  "effect": "Provenance text correction only. Audio paths, labels, source split, selected IDs and training results unchanged. Original run manifest hashes retained as historical records."
+}

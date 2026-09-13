@@ -1,0 +1,60 @@
+{
+  "music": [
+    {
+      "epoch": 0,
+      "train_loss": null,
+      "clean_eer": 0.1875,
+      "stress_eer": 0.3671875,
+      "selection_metric": 0.27734375,
+      "seconds": 36.208054334999815,
+      "max_gpu_gib": 1.1786556243896484
+    },
+    {
+      "epoch": 1,
+      "train_loss": 0.9830367673384899,
+      "clean_eer": 0.2265625,
+      "stress_eer": 0.34375,
+      "selection_metric": 0.28515625,
+      "seconds": 163.41926347899994,
+      "max_gpu_gib": 1.2032113075256348
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.7847329483847716,
+      "clean_eer": 0.18359375,
+      "stress_eer": 0.328125,
+      "selection_metric": 0.255859375,
+      "seconds": 296.0751712439999,
+      "max_gpu_gib": 1.2032113075256348
+    }
+  ],
+  "speech": [
+    {
+      "epoch": 0,
+      "train_loss": null,
+      "clean_eer": 0.03125,
+      "stress_eer": 0.046875,
+      "selection_metric": 0.0390625,
+      "seconds": 34.95201267199991,
+      "max_gpu_gib": 3.920240879058838
+    },
+    {
+      "epoch": 1,
+      "train_loss": 0.31803041867477333,
+      "clean_eer": 0.0234375,
+      "stress_eer": 0.046875,
+      "selection_metric": 0.03515625,
+      "seconds": 164.42540166699996,
+      "max_gpu_gib": 3.928673267364502
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.23969760781002947,
+      "clean_eer": 0.015625,
+      "stress_eer": 0.0390625,
+      "selection_metric": 0.02734375,
+      "seconds": 282.37913337500004,
+      "max_gpu_gib": 3.928673267364502
+    }
+  ]
+}

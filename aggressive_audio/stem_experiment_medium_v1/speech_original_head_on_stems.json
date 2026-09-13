@@ -1,0 +1,3586 @@
+[
+  {
+    "id": "LA_D_1024892",
+    "label": 0,
+    "prob_fake": 0.1550784707069397,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1025356",
+    "label": 1,
+    "prob_fake": 0.9996750354766846,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1112296",
+    "label": 0,
+    "prob_fake": 0.04569203406572342,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1144692",
+    "label": 1,
+    "prob_fake": 0.9998601675033569,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1181772",
+    "label": 1,
+    "prob_fake": 0.9995417594909668,
+    "generator": "A05",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1229959",
+    "label": 1,
+    "prob_fake": 0.9996594190597534,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1246607",
+    "label": 0,
+    "prob_fake": 0.0204885546118021,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1274554",
+    "label": 1,
+    "prob_fake": 0.9998601675033569,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1301234",
+    "label": 0,
+    "prob_fake": 0.4572579264640808,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1317890",
+    "label": 0,
+    "prob_fake": 0.15002882480621338,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1365236",
+    "label": 0,
+    "prob_fake": 0.5946689248085022,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1423006",
+    "label": 0,
+    "prob_fake": 0.2206781655550003,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1484758",
+    "label": 1,
+    "prob_fake": 0.9998148083686829,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1490681",
+    "label": 0,
+    "prob_fake": 0.5774953961372375,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1505756",
+    "label": 0,
+    "prob_fake": 0.17050801217556,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1532705",
+    "label": 0,
+    "prob_fake": 0.6638869047164917,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1544054",
+    "label": 1,
+    "prob_fake": 0.9981030225753784,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1579120",
+    "label": 1,
+    "prob_fake": 0.9998313188552856,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1592884",
+    "label": 0,
+    "prob_fake": 0.11201596260070801,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1618636",
+    "label": 1,
+    "prob_fake": 0.9998644590377808,
+    "generator": "A02",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1659462",
+    "label": 0,
+    "prob_fake": 0.2958398759365082,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1730959",
+    "label": 0,
+    "prob_fake": 0.750552773475647,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1874320",
+    "label": 0,
+    "prob_fake": 0.10932482779026031,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1885115",
+    "label": 0,
+    "prob_fake": 0.3119506239891052,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1932175",
+    "label": 0,
+    "prob_fake": 0.09807932376861572,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2042770",
+    "label": 1,
+    "prob_fake": 0.8875949382781982,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2100232",
+    "label": 1,
+    "prob_fake": 0.999868631362915,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2109741",
+    "label": 1,
+    "prob_fake": 0.9997428059577942,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2124468",
+    "label": 1,
+    "prob_fake": 0.9998148083686829,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2124484",
+    "label": 0,
+    "prob_fake": 0.28298813104629517,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2255247",
+    "label": 0,
+    "prob_fake": 0.7442848086357117,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2288713",
+    "label": 1,
+    "prob_fake": 0.9998557567596436,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2309894",
+    "label": 0,
+    "prob_fake": 0.24689634144306183,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2358821",
+    "label": 0,
+    "prob_fake": 0.2587003707885742,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2361529",
+    "label": 1,
+    "prob_fake": 0.9998644590377808,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2393663",
+    "label": 0,
+    "prob_fake": 0.2782568037509918,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2456990",
+    "label": 1,
+    "prob_fake": 0.9998260140419006,
+    "generator": "A05",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2462911",
+    "label": 0,
+    "prob_fake": 0.6404110193252563,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2473428",
+    "label": 1,
+    "prob_fake": 0.9996646642684937,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2518822",
+    "label": 0,
+    "prob_fake": 0.3827469050884247,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2526078",
+    "label": 1,
+    "prob_fake": 0.999562680721283,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2544697",
+    "label": 1,
+    "prob_fake": 0.974821150302887,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2565263",
+    "label": 1,
+    "prob_fake": 0.9986329674720764,
+    "generator": "A05",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2634970",
+    "label": 1,
+    "prob_fake": 0.9990600943565369,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2638842",
+    "label": 1,
+    "prob_fake": 0.9828232526779175,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2651974",
+    "label": 1,
+    "prob_fake": 0.9995197057723999,
+    "generator": "A05",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2727780",
+    "label": 1,
+    "prob_fake": 0.9997901320457458,
+    "generator": "A02",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2791787",
+    "label": 0,
+    "prob_fake": 0.13799647986888885,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2816042",
+    "label": 1,
+    "prob_fake": 0.999562680721283,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2844602",
+    "label": 1,
+    "prob_fake": 0.999783456325531,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2852000",
+    "label": 0,
+    "prob_fake": 0.4079229235649109,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_2907952",
+    "label": 1,
+    "prob_fake": 0.9981613755226135,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3015714",
+    "label": 1,
+    "prob_fake": 0.9998260140419006,
+    "generator": "A05",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3140807",
+    "label": 1,
+    "prob_fake": 0.9996373653411865,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3154368",
+    "label": 0,
+    "prob_fake": 0.2778647243976593,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3158870",
+    "label": 1,
+    "prob_fake": 0.9995761513710022,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3184710",
+    "label": 1,
+    "prob_fake": 0.9996540546417236,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3274531",
+    "label": 0,
+    "prob_fake": 0.363646924495697,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3290566",
+    "label": 1,
+    "prob_fake": 0.9998089671134949,
+    "generator": "A02",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3329914",
+    "label": 1,
+    "prob_fake": 0.954308032989502,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3334677",
+    "label": 1,
+    "prob_fake": 0.9998365640640259,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3342452",
+    "label": 0,
+    "prob_fake": 0.4196479618549347,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3373017",
+    "label": 0,
+    "prob_fake": 0.28656840324401855,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3381945",
+    "label": 1,
+    "prob_fake": 0.9998313188552856,
+    "generator": "A02",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3395770",
+    "label": 1,
+    "prob_fake": 0.907312273979187,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3479802",
+    "label": 0,
+    "prob_fake": 0.11757213622331619,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3512251",
+    "label": 1,
+    "prob_fake": 0.9998601675033569,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3526960",
+    "label": 1,
+    "prob_fake": 0.999841570854187,
+    "generator": "A05",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3536394",
+    "label": 0,
+    "prob_fake": 0.01897803694009781,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3554318",
+    "label": 1,
+    "prob_fake": 0.9998557567596436,
+    "generator": "A02",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3601430",
+    "label": 0,
+    "prob_fake": 0.018833130598068237,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3603496",
+    "label": 0,
+    "prob_fake": 0.5165954232215881,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3622835",
+    "label": 0,
+    "prob_fake": 0.2735743820667267,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3646040",
+    "label": 1,
+    "prob_fake": 0.9998148083686829,
+    "generator": "A02",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3691360",
+    "label": 0,
+    "prob_fake": 0.10706345736980438,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3727131",
+    "label": 1,
+    "prob_fake": 0.9996993541717529,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3763099",
+    "label": 1,
+    "prob_fake": 0.9998365640640259,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3769543",
+    "label": 1,
+    "prob_fake": 0.9997546076774597,
+    "generator": "A05",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3820104",
+    "label": 1,
+    "prob_fake": 0.9998464584350586,
+    "generator": "A05",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3909550",
+    "label": 0,
+    "prob_fake": 0.2465333491563797,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_3958440",
+    "label": 1,
+    "prob_fake": 0.8872045874595642,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4021573",
+    "label": 0,
+    "prob_fake": 0.15152934193611145,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4043027",
+    "label": 0,
+    "prob_fake": 0.3356774151325226,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4141301",
+    "label": 1,
+    "prob_fake": 0.9998313188552856,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4198004",
+    "label": 0,
+    "prob_fake": 0.16184942424297333,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4246171",
+    "label": 0,
+    "prob_fake": 0.2598256468772888,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4252508",
+    "label": 1,
+    "prob_fake": 0.999841570854187,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4317452",
+    "label": 1,
+    "prob_fake": 0.9998557567596436,
+    "generator": "A02",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4331249",
+    "label": 0,
+    "prob_fake": 0.3942592442035675,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4362559",
+    "label": 1,
+    "prob_fake": 0.9998028874397278,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4463495",
+    "label": 0,
+    "prob_fake": 0.23757591843605042,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4466001",
+    "label": 0,
+    "prob_fake": 0.5933442115783691,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4466315",
+    "label": 1,
+    "prob_fake": 0.977022647857666,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4505290",
+    "label": 1,
+    "prob_fake": 0.49127283692359924,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4524484",
+    "label": 0,
+    "prob_fake": 0.47828513383865356,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4530450",
+    "label": 0,
+    "prob_fake": 0.1716158092021942,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4530613",
+    "label": 0,
+    "prob_fake": 0.28537195920944214,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4540166",
+    "label": 0,
+    "prob_fake": 0.12852513790130615,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4579960",
+    "label": 1,
+    "prob_fake": 0.9946980476379395,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4608449",
+    "label": 0,
+    "prob_fake": 0.21601153910160065,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4613194",
+    "label": 1,
+    "prob_fake": 0.9998557567596436,
+    "generator": "A02",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4622729",
+    "label": 1,
+    "prob_fake": 0.9997468590736389,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4638796",
+    "label": 1,
+    "prob_fake": 0.9998644590377808,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4645660",
+    "label": 0,
+    "prob_fake": 0.756717324256897,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4648402",
+    "label": 1,
+    "prob_fake": 0.9996993541717529,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4668049",
+    "label": 1,
+    "prob_fake": 0.9998089671134949,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4668193",
+    "label": 0,
+    "prob_fake": 0.19930800795555115,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4723558",
+    "label": 0,
+    "prob_fake": 0.34356194734573364,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4736721",
+    "label": 1,
+    "prob_fake": 0.9998557567596436,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4739519",
+    "label": 0,
+    "prob_fake": 0.50244140625,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4777626",
+    "label": 0,
+    "prob_fake": 0.2354598045349121,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4804432",
+    "label": 0,
+    "prob_fake": 0.167763352394104,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4807096",
+    "label": 0,
+    "prob_fake": 0.19682620465755463,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4821411",
+    "label": 0,
+    "prob_fake": 0.1661335527896881,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4838520",
+    "label": 0,
+    "prob_fake": 0.5517548322677612,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4914203",
+    "label": 1,
+    "prob_fake": 0.9998365640640259,
+    "generator": "A05",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4928049",
+    "label": 0,
+    "prob_fake": 0.2743513584136963,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_4961850",
+    "label": 1,
+    "prob_fake": 0.9991704225540161,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5039673",
+    "label": 1,
+    "prob_fake": 0.9998365640640259,
+    "generator": "A05",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5062996",
+    "label": 0,
+    "prob_fake": 0.11124120652675629,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5071457",
+    "label": 1,
+    "prob_fake": 0.9997468590736389,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5110370",
+    "label": 1,
+    "prob_fake": 0.9230391979217529,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5110502",
+    "label": 0,
+    "prob_fake": 0.5165954232215881,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5157632",
+    "label": 1,
+    "prob_fake": 0.9992678761482239,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5182745",
+    "label": 0,
+    "prob_fake": 0.6996649503707886,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5224129",
+    "label": 0,
+    "prob_fake": 0.6768335103988647,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5255870",
+    "label": 0,
+    "prob_fake": 0.1629120409488678,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5293101",
+    "label": 0,
+    "prob_fake": 0.09807932376861572,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5304257",
+    "label": 1,
+    "prob_fake": 0.9995891451835632,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5345225",
+    "label": 0,
+    "prob_fake": 0.11476478725671768,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5390706",
+    "label": 1,
+    "prob_fake": 0.9996594190597534,
+    "generator": "A05",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5412673",
+    "label": 1,
+    "prob_fake": 0.8940516710281372,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5416674",
+    "label": 0,
+    "prob_fake": 0.13206614553928375,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5423215",
+    "label": 1,
+    "prob_fake": 0.9998601675033569,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5431436",
+    "label": 0,
+    "prob_fake": 0.27009499073028564,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5437761",
+    "label": 1,
+    "prob_fake": 0.9993833303451538,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5504869",
+    "label": 1,
+    "prob_fake": 0.9998601675033569,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5512289",
+    "label": 0,
+    "prob_fake": 0.318909227848053,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5513082",
+    "label": 0,
+    "prob_fake": 0.15921740233898163,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5542285",
+    "label": 0,
+    "prob_fake": 0.41635164618492126,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5597425",
+    "label": 1,
+    "prob_fake": 0.9998557567596436,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5677972",
+    "label": 0,
+    "prob_fake": 0.12940272688865662,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5700038",
+    "label": 0,
+    "prob_fake": 0.04569203406572342,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5701193",
+    "label": 0,
+    "prob_fake": 0.36840569972991943,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5795353",
+    "label": 1,
+    "prob_fake": 0.9755768775939941,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5824998",
+    "label": 0,
+    "prob_fake": 0.22712630033493042,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5851479",
+    "label": 1,
+    "prob_fake": 0.999762237071991,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5863611",
+    "label": 0,
+    "prob_fake": 0.21337716281414032,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5886733",
+    "label": 1,
+    "prob_fake": 0.9998313188552856,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5907410",
+    "label": 0,
+    "prob_fake": 0.937210738658905,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_5974475",
+    "label": 0,
+    "prob_fake": 0.3223126232624054,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6027798",
+    "label": 0,
+    "prob_fake": 0.23581159114837646,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6085002",
+    "label": 0,
+    "prob_fake": 0.0991208553314209,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6126930",
+    "label": 1,
+    "prob_fake": 0.9997965693473816,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6150120",
+    "label": 0,
+    "prob_fake": 0.06903792917728424,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6178698",
+    "label": 1,
+    "prob_fake": 0.9996947050094604,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6204285",
+    "label": 1,
+    "prob_fake": 0.9998464584350586,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6207345",
+    "label": 0,
+    "prob_fake": 0.45556190609931946,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6226339",
+    "label": 0,
+    "prob_fake": 0.7479842901229858,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6276227",
+    "label": 1,
+    "prob_fake": 0.9998557567596436,
+    "generator": "A02",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6300161",
+    "label": 1,
+    "prob_fake": 0.9995761513710022,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6303389",
+    "label": 0,
+    "prob_fake": 0.6938879489898682,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6320458",
+    "label": 1,
+    "prob_fake": 0.9996800422668457,
+    "generator": "A05",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6392761",
+    "label": 1,
+    "prob_fake": 0.999713122844696,
+    "generator": "A05",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6408762",
+    "label": 1,
+    "prob_fake": 0.9998601675033569,
+    "generator": "A02",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6441861",
+    "label": 1,
+    "prob_fake": 0.9997901320457458,
+    "generator": "A05",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6469406",
+    "label": 1,
+    "prob_fake": 0.7759445905685425,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6548276",
+    "label": 1,
+    "prob_fake": 0.9970190525054932,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6578659",
+    "label": 0,
+    "prob_fake": 0.4407099783420563,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6617994",
+    "label": 0,
+    "prob_fake": 0.2512800693511963,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6618919",
+    "label": 0,
+    "prob_fake": 0.025565212592482567,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6621038",
+    "label": 1,
+    "prob_fake": 0.9998028874397278,
+    "generator": "A02",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6630316",
+    "label": 0,
+    "prob_fake": 0.4188157618045807,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6685036",
+    "label": 1,
+    "prob_fake": 0.9971550703048706,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6701963",
+    "label": 0,
+    "prob_fake": 0.06705628335475922,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6711434",
+    "label": 0,
+    "prob_fake": 0.7386690378189087,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6805066",
+    "label": 0,
+    "prob_fake": 0.2587003707885742,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6842136",
+    "label": 0,
+    "prob_fake": 0.4776759743690491,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6911536",
+    "label": 0,
+    "prob_fake": 0.4799911379814148,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6917442",
+    "label": 0,
+    "prob_fake": 0.257951945066452,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_6948624",
+    "label": 0,
+    "prob_fake": 0.659514844417572,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7039466",
+    "label": 0,
+    "prob_fake": 0.18359363079071045,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7042962",
+    "label": 1,
+    "prob_fake": 0.9998726844787598,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7097849",
+    "label": 0,
+    "prob_fake": 0.7843191027641296,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7139694",
+    "label": 1,
+    "prob_fake": 0.9997387528419495,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7255005",
+    "label": 0,
+    "prob_fake": 0.7442848086357117,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7292143",
+    "label": 0,
+    "prob_fake": 0.13799647986888885,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7339211",
+    "label": 1,
+    "prob_fake": 0.9998557567596436,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7363360",
+    "label": 1,
+    "prob_fake": 0.9992903470993042,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7375840",
+    "label": 1,
+    "prob_fake": 0.9996993541717529,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7380582",
+    "label": 0,
+    "prob_fake": 0.6374822854995728,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7419068",
+    "label": 1,
+    "prob_fake": 0.9997695088386536,
+    "generator": "A05",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7423342",
+    "label": 0,
+    "prob_fake": 0.48255103826522827,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7450790",
+    "label": 0,
+    "prob_fake": 0.39992883801460266,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7465143",
+    "label": 1,
+    "prob_fake": 0.9998601675033569,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7500692",
+    "label": 1,
+    "prob_fake": 0.9994207620620728,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7588199",
+    "label": 1,
+    "prob_fake": 0.9857181310653687,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7662627",
+    "label": 0,
+    "prob_fake": 0.24436300992965698,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7665160",
+    "label": 1,
+    "prob_fake": 0.9998089671134949,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7715110",
+    "label": 0,
+    "prob_fake": 0.2802222669124603,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7755990",
+    "label": 0,
+    "prob_fake": 0.5824910402297974,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7878191",
+    "label": 0,
+    "prob_fake": 0.037326883524656296,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7879955",
+    "label": 0,
+    "prob_fake": 0.42321962118148804,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7981085",
+    "label": 0,
+    "prob_fake": 0.03488088771700859,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_7982514",
+    "label": 0,
+    "prob_fake": 0.5336405038833618,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8003563",
+    "label": 0,
+    "prob_fake": 0.2458084672689438,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8030349",
+    "label": 1,
+    "prob_fake": 0.9998028874397278,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8059879",
+    "label": 0,
+    "prob_fake": 0.08882028609514236,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8067555",
+    "label": 1,
+    "prob_fake": 0.9995761513710022,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8076652",
+    "label": 0,
+    "prob_fake": 0.18010665476322174,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8076952",
+    "label": 1,
+    "prob_fake": 0.9997695088386536,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8089934",
+    "label": 0,
+    "prob_fake": 0.4918220341205597,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8159363",
+    "label": 1,
+    "prob_fake": 0.9998313188552856,
+    "generator": "A02",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8241585",
+    "label": 0,
+    "prob_fake": 0.8227594494819641,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8297100",
+    "label": 0,
+    "prob_fake": 0.12252321094274521,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8314448",
+    "label": 0,
+    "prob_fake": 0.08093671500682831,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8328201",
+    "label": 1,
+    "prob_fake": 0.999841570854187,
+    "generator": "A02",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8438363",
+    "label": 0,
+    "prob_fake": 0.11556088179349899,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8438549",
+    "label": 1,
+    "prob_fake": 0.999868631362915,
+    "generator": "A05",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8587105",
+    "label": 0,
+    "prob_fake": 0.18068422377109528,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8592900",
+    "label": 0,
+    "prob_fake": 0.4512660801410675,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8615151",
+    "label": 1,
+    "prob_fake": 0.9518632292747498,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8648680",
+    "label": 1,
+    "prob_fake": 0.9998464584350586,
+    "generator": "A02",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8682752",
+    "label": 1,
+    "prob_fake": 0.9991169571876526,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8688425",
+    "label": 0,
+    "prob_fake": 0.2934044897556305,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8730212",
+    "label": 1,
+    "prob_fake": 0.9996079802513123,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8773075",
+    "label": 1,
+    "prob_fake": 0.9997695088386536,
+    "generator": "A02",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8798580",
+    "label": 1,
+    "prob_fake": 0.9998260140419006,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8879292",
+    "label": 0,
+    "prob_fake": 0.586226761341095,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8892958",
+    "label": 1,
+    "prob_fake": 0.9997765421867371,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8916787",
+    "label": 0,
+    "prob_fake": 0.44866782426834106,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8939153",
+    "label": 1,
+    "prob_fake": 0.9818752408027649,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_8950507",
+    "label": 0,
+    "prob_fake": 0.09334687888622284,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9038073",
+    "label": 1,
+    "prob_fake": 0.999220609664917,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9159389",
+    "label": 1,
+    "prob_fake": 0.9998601675033569,
+    "generator": "A02",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9169706",
+    "label": 0,
+    "prob_fake": 0.10669060051441193,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9173640",
+    "label": 1,
+    "prob_fake": 0.9046505093574524,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9212778",
+    "label": 1,
+    "prob_fake": 0.7017130851745605,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9217608",
+    "label": 1,
+    "prob_fake": 0.9997765421867371,
+    "generator": "A05",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9247873",
+    "label": 1,
+    "prob_fake": 0.9996594190597534,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9285185",
+    "label": 1,
+    "prob_fake": 0.9940890073776245,
+    "generator": "A06",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9366582",
+    "label": 0,
+    "prob_fake": 0.21502089500427246,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9370304",
+    "label": 1,
+    "prob_fake": 0.9998148083686829,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9411191",
+    "label": 1,
+    "prob_fake": 0.9998365640640259,
+    "generator": "A01",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9507060",
+    "label": 1,
+    "prob_fake": 0.9998365640640259,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9544806",
+    "label": 0,
+    "prob_fake": 0.3559987246990204,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9552029",
+    "label": 1,
+    "prob_fake": 0.999841570854187,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9553903",
+    "label": 1,
+    "prob_fake": 0.9996800422668457,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9603877",
+    "label": 1,
+    "prob_fake": 0.9997965693473816,
+    "generator": "A05",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9610405",
+    "label": 0,
+    "prob_fake": 0.01798621006309986,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9613437",
+    "label": 0,
+    "prob_fake": 0.1650540828704834,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9646459",
+    "label": 1,
+    "prob_fake": 0.9890130758285522,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9664614",
+    "label": 1,
+    "prob_fake": 0.9998511075973511,
+    "generator": "A03",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9679656",
+    "label": 0,
+    "prob_fake": 0.2465333491563797,
+    "generator": "human",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9971231",
+    "label": 1,
+    "prob_fake": 0.9840936064720154,
+    "generator": "A04",
+    "stress": false
+  },
+  {
+    "id": "LA_D_9980947",
+    "label": 1,
+    "prob_fake": 0.9997901320457458,
+    "generator": "A05",
+    "stress": false
+  },
+  {
+    "id": "LA_D_1024892",
+    "label": 0,
+    "prob_fake": 0.0427221953868866,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1025356",
+    "label": 1,
+    "prob_fake": 0.999713122844696,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1112296",
+    "label": 0,
+    "prob_fake": 0.005220125894993544,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1144692",
+    "label": 1,
+    "prob_fake": 0.9998464584350586,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1181772",
+    "label": 1,
+    "prob_fake": 0.9985221028327942,
+    "generator": "A05",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1229959",
+    "label": 1,
+    "prob_fake": 0.9926542043685913,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1246607",
+    "label": 0,
+    "prob_fake": 0.0034834244288504124,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1274554",
+    "label": 1,
+    "prob_fake": 0.9998557567596436,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1301234",
+    "label": 0,
+    "prob_fake": 0.043042849749326706,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1317890",
+    "label": 0,
+    "prob_fake": 0.0025509123224765062,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1365236",
+    "label": 0,
+    "prob_fake": 0.05541279539465904,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1423006",
+    "label": 0,
+    "prob_fake": 0.22439520061016083,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1484758",
+    "label": 1,
+    "prob_fake": 0.9998205304145813,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1490681",
+    "label": 0,
+    "prob_fake": 0.0031236486975103617,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1505756",
+    "label": 0,
+    "prob_fake": 0.1901218295097351,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1532705",
+    "label": 0,
+    "prob_fake": 0.04672496020793915,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1544054",
+    "label": 1,
+    "prob_fake": 0.9978510141372681,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1579120",
+    "label": 1,
+    "prob_fake": 0.9997305274009705,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1592884",
+    "label": 0,
+    "prob_fake": 0.01016965787857771,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1618636",
+    "label": 1,
+    "prob_fake": 0.9998557567596436,
+    "generator": "A02",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1659462",
+    "label": 0,
+    "prob_fake": 0.0028449094388633966,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1730959",
+    "label": 0,
+    "prob_fake": 0.1761041283607483,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1874320",
+    "label": 0,
+    "prob_fake": 0.004070138093084097,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1885115",
+    "label": 0,
+    "prob_fake": 0.06187598407268524,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_1932175",
+    "label": 0,
+    "prob_fake": 0.004133968148380518,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2042770",
+    "label": 1,
+    "prob_fake": 0.8929365277290344,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2100232",
+    "label": 1,
+    "prob_fake": 0.9998644590377808,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2109741",
+    "label": 1,
+    "prob_fake": 0.9994207620620728,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2124468",
+    "label": 1,
+    "prob_fake": 0.9983256459236145,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2124484",
+    "label": 0,
+    "prob_fake": 0.1200256273150444,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2255247",
+    "label": 0,
+    "prob_fake": 0.07751765847206116,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2288713",
+    "label": 1,
+    "prob_fake": 0.9998148083686829,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2309894",
+    "label": 0,
+    "prob_fake": 0.2639786899089813,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2358821",
+    "label": 0,
+    "prob_fake": 0.010013571009039879,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2361529",
+    "label": 1,
+    "prob_fake": 0.9997219443321228,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2393663",
+    "label": 0,
+    "prob_fake": 0.003376612439751625,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2456990",
+    "label": 1,
+    "prob_fake": 0.9998464584350586,
+    "generator": "A05",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2462911",
+    "label": 0,
+    "prob_fake": 0.011331754736602306,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2473428",
+    "label": 1,
+    "prob_fake": 0.9992678761482239,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2518822",
+    "label": 0,
+    "prob_fake": 0.12168575078248978,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2526078",
+    "label": 1,
+    "prob_fake": 0.9875683188438416,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2544697",
+    "label": 1,
+    "prob_fake": 0.9202179908752441,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2565263",
+    "label": 1,
+    "prob_fake": 0.9997040629386902,
+    "generator": "A05",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2634970",
+    "label": 1,
+    "prob_fake": 0.9965165853500366,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2638842",
+    "label": 1,
+    "prob_fake": 0.9796676635742188,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2651974",
+    "label": 1,
+    "prob_fake": 0.9904406070709229,
+    "generator": "A05",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2727780",
+    "label": 1,
+    "prob_fake": 0.9997695088386536,
+    "generator": "A02",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2791787",
+    "label": 0,
+    "prob_fake": 0.01243165135383606,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2816042",
+    "label": 1,
+    "prob_fake": 0.9907320141792297,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2844602",
+    "label": 1,
+    "prob_fake": 0.9879462122917175,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2852000",
+    "label": 0,
+    "prob_fake": 0.4138324558734894,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_2907952",
+    "label": 1,
+    "prob_fake": 0.45525917410850525,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3015714",
+    "label": 1,
+    "prob_fake": 0.9996646642684937,
+    "generator": "A05",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3140807",
+    "label": 1,
+    "prob_fake": 0.9995827078819275,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3154368",
+    "label": 0,
+    "prob_fake": 0.012821214273571968,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3158870",
+    "label": 1,
+    "prob_fake": 0.9818752408027649,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3184710",
+    "label": 1,
+    "prob_fake": 0.998245358467102,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3274531",
+    "label": 0,
+    "prob_fake": 0.029760094359517097,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3290566",
+    "label": 1,
+    "prob_fake": 0.9995761513710022,
+    "generator": "A02",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3329914",
+    "label": 1,
+    "prob_fake": 0.845432698726654,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3334677",
+    "label": 1,
+    "prob_fake": 0.9997546076774597,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3342452",
+    "label": 0,
+    "prob_fake": 0.005911068990826607,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3373017",
+    "label": 0,
+    "prob_fake": 0.01652955822646618,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3381945",
+    "label": 1,
+    "prob_fake": 0.9994207620620728,
+    "generator": "A02",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3395770",
+    "label": 1,
+    "prob_fake": 0.26626187562942505,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3479802",
+    "label": 0,
+    "prob_fake": 0.00955939944833517,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3512251",
+    "label": 1,
+    "prob_fake": 0.9998511075973511,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3526960",
+    "label": 1,
+    "prob_fake": 0.9998205304145813,
+    "generator": "A05",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3536394",
+    "label": 0,
+    "prob_fake": 0.037326883524656296,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3554318",
+    "label": 1,
+    "prob_fake": 0.9998511075973511,
+    "generator": "A02",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3601430",
+    "label": 0,
+    "prob_fake": 0.04240383207798004,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3603496",
+    "label": 0,
+    "prob_fake": 0.48255103826522827,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3622835",
+    "label": 0,
+    "prob_fake": 0.10266400873661041,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3646040",
+    "label": 1,
+    "prob_fake": 0.9984021782875061,
+    "generator": "A02",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3691360",
+    "label": 0,
+    "prob_fake": 0.09467770159244537,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3727131",
+    "label": 1,
+    "prob_fake": 0.9954615235328674,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3763099",
+    "label": 1,
+    "prob_fake": 0.9998464584350586,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3769543",
+    "label": 1,
+    "prob_fake": 0.9997965693473816,
+    "generator": "A05",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3820104",
+    "label": 1,
+    "prob_fake": 0.9998557567596436,
+    "generator": "A05",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3909550",
+    "label": 0,
+    "prob_fake": 0.04922211915254593,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_3958440",
+    "label": 1,
+    "prob_fake": 0.46295860409736633,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4021573",
+    "label": 0,
+    "prob_fake": 0.009268012829124928,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4043027",
+    "label": 0,
+    "prob_fake": 0.007232763338834047,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4141301",
+    "label": 1,
+    "prob_fake": 0.999841570854187,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4198004",
+    "label": 0,
+    "prob_fake": 0.2841785252094269,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4246171",
+    "label": 0,
+    "prob_fake": 0.00912563782185316,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4252508",
+    "label": 1,
+    "prob_fake": 0.9998365640640259,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4317452",
+    "label": 1,
+    "prob_fake": 0.9997305274009705,
+    "generator": "A02",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4331249",
+    "label": 0,
+    "prob_fake": 0.05033063143491745,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4362559",
+    "label": 1,
+    "prob_fake": 0.9997901320457458,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4463495",
+    "label": 0,
+    "prob_fake": 0.006388320587575436,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4466001",
+    "label": 0,
+    "prob_fake": 0.1325145661830902,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4466315",
+    "label": 1,
+    "prob_fake": 0.9848109483718872,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4505290",
+    "label": 1,
+    "prob_fake": 0.29746994376182556,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4524484",
+    "label": 0,
+    "prob_fake": 0.10017222166061401,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4530450",
+    "label": 0,
+    "prob_fake": 0.0008040859247557819,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4530613",
+    "label": 0,
+    "prob_fake": 0.18184365332126617,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4540166",
+    "label": 0,
+    "prob_fake": 0.21800270676612854,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4579960",
+    "label": 1,
+    "prob_fake": 0.997285008430481,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4608449",
+    "label": 0,
+    "prob_fake": 0.006388320587575436,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4613194",
+    "label": 1,
+    "prob_fake": 0.9998464584350586,
+    "generator": "A02",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4622729",
+    "label": 1,
+    "prob_fake": 0.9994115829467773,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4638796",
+    "label": 1,
+    "prob_fake": 0.9998365640640259,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4645660",
+    "label": 0,
+    "prob_fake": 0.7581526637077332,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4648402",
+    "label": 1,
+    "prob_fake": 0.999713122844696,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4668049",
+    "label": 1,
+    "prob_fake": 0.9997965693473816,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4668193",
+    "label": 0,
+    "prob_fake": 0.004829722456634045,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4723558",
+    "label": 0,
+    "prob_fake": 0.018689308315515518,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4736721",
+    "label": 1,
+    "prob_fake": 0.999783456325531,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4739519",
+    "label": 0,
+    "prob_fake": 0.21337716281414032,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4777626",
+    "label": 0,
+    "prob_fake": 0.16132023930549622,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4804432",
+    "label": 0,
+    "prob_fake": 0.007011795416474342,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4807096",
+    "label": 0,
+    "prob_fake": 0.0014103584690019488,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4821411",
+    "label": 0,
+    "prob_fake": 0.016277460381388664,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4838520",
+    "label": 0,
+    "prob_fake": 0.1063188761472702,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4914203",
+    "label": 1,
+    "prob_fake": 0.9998028874397278,
+    "generator": "A05",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4928049",
+    "label": 0,
+    "prob_fake": 0.0204885546118021,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_4961850",
+    "label": 1,
+    "prob_fake": 0.9912885427474976,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5039673",
+    "label": 1,
+    "prob_fake": 0.9996800422668457,
+    "generator": "A05",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5062996",
+    "label": 0,
+    "prob_fake": 0.11757213622331619,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5071457",
+    "label": 1,
+    "prob_fake": 0.9997468590736389,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5110370",
+    "label": 1,
+    "prob_fake": 0.9155072569847107,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5110502",
+    "label": 0,
+    "prob_fake": 0.40274444222450256,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5157632",
+    "label": 1,
+    "prob_fake": 0.9992903470993042,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5182745",
+    "label": 0,
+    "prob_fake": 0.006589771248400211,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5224129",
+    "label": 0,
+    "prob_fake": 0.16559311747550964,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5255870",
+    "label": 0,
+    "prob_fake": 0.20946969091892242,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5293101",
+    "label": 0,
+    "prob_fake": 0.0011695101857185364,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5304257",
+    "label": 1,
+    "prob_fake": 0.9986329674720764,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5345225",
+    "label": 0,
+    "prob_fake": 0.007815889082849026,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5390706",
+    "label": 1,
+    "prob_fake": 0.9990745782852173,
+    "generator": "A05",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5412673",
+    "label": 1,
+    "prob_fake": 0.7956580519676208,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5416674",
+    "label": 0,
+    "prob_fake": 0.008445627987384796,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5423215",
+    "label": 1,
+    "prob_fake": 0.9998464584350586,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5431436",
+    "label": 0,
+    "prob_fake": 0.0008559006382711232,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5437761",
+    "label": 1,
+    "prob_fake": 0.995866060256958,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5504869",
+    "label": 1,
+    "prob_fake": 0.999841570854187,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5512289",
+    "label": 0,
+    "prob_fake": 0.057918086647987366,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5513082",
+    "label": 0,
+    "prob_fake": 0.007011795416474342,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5542285",
+    "label": 0,
+    "prob_fake": 0.188323974609375,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5597425",
+    "label": 1,
+    "prob_fake": 0.9998511075973511,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5677972",
+    "label": 0,
+    "prob_fake": 0.02080448903143406,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5700038",
+    "label": 0,
+    "prob_fake": 0.0008969393093138933,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5701193",
+    "label": 0,
+    "prob_fake": 0.12252321094274521,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5795353",
+    "label": 1,
+    "prob_fake": 0.9927672147750854,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5824998",
+    "label": 0,
+    "prob_fake": 0.01342825498431921,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5851479",
+    "label": 1,
+    "prob_fake": 0.9996017813682556,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5863611",
+    "label": 0,
+    "prob_fake": 0.018124720081686974,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5886733",
+    "label": 1,
+    "prob_fake": 0.9998365640640259,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5907410",
+    "label": 0,
+    "prob_fake": 0.6146831512451172,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_5974475",
+    "label": 0,
+    "prob_fake": 0.3302551805973053,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6027798",
+    "label": 0,
+    "prob_fake": 0.0015487611526623368,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6085002",
+    "label": 0,
+    "prob_fake": 0.004007288720458746,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6126930",
+    "label": 1,
+    "prob_fake": 0.9996259212493896,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6150120",
+    "label": 0,
+    "prob_fake": 0.006097561679780483,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6178698",
+    "label": 1,
+    "prob_fake": 0.9950946569442749,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6204285",
+    "label": 1,
+    "prob_fake": 0.9998313188552856,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6207345",
+    "label": 0,
+    "prob_fake": 0.0541987270116806,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6226339",
+    "label": 0,
+    "prob_fake": 0.6520198583602905,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6276227",
+    "label": 1,
+    "prob_fake": 0.9995761513710022,
+    "generator": "A02",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6300161",
+    "label": 1,
+    "prob_fake": 0.9986749291419983,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6303389",
+    "label": 0,
+    "prob_fake": 0.6951311230659485,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6320458",
+    "label": 1,
+    "prob_fake": 0.9994115829467773,
+    "generator": "A05",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6392761",
+    "label": 1,
+    "prob_fake": 0.9985221028327942,
+    "generator": "A05",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6408762",
+    "label": 1,
+    "prob_fake": 0.999841570854187,
+    "generator": "A02",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6441861",
+    "label": 1,
+    "prob_fake": 0.9995487332344055,
+    "generator": "A05",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6469406",
+    "label": 1,
+    "prob_fake": 0.929951012134552,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6548276",
+    "label": 1,
+    "prob_fake": 0.9791954755783081,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6578659",
+    "label": 0,
+    "prob_fake": 0.06052938848733902,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6617994",
+    "label": 0,
+    "prob_fake": 0.006097561679780483,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6618919",
+    "label": 0,
+    "prob_fake": 0.01016965787857771,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6621038",
+    "label": 1,
+    "prob_fake": 0.9998028874397278,
+    "generator": "A02",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6630316",
+    "label": 0,
+    "prob_fake": 0.037326883524656296,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6685036",
+    "label": 1,
+    "prob_fake": 0.961243748664856,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6701963",
+    "label": 0,
+    "prob_fake": 0.09138210862874985,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6711434",
+    "label": 0,
+    "prob_fake": 0.013636834919452667,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6805066",
+    "label": 0,
+    "prob_fake": 0.22034244239330292,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6842136",
+    "label": 0,
+    "prob_fake": 0.05070536211133003,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6911536",
+    "label": 0,
+    "prob_fake": 0.1540575623512268,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6917442",
+    "label": 0,
+    "prob_fake": 0.16238002479076385,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_6948624",
+    "label": 0,
+    "prob_fake": 0.03488088771700859,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7039466",
+    "label": 0,
+    "prob_fake": 0.1550784707069397,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7042962",
+    "label": 1,
+    "prob_fake": 0.999868631362915,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7097849",
+    "label": 0,
+    "prob_fake": 0.013020489364862442,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7139694",
+    "label": 1,
+    "prob_fake": 0.9778834581375122,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7255005",
+    "label": 0,
+    "prob_fake": 0.7581526637077332,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7292143",
+    "label": 0,
+    "prob_fake": 0.011687257327139378,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7339211",
+    "label": 1,
+    "prob_fake": 0.9998464584350586,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7363360",
+    "label": 1,
+    "prob_fake": 0.9990890026092529,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7375840",
+    "label": 1,
+    "prob_fake": 0.999555766582489,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7380582",
+    "label": 0,
+    "prob_fake": 0.0026730059180408716,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7419068",
+    "label": 1,
+    "prob_fake": 0.9865716695785522,
+    "generator": "A05",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7423342",
+    "label": 0,
+    "prob_fake": 0.02460992895066738,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7450790",
+    "label": 0,
+    "prob_fake": 0.014728613197803497,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7465143",
+    "label": 1,
+    "prob_fake": 0.9998557567596436,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7500692",
+    "label": 1,
+    "prob_fake": 0.9990600943565369,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7588199",
+    "label": 1,
+    "prob_fake": 0.9959927201271057,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7662627",
+    "label": 0,
+    "prob_fake": 0.025565212592482567,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7665160",
+    "label": 1,
+    "prob_fake": 0.9998089671134949,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7715110",
+    "label": 0,
+    "prob_fake": 0.01590639166533947,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7755990",
+    "label": 0,
+    "prob_fake": 0.015663649886846542,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7878191",
+    "label": 0,
+    "prob_fake": 0.037326883524656296,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7879955",
+    "label": 0,
+    "prob_fake": 0.4421998858451843,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7981085",
+    "label": 0,
+    "prob_fake": 0.0031236486975103617,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_7982514",
+    "label": 0,
+    "prob_fake": 0.38934335112571716,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8003563",
+    "label": 0,
+    "prob_fake": 0.07978201657533646,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8030349",
+    "label": 1,
+    "prob_fake": 0.9997965693473816,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8059879",
+    "label": 0,
+    "prob_fake": 0.04603390023112297,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8067555",
+    "label": 1,
+    "prob_fake": 0.9942697286605835,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8076652",
+    "label": 0,
+    "prob_fake": 0.17217186093330383,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8076952",
+    "label": 1,
+    "prob_fake": 0.9997695088386536,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8089934",
+    "label": 0,
+    "prob_fake": 0.04054073989391327,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8159363",
+    "label": 1,
+    "prob_fake": 0.9996540546417236,
+    "generator": "A02",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8241585",
+    "label": 0,
+    "prob_fake": 0.013222822919487953,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8297100",
+    "label": 0,
+    "prob_fake": 0.15304216742515564,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8314448",
+    "label": 0,
+    "prob_fake": 0.005641908850520849,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8328201",
+    "label": 1,
+    "prob_fake": 0.9998260140419006,
+    "generator": "A02",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8438363",
+    "label": 0,
+    "prob_fake": 0.11476478725671768,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8438549",
+    "label": 1,
+    "prob_fake": 0.9998148083686829,
+    "generator": "A05",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8587105",
+    "label": 0,
+    "prob_fake": 0.13072869181632996,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8592900",
+    "label": 0,
+    "prob_fake": 0.28736767172813416,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8615151",
+    "label": 1,
+    "prob_fake": 0.9529258608818054,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8648680",
+    "label": 1,
+    "prob_fake": 0.9996646642684937,
+    "generator": "A02",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8682752",
+    "label": 1,
+    "prob_fake": 0.9991832375526428,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8688425",
+    "label": 0,
+    "prob_fake": 0.23405632376670837,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8730212",
+    "label": 1,
+    "prob_fake": 0.9992563128471375,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8773075",
+    "label": 1,
+    "prob_fake": 0.9997901320457458,
+    "generator": "A02",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8798580",
+    "label": 1,
+    "prob_fake": 0.9998313188552856,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8879292",
+    "label": 0,
+    "prob_fake": 0.046378206461668015,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8892958",
+    "label": 1,
+    "prob_fake": 0.9990302324295044,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8916787",
+    "label": 0,
+    "prob_fake": 0.031618766486644745,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8939153",
+    "label": 1,
+    "prob_fake": 0.12852513790130615,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_8950507",
+    "label": 0,
+    "prob_fake": 0.0007208380266092718,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9038073",
+    "label": 1,
+    "prob_fake": 0.997285008430481,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9159389",
+    "label": 1,
+    "prob_fake": 0.999868631362915,
+    "generator": "A02",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9169706",
+    "label": 0,
+    "prob_fake": 0.0015011822106316686,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9173640",
+    "label": 1,
+    "prob_fake": 0.9196425676345825,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9212778",
+    "label": 1,
+    "prob_fake": 0.7793218493461609,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9217608",
+    "label": 1,
+    "prob_fake": 0.9997387528419495,
+    "generator": "A05",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9247873",
+    "label": 1,
+    "prob_fake": 0.9996898174285889,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9285185",
+    "label": 1,
+    "prob_fake": 0.9966756105422974,
+    "generator": "A06",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9366582",
+    "label": 0,
+    "prob_fake": 0.006388320587575436,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9370304",
+    "label": 1,
+    "prob_fake": 0.999783456325531,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9411191",
+    "label": 1,
+    "prob_fake": 0.9998365640640259,
+    "generator": "A01",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9507060",
+    "label": 1,
+    "prob_fake": 0.9998365640640259,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9544806",
+    "label": 0,
+    "prob_fake": 0.019568676128983498,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9552029",
+    "label": 1,
+    "prob_fake": 0.9998464584350586,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9553903",
+    "label": 1,
+    "prob_fake": 0.9802808165550232,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9603877",
+    "label": 1,
+    "prob_fake": 0.999762237071991,
+    "generator": "A05",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9610405",
+    "label": 0,
+    "prob_fake": 0.004070138093084097,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9613437",
+    "label": 0,
+    "prob_fake": 0.11797802150249481,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9646459",
+    "label": 1,
+    "prob_fake": 0.480295866727829,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9664614",
+    "label": 1,
+    "prob_fake": 0.9998557567596436,
+    "generator": "A03",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9679656",
+    "label": 0,
+    "prob_fake": 0.09334687888622284,
+    "generator": "human",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9971231",
+    "label": 1,
+    "prob_fake": 0.9962345957756042,
+    "generator": "A04",
+    "stress": true
+  },
+  {
+    "id": "LA_D_9980947",
+    "label": 1,
+    "prob_fake": 0.9986114501953125,
+    "generator": "A05",
+    "stress": true
+  }
+]

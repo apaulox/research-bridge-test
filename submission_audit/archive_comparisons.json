@@ -1,0 +1,95 @@
+[
+  {
+    "left": "submit_eat75_musicdet.zip",
+    "right": "submit_eat75_musicdet25_fmc_v1.zip",
+    "changed_entries": [],
+    "script_identical": true,
+    "model_weights_same_crc_and_size": true
+  },
+  {
+    "left": "submit_eat75_musicdet25.zip",
+    "right": "submit_eat75_musicdet25_dependencyfix.zip",
+    "changed_entries": [],
+    "script_identical": true,
+    "model_weights_same_crc_and_size": true
+  },
+  {
+    "left": "submit_eat75_musicdet25_fmc_v1.zip",
+    "right": "submit_eat75_musicdet25_fmc_v2.zip",
+    "changed_entries": [
+      "requirements.txt"
+    ],
+    "script_identical": true,
+    "model_weights_same_crc_and_size": true
+  },
+  {
+    "left": "submit_eat75_musicdet25_fmc_v2.zip",
+    "right": "submit_eat75_musicdet25_dependencyfix.zip",
+    "changed_entries": [
+      "model/eat_fmc/eat_architecture/eat_model.py",
+      "model/eat_fmc/eat_architecture/model_core.py",
+      "requirements.txt"
+    ],
+    "script_identical": true,
+    "model_weights_same_crc_and_size": true
+  },
+  {
+    "left": "submit_eat75_clam25_fmc_v1.zip",
+    "right": "submit_eat75_clam25_fmc_v2.zip",
+    "changed_entries": [
+      "model/CLAM_EAT_INFO.txt",
+      "model/eat_fmc/eat_architecture/eat_model.py",
+      "model/eat_fmc/eat_architecture/model_core.py",
+      "requirements.txt"
+    ],
+    "script_identical": true,
+    "model_weights_same_crc_and_size": true
+  },
+  {
+    "left": "submit_eat75_clam25_fmc_v2.zip",
+    "right": "submit_eat75_clam25_fmc_v3.zip",
+    "changed_entries": [
+      "FILELIST.txt",
+      "model/CLAM_EAT_INFO.txt",
+      "model/ENSEMBLE_V3_INFO.json",
+      "model/clam/fmc_batch16_calibration.json",
+      "model/eat_fmc/eat_architecture/.cache/huggingface/.gitignore",
+      "model/eat_fmc/eat_architecture/.cache/huggingface/download/.gitattributes.lock",
+      "model/eat_fmc/eat_architecture/.cache/huggingface/download/.gitattributes.metadata",
+      "model/eat_fmc/eat_architecture/.cache/huggingface/download/README.md.lock",
+      "model/eat_fmc/eat_architecture/.cache/huggingface/download/README.md.metadata",
+      "model/eat_fmc/eat_architecture/.cache/huggingface/download/config.json.lock",
+      "model/eat_fmc/eat_architecture/.cache/huggingface/download/config.json.metadata",
+      "model/eat_fmc/eat_architecture/.cache/huggingface/download/configuration_eat.py.lock",
+      "model/eat_fmc/eat_architecture/.cache/huggingface/download/configuration_eat.py.metadata",
+      "model/eat_fmc/eat_architecture/.cache/huggingface/download/eat_model.py.lock",
+      "model/eat_fmc/eat_architecture/.cache/huggingface/download/eat_model.py.metadata",
+      "model/eat_fmc/eat_architecture/.cache/huggingface/download/model_core.py.lock",
+      "model/eat_fmc/eat_architecture/.cache/huggingface/download/model_core.py.metadata",
+      "model/eat_fmc/eat_architecture/.cache/huggingface/download/modeling_eat.py.lock",
+      "model/eat_fmc/eat_architecture/.cache/huggingface/download/modeling_eat.py.metadata",
+      "script.py"
+    ],
+    "script_identical": false,
+    "model_weights_same_crc_and_size": true
+  },
+  {
+    "left": "submit_musicdet_fmc_v1.zip",
+    "right": "musicdet_fmc_file_probe.zip",
+    "changed_entries": [
+      "script.py"
+    ],
+    "script_identical": false,
+    "model_weights_same_crc_and_size": true
+  },
+  {
+    "left": "submit_clam_official_v1.zip",
+    "right": "submit_clam_official_v2.zip",
+    "changed_entries": [
+      "model/CLAM_OFFICIAL_INFO.json",
+      "script.py"
+    ],
+    "script_identical": false,
+    "model_weights_same_crc_and_size": true
+  }
+]

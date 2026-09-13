@@ -1,0 +1,31 @@
+{
+  "manifest": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/manifests/music.jsonl",
+  "sha256": "ad33a82fc5200afd782e4b10ddf5bf4ce99c1dfc92d93a826a7546c069431069",
+  "counts": {
+    "train/0/human": 4136,
+    "dev/0/human": 494,
+    "holdout/0/human": 517,
+    "train/1/MusicGen_medium": 4410,
+    "dev/1/MusicGen_medium": 531,
+    "holdout/1/MusicGen_medium": 552,
+    "train/1/MusicLDM": 4410,
+    "dev/1/MusicLDM": 531,
+    "holdout/1/MusicLDM": 552,
+    "train/1/AudioLDM2": 4410,
+    "dev/1/AudioLDM2": 531,
+    "holdout/1/AudioLDM2": 552,
+    "train/1/StableAudioOpen": 4410,
+    "dev/1/StableAudioOpen": 531,
+    "holdout/1/StableAudioOpen": 552,
+    "train/1/Mustango": 4410,
+    "dev/1/Mustango": 531,
+    "holdout/1/Mustango": 552
+  },
+  "unique_sources": 5493,
+  "notes": [
+    "All variants of a MusicCaps source share a split.",
+    "Reconstructed local FMC/MusicCaps corpus; NOT exact author EAT training list.",
+    "Upstream checkpoint training overlap is unknown; holdout is only unseen by our adaptation.",
+    "MusicCaps metadata license does not itself license YouTube audio."
+  ]
+}

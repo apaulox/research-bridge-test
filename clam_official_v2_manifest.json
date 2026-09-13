@@ -1,0 +1,125 @@
+{
+  "music_model": "Official CLAM head batch16 reproduction",
+  "repository": "https://github.com/StarkVision-AI/MoM-CLAM",
+  "repository_commit": "db7fff06e25415c119e58b8e4c4f48c840a845c8",
+  "checkpoint": "best_model_triplet_loss_margin_0.2.pth",
+  "checkpoint_sha256": "01a43bb0c592ac5ba50e9689c65f0c5e0a77d287d52e17cdd35f61ff684deab6",
+  "mert": "m-a-p/MERT-v1-95M",
+  "mert_revision": "12af15fef9d0ac838c3f475bfbbf26d2060dd4f5",
+  "wav2vec2": "m3hrdadfi/wav2vec2-base-100k-gtzan-music-genres",
+  "wav2vec2_revision": "caf978c8328a2cec4229b3eb0b41b162e379caa1",
+  "training": "Published MoM checkpoint; no local fine-tuning",
+  "dataset_scope": "MoM real/synthetic songs; exact released checkpoint training subset unverified",
+  "music_probability": "torch.sigmoid(float32 raw_logit), real=0 fake=1",
+  "fmc_calibration": false,
+  "eat_ensemble": false,
+  "input": "Original mix, native-rate torchaudio decode, direct per-backbone resampling",
+  "preprocessing": "MERT 24kHz, Wav2Vec2 16kHz; mono; first 90s; trailing zero padding",
+  "preprocessing_change_from_v2": "Remove intermediate librosa 16kHz conversion for official extractor parity",
+  "file_probability": "max(VOICE_PRESENT_PROB * VOICE_FAKE_PROB, MUSIC_PRESENT_PROB * MUSIC_FAKE_PROB)",
+  "preserved_baseline_functions": [
+    "get_segment_starts",
+    "extract_segment",
+    "load_audio",
+    "load_panns_model",
+    "make_panns_segments",
+    "predict_presence",
+    "predict_presence_for_all_files",
+    "load_htdemucs_model",
+    "separate_voice_and_music",
+    "load_df_arena_model",
+    "predict_fake",
+    "combine_file_fake_score",
+    "predict_fake_scores_for_all_files"
+  ],
+  "requirements": "Identical to working baseline/v2; no torch or torchvision installation",
+  "version": "v2",
+  "batch_size": 16,
+  "batch_tail": "Keep remainder without padding",
+  "batch_order": "Sort IDs then local torch randperm with seed=42; restore baseline CSV order",
+  "caveat": "Preserves released checkpoint cross-file attention; does not fix its learned batch dependence",
+  "official_differences": [
+    "Explicit seed 42 for reproducible grouping; official test loader shuffle is not explicitly seeded",
+    "Local offline loading; encoder eval mode explicit; baseline failure handling and CSV interface"
+  ],
+  "changes_from_v1": [
+    "Head batch1 -> batch16",
+    "Stable float64 sigmoid -> official float32 sigmoid"
+  ],
+  "baseline_unchanged_functions": [
+    "select_device",
+    "find_audio_files",
+    "read_sample_submission",
+    "order_audio_files",
+    "load_audio",
+    "get_segment_starts",
+    "extract_segment",
+    "prepare_panns_labels",
+    "load_panns_model",
+    "make_panns_segments",
+    "predict_presence",
+    "predict_presence_for_all_files",
+    "load_htdemucs_model",
+    "separate_voice_and_music",
+    "load_df_arena_model",
+    "calculate_rms",
+    "predict_fake",
+    "combine_file_fake_score",
+    "save_submission"
+  ],
+  "zip_sha256": "f5ed23121fb558c9fe403b17ddb45c80ee5f245779bc6dd7822ff1e13d760916",
+  "zip_bytes": 5783049853,
+  "validation": {
+    "batch_checks": [
+      {
+        "files": 1,
+        "official_probability_max_delta": 0.0,
+        "tail_batch": 1,
+        "id_order_invariant": true
+      },
+      {
+        "files": 3,
+        "official_probability_max_delta": 0.0,
+        "tail_batch": 3,
+        "id_order_invariant": true
+      },
+      {
+        "files": 16,
+        "official_probability_max_delta": 0.0,
+        "tail_batch": 0,
+        "id_order_invariant": true
+      },
+      {
+        "files": 17,
+        "official_probability_max_delta": 0.0,
+        "tail_batch": 1,
+        "id_order_invariant": true
+      },
+      {
+        "files": 33,
+        "official_probability_max_delta": 0.0,
+        "tail_batch": 1,
+        "id_order_invariant": true
+      }
+    ],
+    "official_extractor_embedding_max_deltas": {
+      "24000": 0.0,
+      "16000": 0.0
+    },
+    "distinct_audio_files": 17,
+    "max_unchanged_branch_deltas": {
+      "VOICE_FAKE_PROB": 0.002509772700000079,
+      "VOICE_PRESENT_PROB": 0.0,
+      "MUSIC_PRESENT_PROB": 0.0
+    },
+    "comparison_uses_validation_only_deterministic_settings": true,
+    "voice_waveforms_identical_to_original_baseline": true,
+    "voice_output_note": "Code, assets and input preserved; repeated baseline inference itself varies. Numerical output differences are reported, not hidden.",
+    "max_music_change_vs_singleton": 0.00039726497600711674,
+    "file_formula_verified": true,
+    "csv_order_verified": true,
+    "timm_import_attempts": [],
+    "seconds": 66.67524828,
+    "scope": "Functional parity tests; external audio used only for validation, not training/calibration"
+  }
+}

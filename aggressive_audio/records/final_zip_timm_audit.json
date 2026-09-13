@@ -1,0 +1,31 @@
+{
+  "archive": "submit_eat_xlsr_aug_resnet38_mean_v1.zip",
+  "python_files_checked": 114,
+  "requirements": "matplotlib==3.9.2",
+  "runtime_sources_match_zip": true,
+  "bundled_timm_packages": [],
+  "direct_timm_imports": [],
+  "textual_references": [
+    {
+      "file": "model/eat_fmc/eat_architecture/model_core.py",
+      "line": 8,
+      "text": "\"\"\"Local equivalent of timm.layers.to_2tuple.\"\"\""
+    },
+    {
+      "file": "model/eat_fmc/eat_architecture/model_core.py",
+      "line": 36,
+      "text": "\"\"\"State-dict-compatible subset of timm's Vision Transformer MLP.\"\"\""
+    }
+  ],
+  "guard_self_test_passed": true,
+  "runtime_import_attempts": [],
+  "optional_availability_probes": [
+    "timm"
+  ],
+  "loaded_timm_modules": [],
+  "files_tested": 64,
+  "max_probability_difference": 0.0,
+  "passed": true,
+  "python": "3.10.21 | packaged by conda-forge | (main, Aug 21 2026, 22:42:31) [GCC 14.4.0]",
+  "limit": "Local Python 3.10 runtime; not an execution on the DACON server."
+}

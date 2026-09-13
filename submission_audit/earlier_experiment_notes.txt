@@ -1,0 +1,211 @@
+### 1. `baseline_submit.zip` — **0.6909**
+
+DACON 제공 baseline 그대로. PANNs(존재) + htdemucs(분리) + DF-Arena-1B(voice·music 양쪽).
+
+역산 결과 **File 0.3324 / Voice 0.2244 / Music 0.4371 / CPS 0.9893 - 기준선**
+
+---
+
+### 2. `submit_music_const.zip` — 0.6739
+
+MUSIC_FAKE를 전부 0.5 상수로.
+Music EER을 강제로 0.5로 만들어 역산식을 세우기 위한 프로브. **Music EER 0.4371 확정.**
+
+### 3. `submit_voice_const.zip` — 0.6413
+
+VOICE_FAKE를 전부 0.5 상수로.
+V**oice EER 0.2244 확정.** 하락폭이 music보다 커서 voice가 더 잘 작동하고 있음
+
+### 4. `file_from_voice_only` — 0.6883
+
+FILE = `max(vp·vf, mp·mf)` → `vp·vf` (music 항 제거).
+
+**File EER 0.3383.** baseline 0.3324 대비 겨우 −0.0059.
+
+> "File은 voice가 지배한다"고 추측 → 아님
+**music이 고장나서 max()에 기여를 못 한 것**
+> 
+
+---
+
+### 5. `submit_music_diag_v3.zip` — 0.6690 → **Music EER 0.5086**
+
+music 분기를 DF-Arena → **SONICS SpecTTTra-β-5s** 교체. 
+demucs 반주 스템 입력, max 집계, 짧은 파일은 tile.
+
+우연(0.5)보다 나쁨. 곡 탐지기가 전혀 작동 안 함.
+
+### 6. `submit_music_mix_mean.zip` — 0.6667 → **Music EER 0.5171**
+
+전처리 3건 수정: 스템→**원본 믹스**, tile→**zero-pad**, max→**mean**.
+
+로컬에서는 EER 0.2329 → **0.1442**로 큰 개선이었는데 리더보드는 안 움직임..
+
+> **결론: SONICS 폐기.** 두 설정 모두 우연 수준이면 신호 자체가 없는 겁니다. 전처리로는 없는 신호를 살릴 수 없습니다.
+**원인:** SONICS 학습 데이터 97,164곡 전부 `no_vocal=False`. 반주만 있는 오디오를 한 곡도 본 적이 없습니다.
+> 
+
+---
+
+### 7. `submit_voice_from_mix.zip` — 0.6828 → **가설 기각**
+
+voice 입력만 demucs 보컬 스템 → 원본 믹스.
+
+**가설:** AntiDeepfake 벤치 DeepVoice EER 2.23% vs 우리 22.4% = 10배 괴리. demucs 분리 아티팩트가 안티스푸핑 신호를 덮는 것 아닌가?
+
+**결과 −0.0081.** demucs 보컬 분리는 **도움이 되고 있었음.** 
+music에서 스템이 해로웠으니 voice도 그럴 거라 유추했는데, 두 경우는 반대
+
+> **얻은 것:** voice 분기의 "입력 문제" 가능성 사라짐. 10배 괴리를 전처리로 설명할 수 없으니 **남은 변수는 모델뿐**입니다.
+> 
+
+### 8. `submit_music_eq_voice.zip` — 0.6662 → **Music EER 0.5286, 가설 기각**
+
+MUSIC_FAKE 컬럼만 VOICE_FAKE로 대체. FILE은 원본 유지해 Music EER만 격리 역산.
+
+**가설:** 라벨 정의상 보컬+반주 혼합은 두 정답이 같다. Voice(0.2244)가 작동하니 끌어쓸 수 있다.
+
+**결과:** VOICE_FAKE는 MUSIC_FAKE에 **정보가 전혀 없음**
+
+> 음악존재 파일이 순수 반주 위주이거나, 혼합이어도 두 라벨이 독립입니다.
+후자라면 fake 파일이 **"진짜 배경음악 + 합성 음성"** 으로 만들어졌다는 뜻이고, 그러면 음악은 대부분 진짜입니다.
+> 
+
+- 정혀누의 생각..
+    
+    real music+fake voice many..
+    Echoes 상용 provider(Suno v5·Udio·Brev), AIME, SONICS data: 전부 real vocal 구성. fake voice쪽을 더? No: 얻을 점수 상승여력이 작음 → instrumental fake 얻어야함
+    
+    근데 또 생각해보니 음악이 진짜라면 실험 4에서 FILE = max(vp.vf)했으면 FILE EER이 좋아졌어야하는거 아닌가?(
+    
+    4번에서 File 을 vp.vf로 두고 music 항 없앴는데 File EER 변화 미미
+    max() → mp,mf > vp,vf 였던 파일(A)들을 없애고 돌린게 실험 4
+    
+    점수상의 손해 시나리오 가정해보면 
+    music EER이 fake를 제대로 잡고 있었는데 없앴으면 손해
+    music EER이 real에서 오탐하고 있었는데 없앴으면 이득
+    
+    → 0.0059
+    
+    서로의 기여도의 차이가 0.0059
+    위에서의 (A) 분포가 어떨지 생각..
+    
+    1. (A)가 애초에 작다
+    2. (A)의 두 시나리오가 서로를 보정해서 0.0059
+    
+    근데 (A)를 하나가 아니라. 두 조각으로 쪼개서 보면
+    (A) = A_V + A_G
+    
+    ***** A_V (음성 있는 파일): v_term 큰데 mf가 그걸 넘음
+    * A_G (음성 없는 파일): v_term ≈ 0 → mf 크기 무관하게 자동 포함. 그러면 G ⊆ A
+    
+    두 조각의 효과가 반대.
+    A_V: mf 노이즈가 잘 작동하는 vf 순위를 덮어씀 → 제거하면 이득. 부호 확정
+    A_G: 비교 대상 없음. baseline은 mf 랜덤 배치, 실험 4는 전부 바닥.
+    
+    G에 fake 있으면 → 놓침 → 손해
+    
+    G가 전부 real이면 → 정탐 → 이득
+    
+    0.0059 = (A_V 이득, 양수) + (A_G 효과)
+    → A_G 효과 < -0.0059
+    
+    ~~A_G가 손해임. 저걸 아예 배제해서 보니까 놓치는게 있네? → G에 fake가 있음
+    단 A_V 크기를 모름.~~
+    
+    0.0059는 아직 각각의 부호를 증명해주진 못함
+    
+    | Voice | Music | VOICE_FAKE | MUSIC_FAKE | FILE_FAKE |
+    | --- | --- | --- | --- | --- |
+    | Real | Real | 0 | 0 | 0 |
+    | Fake | Real | 1 | 0 | 1 |
+    | Real | Fake | 0 | 1 | 1 |
+    | Fake | Fake | 1 | 1 | 1 |
+    
+    일반적으로 가장 아래 F,F dataset이 많음. 근데 FF만으로 학습시키면 Fake가 Music fake인지 vocal fake인지 구별 X
+    
+    RF, FR dataset이 필요해(robustness를위해). FILE내부에 m,v가 있는데 or이(FF, RR 만으론 X)
+    
+    근데 FILE이 MUSIC or Vocal인데, branch를 서로 독립적으로 두고 각자를 잘 분리해서 잘 학습시키면 되는거 아냐? CPS는 좋으니까 분간은 잘하는거니까. 이러면 FR, RF데이터를 FF, RR만으로 학습한 music detector의 보강(얘의 shortcut을 억제하는 용)하기에 쓸 수 있을듯
+    
+    ### 기존 FF 데이터는 어떻게 활용할까?
+    
+    그대로 버리지 말고 다음처럼 사용하는 게 좋습니다.
+    
+    - FF 전체곡: Music positive 및 Voice positive로 활용하되, 실제로 두 성분 모두 AI인지 데이터셋의 생성 방식과 라벨을 확인합니다.
+    - FF의 Demucs instrumental stem: Music detector 학습에 사용할 수 있습니다. 단, real music도 동일한 분리 과정을 거쳐야 분리 아티팩트를 shortcut으로 배우지 않습니다.
+    - FF의 vocal stem: Voice detector의 추가 학습 데이터로 사용할 수 있습니다.
+    - FF 전체곡 + FR/RF 직접 합성: 원본 전체곡의 자연스러운 음악적 특성을 유지하면서, component-wise 구분 능력을 학습시킵니다.
+    
+    FILE  = 1-vp 설정해놓고 제출 한 번 해봐서 EER의 분포에 따라 G(음성 없는 파일)의 분포를 알 수 있지 않을까 하는 생각 EER 높으면 fake는 음성 쪽, EER 아예 낮으면 음성 없는 fake가 대부분.. 근데 애매하게 0.5나오면 Sad ㅠ
+    
+    (지극히 뇌피셜) 범죄 예방이니까 real music fake voice가 많을 거 같긴한데??
+    
+    이러면 Suni/Udio 계열 생성기로 돌린 fake data는 music/voice둘다 fake니까 학습으로 부적절
+    
+    클로드 답변 참고 - 
+    
+    #### 2순위: real music + fake voice 믹싱
+    
+    이게 **현재 가장 확실한 투자**입니다.
+    
+    실험 8이 라벨 분포에 대해 무발언이라 해도, 대회 성격(딥보이스)상 이 조합이 fake의 주류일 가능성은 여전히 높습니다. 그리고 결정적으로 — **이런 데이터셋은 기성품이 없습니다.** Suno/Udio 전곡은 voice도 music도 fake라 이 조합이 안 나옵니다.
+    
+    ```
+    FMA instrumental (real)  +  TTS/VC fake voice  →  voice_fake=1, music_fake=0
+    FMA instrumental (real)  +  실제 음성          →  둘 다 0
+    ```
+    
+    fake voice 소스는 이미 파악하신 것들 씁니다 — ASVspoof(DF/LA), CtrSVDD, MLAAD 등. **SNR -10~15dB로 섞고, 순차 등장(앞은 음성 뒤는 음악)도 포함.**
+    
+    이게 왜 중요하냐면: **실험 8의 원인 ③(배경음악 위에서 vf가 무너짐)이 사실이라면, 이 믹싱 데이터가 정확히 그 약점을 고칩니다.** Voice EER 자체는 포화여도, 반주 위 조건에서의 vf 성능이 올라가면 File에 작용합니다.
+    
+    #### 3순위: 전화채널 + 코덱 증강
+    
+    데이터 수집이 아니라 파이프라인이라 병렬로 진행 가능합니다. 300–3400Hz BPF, 8k↔16k 왕복, MP3/AAC/Opus 재인코딩, RawBoost. **pitch shift·time stretch도 반드시** (Deezer 논문이 지적한 취약점).
+    
+    직접 합성을 하는게 맞는건가..?! 데이터셋 찾는게 어렵네잉
+    
+
+### 9. `voice_antideepfake` — 0.6976 (+0.0067)
+
+**바꾼 것**: voice 모델 DF-Arena-1B → **AntiDeepfake XLS-R-1B**(74k시간 후속학습). 입력은 demucs 보컬 스템 유지. music·FILE·PANNs는 baseline 그대로.
+
+**결과**: Voice EER 0.2244 → **약 0.208**. baseline
+
+**의미**: 로컬 프로브(노래)에서는 DF-Arena와 무승부였는데 리더보드에서는 이겼습니다. "발화가 홈그라운드라 노래 프로브로는 판정 불가"라는 추론이 맞았습니다.
+
+---
+
+### 10. `music_from_mix` — 0.6939 (+0.0030)
+
+**바꾼 것**: music 입력만 demucs 반주 스템 → **원본 믹스**. 코드 한 줄.
+
+**결과**: Music EER 0.4371 → **약 0.431**. 방향은 맞았지만 **사전예측(0.344, Score 0.737)과 다르게 나타남**
+
+---
+
+### 11. `music_eat` — **0.7224** (+0.0315) ⭐ 현재 최고
+
+**바꾼 것**: music 모델 DF-Arena → **DeepFense EAT-large + AASIST**(FakeMusicCaps 학습)
+
+**결과**: Music EER 0.4371 → **약 0.374**, File도 0.3324 → **0.300** 동반 개선. 추론 17분 5초(baseline보다 빠름).
+
+**의미**: music 성능 개선
+
+---
+
+### 12. submit_musicdet_fmc_v1 — **0.7108** (+0.0199)
+
+**바꾼 것**: music 모델 DF-Arena → MusicDET(MusicCaps real music 4120개 real only)
++MusicDET은 NLL 이상 점수를 output으로 하는데 이걸 확률화 (0~1) 해야하므로 sigmoid했음(logistic calibration)
+16kHz mono 원본 mix의 중앙 64600samples 4.04s(짧은 입력은 중앙 zero-padding하고 RMS 정규화를 적용했다. 4.04초는 DACON에서 최적 길이로 확인한 값이 아니라, 학습·추론 조건을 일치시키기 위해 채택한 길)
+
+최초 의도는 baseline의 음악용 DF-Arena만 교체하는 것이었지만, MusicDET를 학습한 실제 음악은 분리된 반주가 아닌 원본 mix였다. 따라서 첫 실험에서는 Demucs 반주 스템 대신 원본 mix를 입력하여, 소스 분리로 생기는 음향 변화와 학습 입력 간 차이를 줄이고자 했다. 
+Voice용 DF-Arena, PANNs, HTDemucs 및 MAX fusion 공식은 유지했으며, 새 Music 확률이 FILE 점수에도 반영되도록 했다. 
+
+다만 모델뿐 아니라 음악 분기의 입력과 점수 보정도 변경했으므로, 결과를 **MusicDET 구조만의 순수한 교체 효과**로 해석할 수는 없다.
+
+**결과**: Music EER 0.4371 → **약 0.3772**, File도 0.3324 → **0.3241** 동반 개선. 추론 15m 44s (baseline보다 빠름).
+
+**의미**: EAT보다 FILE결합 성능이 딸림.

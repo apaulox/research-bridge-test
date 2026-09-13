@@ -1,0 +1,59 @@
+{
+  "music_model": "Official pretrained MoM-CLAM only",
+  "repository": "https://github.com/StarkVision-AI/MoM-CLAM",
+  "repository_commit": "db7fff06e25415c119e58b8e4c4f48c840a845c8",
+  "checkpoint": "best_model_triplet_loss_margin_0.2.pth",
+  "checkpoint_sha256": "01a43bb0c592ac5ba50e9689c65f0c5e0a77d287d52e17cdd35f61ff684deab6",
+  "mert": "m-a-p/MERT-v1-95M",
+  "mert_revision": "12af15fef9d0ac838c3f475bfbbf26d2060dd4f5",
+  "wav2vec2": "m3hrdadfi/wav2vec2-base-100k-gtzan-music-genres",
+  "wav2vec2_revision": "caf978c8328a2cec4229b3eb0b41b162e379caa1",
+  "training": "Published MoM checkpoint; no local fine-tuning",
+  "dataset_scope": "MoM real/synthetic songs; exact released checkpoint training subset unverified",
+  "music_probability": "sigmoid(raw_logit), official real=0 and fake=1",
+  "fmc_calibration": false,
+  "eat_ensemble": false,
+  "input": "Original mix, native-rate torchaudio decode, direct per-backbone resampling",
+  "preprocessing": "MERT 24kHz, Wav2Vec2 16kHz; mono; first 90s; trailing zero padding",
+  "preprocessing_change_from_v2": "Remove intermediate librosa 16kHz conversion for official extractor parity",
+  "file_probability": "max(VOICE_PRESENT_PROB * VOICE_FAKE_PROB, MUSIC_PRESENT_PROB * MUSIC_FAKE_PROB)",
+  "preserved_baseline_functions": [
+    "get_segment_starts",
+    "extract_segment",
+    "load_audio",
+    "load_panns_model",
+    "make_panns_segments",
+    "predict_presence",
+    "predict_presence_for_all_files",
+    "load_htdemucs_model",
+    "separate_voice_and_music",
+    "load_df_arena_model",
+    "predict_fake",
+    "combine_file_fake_score",
+    "predict_fake_scores_for_all_files"
+  ],
+  "requirements": "Identical to working baseline/v2; no torch or torchvision installation",
+  "zip_bytes": 5783046981,
+  "zip_sha256": "166b719f2025dfb816e3a8387a9eee0d38ed315ef6cc24e74cd3839cb96e6835",
+  "validation": {
+    "samples": 3,
+    "official_head_exact_parity": true,
+    "official_preprocessing_exact_parity": true,
+    "music_matches_uncalibrated_official_sigmoid": true,
+    "file_max_fusion_verified": true,
+    "column_and_id_order_verified": true,
+    "max_voice_presence_delta_vs_v2": 3.0398999999459164e-06,
+    "raw_music_logits": [
+      15.617083549499512,
+      15.617083549499512,
+      15.617083549499512
+    ],
+    "music_probabilities": [
+      0.999999835,
+      0.999999835,
+      0.999999835
+    ],
+    "seconds": 10.72575107900002,
+    "scope": "Three provided smoke samples; no DACON leaderboard evaluation"
+  }
+}

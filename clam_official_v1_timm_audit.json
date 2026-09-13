@@ -1,0 +1,25 @@
+{
+  "zip_file": "submit_clam_official_v1.zip",
+  "shipped_python_files_checked": 10,
+  "staged_runtime_matches_zip": true,
+  "direct_timm_imports": [],
+  "textual_timm_references": [],
+  "requirements": "matplotlib==3.9.2",
+  "timm_guard_self_test_passed": true,
+  "runtime_timm_import_attempts": [],
+  "optional_timm_availability_probes": [
+    "timm"
+  ],
+  "loaded_timm_modules": [],
+  "fresh_hf_module_cache": true,
+  "full_pipeline_samples": 3,
+  "maximum_probability_delta": 2.920599999955975e-06,
+  "runtime_versions": {
+    "torch": "2.7.1+cu128",
+    "torchaudio": "2.7.1+cu128",
+    "transformers": "4.57.6"
+  },
+  "seconds": 14.67871409899999,
+  "verdict": "PASS: submitted CLAM pipeline runs without timm",
+  "scope": "WSL dacon-cu128, provided smoke audio; not a replica of the DACON server"
+}

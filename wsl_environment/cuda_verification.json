@@ -1,0 +1,26 @@
+{
+  "python": "3.10.21 | packaged by conda-forge | (main, Aug 21 2026, 22:42:31) [GCC 14.4.0]",
+  "torch": "2.7.1+cu128",
+  "torchaudio": "2.7.1+cu128",
+  "cuda_runtime": "12.8",
+  "gpu": "NVIDIA GeForce RTX 5080",
+  "capability": [
+    12,
+    0
+  ],
+  "arch_list": [
+    "sm_75",
+    "sm_80",
+    "sm_86",
+    "sm_90",
+    "sm_100",
+    "sm_120",
+    "compute_120"
+  ],
+  "cuda_matmul": true,
+  "cuda_resample": true,
+  "musicdet_forward_backward": true,
+  "musicdet_eval": true,
+  "peak_allocated_mib": 133.5009765625,
+  "note": "MusicDET used random weights and synthetic audio only. No trained detector or performance claim."
+}

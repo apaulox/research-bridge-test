@@ -1,0 +1,6 @@
+assets/
+runs/
+__pycache__/
+*.pyc
+stem_experiment_v1/
+submission_*/

@@ -1,0 +1,99 @@
+{
+  "fmc_license": {
+    "id": "cc-by-nc-4.0"
+  },
+  "fmc_metadata": {
+    "title": "FakeMusicCaps",
+    "doi": "10.5281/zenodo.15063698",
+    "publication_date": "2025",
+    "description": "<p>The FakeMusicCaps dataset contains total of 27605 10 seconds music tracks corresponding to almost 77 hours, generated using 5 different Text-To-Music (TTM) models. It is designed to be used as a starting dataset for the training and/or evaluation of models for the detection and attribution of synthetic music generated via TTM models.</p>\n<p>If you use this dataset, please cite&nbsp;<a href=\"https://arxiv.org/pdf/2409.10684\">our paper</a>:</p>\n<p>Comanducci, L., Bestagini, P., and Tubaro, S., &ldquo;FakeMusicCaps: a Dataset for Detection and Attribution of Synthetic Music Generated via Text-to-Music Models&rdquo;, Art. no. arXiv:2409.10684, 2024. doi:10.48550/arXiv.2409.10684.</p>",
+    "access_right": "open",
+    "creators": [
+      {
+        "name": "Comanducci, Luca",
+        "affiliation": "Politecnico di Milano",
+        "orcid": "0000-0002-4167-5173"
+      },
+      {
+        "name": "Bestagini, Paolo",
+        "affiliation": null
+      },
+      {
+        "name": "Tubaro, Stefano",
+        "affiliation": null
+      }
+    ],
+    "resource_type": {
+      "title": "Dataset",
+      "type": "dataset"
+    },
+    "license": {
+      "id": "cc-by-nc-4.0"
+    },
+    "relations": {
+      "version": [
+        {
+          "index": 1,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "13732523"
+          }
+        }
+      ]
+    }
+  },
+  "codec_revision": "5543f7efb44ba818e36093838202cb50ba126a99",
+  "codec_files": [
+    {
+      "path": ".gitattributes",
+      "size": 2761
+    },
+    {
+      "path": "CoRS_labels.txt",
+      "size": 62363876
+    },
+    {
+      "path": "CoSG_labels.txt",
+      "size": 74650
+    },
+    {
+      "path": "CodecFake_plus_CoSG.tar.xz",
+      "size": 243976528
+    },
+    {
+      "path": "Codecfake_plus_CoRS.part0",
+      "size": 25052014980
+    },
+    {
+      "path": "Codecfake_plus_CoRS.part1",
+      "size": 25052014980
+    },
+    {
+      "path": "Codecfake_plus_CoRS.part2",
+      "size": 25052014980
+    },
+    {
+      "path": "Codecfake_plus_CoRS.part3",
+      "size": 25052014980
+    },
+    {
+      "path": "README.md",
+      "size": 3023
+    }
+  ],
+  "cosg_label_examples": [
+    "CLAMTTS CLAMTTS_1 Mvq None Freq Spoof",
+    "CLAMTTS CLAMTTS_2 Mvq None Freq Spoof",
+    "CLAMTTS CLAMTTS_3 Mvq None Freq Spoof",
+    "CLAMTTS CLAMTTS_4 Mvq None Freq Spoof",
+    "CLAMTTS CLAMTTS_5 Mvq None Freq Spoof",
+    "CLAMTTS CLAMTTS_6 Mvq None Freq Spoof",
+    "CLAMTTS CLAMTTS_7 Mvq None Freq Spoof",
+    "CLAMTTS CLAMTTS_8 Mvq None Freq Spoof",
+    "CLAMTTS CLAMTTS_9 Mvq None Freq Spoof",
+    "CLAMTTS CLAMTTS_10 Mvq None Freq Spoof",
+    "CLAMTTS CLAMTTS_11 Mvq None Freq Spoof",
+    "CLAMTTS CLAMTTS_12 Mvq None Freq Spoof"
+  ]
+}

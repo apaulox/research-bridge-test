@@ -1,0 +1,14 @@
+{
+  "frontend.": {
+    "tensors": 294,
+    "changed_tensors": 0
+  },
+  "backend.": {
+    "tensors": 243,
+    "changed_tensors": 233
+  },
+  "losses.": {
+    "tensors": 2,
+    "changed_tensors": 2
+  }
+}

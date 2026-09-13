@@ -1,0 +1,239 @@
+{
+  "selection": "minimum mean(clean EER, fixed-channel stress EER); earliest epoch on ties",
+  "scope": "Small external development selection; upstream overlap unresolved",
+  "branches": {
+    "music": {
+      "trials": [
+        {
+          "name": "music_last2_none_v1",
+          "best": {
+            "epoch": 2,
+            "train_loss": 0.6894936330853625,
+            "clean_eer": 0.0625,
+            "stress_eer": 0.2890625,
+            "selection_metric": 0.17578125,
+            "seconds": 118.63342284400005,
+            "max_gpu_gib": 1.5754451751708984
+          },
+          "adaptation": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/runs/music_last2_none_v1/best_adaptation.pt",
+          "selected_training_generator_counts": {
+            "AudioLDM2 / label=1": 103,
+            "MusicGen_medium / label=1": 103,
+            "MusicLDM / label=1": 102,
+            "Mustango / label=1": 102,
+            "StableAudioOpen / label=1": 102,
+            "human / label=0": 512
+          }
+        },
+        {
+          "name": "music_last2_channel_v2",
+          "best": {
+            "epoch": 2,
+            "train_loss": 1.1295763232777745,
+            "clean_eer": 0.0546875,
+            "stress_eer": 0.2578125,
+            "selection_metric": 0.15625,
+            "seconds": 227.3208283160002,
+            "max_gpu_gib": 1.5754451751708984
+          },
+          "adaptation": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/runs/music_last2_channel_v2/best_adaptation.pt",
+          "selected_training_generator_counts": {
+            "AudioLDM2 / label=1": 103,
+            "MusicGen_medium / label=1": 103,
+            "MusicLDM / label=1": 102,
+            "Mustango / label=1": 102,
+            "StableAudioOpen / label=1": 102,
+            "human / label=0": 512
+          }
+        },
+        {
+          "name": "music_head_channel_1024_v1",
+          "best": {
+            "epoch": 2,
+            "train_loss": 0.6450279903874616,
+            "clean_eer": 0.046875,
+            "stress_eer": 0.1484375,
+            "selection_metric": 0.09765625,
+            "seconds": 244.05941838800027,
+            "max_gpu_gib": 1.2032113075256348
+          },
+          "adaptation": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/runs/music_head_channel_1024_v1/best_adaptation.pt",
+          "selected_training_generator_counts": {
+            "AudioLDM2 / label=1": 103,
+            "MusicGen_medium / label=1": 103,
+            "MusicLDM / label=1": 102,
+            "Mustango / label=1": 102,
+            "StableAudioOpen / label=1": 102,
+            "human / label=0": 512
+          }
+        },
+        {
+          "name": "music_head_channel_overlay_1024_v1",
+          "best": {
+            "epoch": 2,
+            "train_loss": 0.7823661009715579,
+            "clean_eer": 0.046875,
+            "stress_eer": 0.1953125,
+            "selection_metric": 0.12109375,
+            "seconds": 263.67393958699995,
+            "max_gpu_gib": 1.2032113075256348
+          },
+          "adaptation": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/runs/music_head_channel_overlay_1024_v1/best_adaptation.pt",
+          "selected_training_generator_counts": {
+            "AudioLDM2 / label=1": 103,
+            "MusicGen_medium / label=1": 103,
+            "MusicLDM / label=1": 102,
+            "Mustango / label=1": 102,
+            "StableAudioOpen / label=1": 102,
+            "human / label=0": 512
+          }
+        }
+      ],
+      "chosen": {
+        "name": "music_head_channel_1024_v1",
+        "best": {
+          "epoch": 2,
+          "train_loss": 0.6450279903874616,
+          "clean_eer": 0.046875,
+          "stress_eer": 0.1484375,
+          "selection_metric": 0.09765625,
+          "seconds": 244.05941838800027,
+          "max_gpu_gib": 1.2032113075256348
+        },
+        "adaptation": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/runs/music_head_channel_1024_v1/best_adaptation.pt",
+        "selected_training_generator_counts": {
+          "AudioLDM2 / label=1": 103,
+          "MusicGen_medium / label=1": 103,
+          "MusicLDM / label=1": 102,
+          "Mustango / label=1": 102,
+          "StableAudioOpen / label=1": 102,
+          "human / label=0": 512
+        }
+      }
+    },
+    "speech": {
+      "trials": [
+        {
+          "name": "speech_probe_none_v1",
+          "best": {
+            "epoch": 2,
+            "train_loss": 0.10879873245163196,
+            "clean_eer": 0.015625,
+            "stress_eer": 0.03125,
+            "selection_metric": 0.0234375,
+            "seconds": 171.00077361700005,
+            "max_gpu_gib": 3.928673267364502
+          },
+          "adaptation": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/runs/speech_probe_none_v1/best_adaptation.pt",
+          "selected_training_generator_counts": {
+            "A01 / label=1": 33,
+            "A02 / label=1": 33,
+            "A03 / label=1": 33,
+            "A04 / label=1": 33,
+            "A05 / label=1": 32,
+            "A06 / label=1": 32,
+            "CLAMTTS / label=1": 32,
+            "ELLAV / label=1": 8,
+            "GPST / label=1": 30,
+            "MASKGCT / label=1": 32,
+            "NS2 / label=1": 23,
+            "NS3 / label=1": 32,
+            "RALLE / label=1": 5,
+            "SIMPLESPEECH1 / label=1": 32,
+            "SIMPLESPEECH2 / label=1": 31,
+            "SINGLECODEC / label=1": 14,
+            "SPEECHX / label=1": 8,
+            "TACOLM / label=1": 8,
+            "TI1G1R / label=1": 6,
+            "UNIAUDIO / label=1": 11,
+            "USLM / label=1": 5,
+            "VALLE / label=1": 32,
+            "VIOLA / label=1": 7,
+            "human / label=0": 256,
+            "human_CoSG / label=0": 256
+          }
+        },
+        {
+          "name": "speech_probe_channel_v1",
+          "best": {
+            "epoch": 2,
+            "train_loss": 0.20631067757224741,
+            "clean_eer": 0.0078125,
+            "stress_eer": 0.015625,
+            "selection_metric": 0.01171875,
+            "seconds": 288.1285466680001,
+            "max_gpu_gib": 3.928673267364502
+          },
+          "adaptation": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/runs/speech_probe_channel_v1/best_adaptation.pt",
+          "selected_training_generator_counts": {
+            "A01 / label=1": 33,
+            "A02 / label=1": 33,
+            "A03 / label=1": 33,
+            "A04 / label=1": 33,
+            "A05 / label=1": 32,
+            "A06 / label=1": 32,
+            "CLAMTTS / label=1": 32,
+            "ELLAV / label=1": 8,
+            "GPST / label=1": 30,
+            "MASKGCT / label=1": 32,
+            "NS2 / label=1": 23,
+            "NS3 / label=1": 32,
+            "RALLE / label=1": 5,
+            "SIMPLESPEECH1 / label=1": 32,
+            "SIMPLESPEECH2 / label=1": 31,
+            "SINGLECODEC / label=1": 14,
+            "SPEECHX / label=1": 8,
+            "TACOLM / label=1": 8,
+            "TI1G1R / label=1": 6,
+            "UNIAUDIO / label=1": 11,
+            "USLM / label=1": 5,
+            "VALLE / label=1": 32,
+            "VIOLA / label=1": 7,
+            "human / label=0": 256,
+            "human_CoSG / label=0": 256
+          }
+        }
+      ],
+      "chosen": {
+        "name": "speech_probe_channel_v1",
+        "best": {
+          "epoch": 2,
+          "train_loss": 0.20631067757224741,
+          "clean_eer": 0.0078125,
+          "stress_eer": 0.015625,
+          "selection_metric": 0.01171875,
+          "seconds": 288.1285466680001,
+          "max_gpu_gib": 3.928673267364502
+        },
+        "adaptation": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/runs/speech_probe_channel_v1/best_adaptation.pt",
+        "selected_training_generator_counts": {
+          "A01 / label=1": 33,
+          "A02 / label=1": 33,
+          "A03 / label=1": 33,
+          "A04 / label=1": 33,
+          "A05 / label=1": 32,
+          "A06 / label=1": 32,
+          "CLAMTTS / label=1": 32,
+          "ELLAV / label=1": 8,
+          "GPST / label=1": 30,
+          "MASKGCT / label=1": 32,
+          "NS2 / label=1": 23,
+          "NS3 / label=1": 32,
+          "RALLE / label=1": 5,
+          "SIMPLESPEECH1 / label=1": 32,
+          "SIMPLESPEECH2 / label=1": 31,
+          "SINGLECODEC / label=1": 14,
+          "SPEECHX / label=1": 8,
+          "TACOLM / label=1": 8,
+          "TI1G1R / label=1": 6,
+          "UNIAUDIO / label=1": 11,
+          "USLM / label=1": 5,
+          "VALLE / label=1": 32,
+          "VIOLA / label=1": 7,
+          "human / label=0": 256,
+          "human_CoSG / label=0": 256
+        }
+      }
+    }
+  }
+}

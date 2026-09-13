@@ -1,0 +1,144 @@
+{
+  "checked_assets": 20,
+  "different_assets": [],
+  "baseline_self_max_delta": 0.002845764200000045,
+  "v2_vs_repeat_max_delta": 0.0024439096999999688,
+  "rows": [
+    {
+      "ID": "AUDIT_0016",
+      "baseline": 0.9167220592,
+      "baseline_repeat": 0.9165583849,
+      "v2": 0.9166247845,
+      "baseline_self_delta": 0.00016367430000008287,
+      "v2_delta": 6.63995999999889e-05
+    },
+    {
+      "ID": "AUDIT_0015",
+      "baseline": 0.8654258251,
+      "baseline_repeat": 0.8655031323,
+      "v2": 0.865375638,
+      "baseline_self_delta": 7.730719999998747e-05,
+      "v2_delta": 0.0001274943000000306
+    },
+    {
+      "ID": "AUDIT_0014",
+      "baseline": 0.8507753015,
+      "baseline_repeat": 0.850553453,
+      "v2": 0.8511027098,
+      "baseline_self_delta": 0.00022184850000006584,
+      "v2_delta": 0.0005492568000000642
+    },
+    {
+      "ID": "AUDIT_0013",
+      "baseline": 0.785413146,
+      "baseline_repeat": 0.7854956388,
+      "v2": 0.7853614092,
+      "baseline_self_delta": 8.249279999994474e-05,
+      "v2_delta": 0.00013422959999997985
+    },
+    {
+      "ID": "AUDIT_0012",
+      "baseline": 0.8931806684,
+      "baseline_repeat": 0.8933309317,
+      "v2": 0.893279016,
+      "baseline_self_delta": 0.00015026330000000865,
+      "v2_delta": 5.1915699999960374e-05
+    },
+    {
+      "ID": "AUDIT_0011",
+      "baseline": 0.8517349362,
+      "baseline_repeat": 0.8516311049,
+      "v2": 0.8517230153,
+      "baseline_self_delta": 0.00010383129999991247,
+      "v2_delta": 9.191040000000594e-05
+    },
+    {
+      "ID": "AUDIT_0010",
+      "baseline": 0.9176346064,
+      "baseline_repeat": 0.9175289869,
+      "v2": 0.9175679684,
+      "baseline_self_delta": 0.00010561950000009812,
+      "v2_delta": 3.898150000003486e-05
+    },
+    {
+      "ID": "AUDIT_0009",
+      "baseline": 0.8684011102,
+      "baseline_repeat": 0.8684233427,
+      "v2": 0.8684493899,
+      "baseline_self_delta": 2.223249999999677e-05,
+      "v2_delta": 2.6047199999990056e-05
+    },
+    {
+      "ID": "AUDIT_0008",
+      "baseline": 0.8594971299,
+      "baseline_repeat": 0.8593485951,
+      "v2": 0.8594432473,
+      "baseline_self_delta": 0.00014853480000009966,
+      "v2_delta": 9.465220000004493e-05
+    },
+    {
+      "ID": "AUDIT_0007",
+      "baseline": 0.8547102809,
+      "baseline_repeat": 0.8552237749,
+      "v2": 0.8540833592,
+      "baseline_self_delta": 0.0005134940000000032,
+      "v2_delta": 0.0011404157000000081
+    },
+    {
+      "ID": "AUDIT_0006",
+      "baseline": 0.9209051728,
+      "baseline_repeat": 0.9200621843,
+      "v2": 0.9205054045,
+      "baseline_self_delta": 0.0008429884999999748,
+      "v2_delta": 0.00044322019999998297
+    },
+    {
+      "ID": "AUDIT_0005",
+      "baseline": 0.6308692694,
+      "baseline_repeat": 0.6308674812,
+      "v2": 0.6306000948,
+      "baseline_self_delta": 1.7881999999636022e-06,
+      "v2_delta": 0.0002673864000000137
+    },
+    {
+      "ID": "AUDIT_0004",
+      "baseline": 0.8729547262,
+      "baseline_repeat": 0.8729782701,
+      "v2": 0.8729113936,
+      "baseline_self_delta": 2.354389999992268e-05,
+      "v2_delta": 6.687649999992384e-05
+    },
+    {
+      "ID": "AUDIT_0003",
+      "baseline": 0.7968934178,
+      "baseline_repeat": 0.7978137732,
+      "v2": 0.796505332,
+      "baseline_self_delta": 0.0009203554000000169,
+      "v2_delta": 0.0013084412000000656
+    },
+    {
+      "ID": "AUDIT_0002",
+      "baseline": 0.7810894251,
+      "baseline_repeat": 0.7782436609,
+      "v2": 0.7805158496,
+      "baseline_self_delta": 0.002845764200000045,
+      "v2_delta": 0.0022721887000000107
+    },
+    {
+      "ID": "AUDIT_0001",
+      "baseline": 0.8144558072,
+      "baseline_repeat": 0.8143577576,
+      "v2": 0.8147211075,
+      "baseline_self_delta": 9.80496000000386e-05,
+      "v2_delta": 0.00036334990000008727
+    },
+    {
+      "ID": "AUDIT_0000",
+      "baseline": 0.6725945473,
+      "baseline_repeat": 0.6721215844,
+      "v2": 0.6745654941,
+      "baseline_self_delta": 0.00047296289999998464,
+      "v2_delta": 0.0024439096999999688
+    }
+  ]
+}

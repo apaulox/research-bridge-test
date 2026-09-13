@@ -1,0 +1,14 @@
+{
+  "baseline_sample_count": 3,
+  "prediction_ranges_valid": true,
+  "ids_match": true,
+  "max_fusion_verified": true,
+  "model_checksums_verified": [
+    "df_arena_1b/pytorch_model.bin",
+    "htdemucs/955717e8-8726e21a.th",
+    "panns/Cnn14_mAP=0.431.pth"
+  ],
+  "baseline_script_sha256": "c17d776b7c17c2d70f1e55c2186ea54f0af8695dcdf07a106523cd80213aed9e",
+  "notebook_kernel": "dacon-cu128",
+  "musicdet_checkpoint_available": false
+}

@@ -1,0 +1,26 @@
+{
+  "torch": "2.7.1+cu128",
+  "cuda": true,
+  "gpu": "NVIDIA GeForce RTX 5080",
+  "dependencies": {
+    "fairseq": false,
+    "safetensors": true,
+    "transformers": true,
+    "scipy": true,
+    "hydra": false,
+    "bitarray": false,
+    "sacrebleu": false
+  },
+  "fmc_audio_dirs": [
+    "/home/huskypaul/dacon/musicdet/vendor/MusicDET/datasets/fakemusiccaps",
+    "/home/huskypaul/dacon/musicdet/vendor/MusicDET/datasets/fakemusiccaps/all_audio_wav"
+  ],
+  "eat_files": [
+    "/home/huskypaul/dacon/submissions/eat75_musicdet25_dependencyfix/model/eat_fmc/EAT_MODEL_INFO.txt",
+    "/home/huskypaul/dacon/submissions/eat75_musicdet25_dependencyfix/model/eat_fmc/LICENSE_DEEPFENSE_APACHE_2.0.txt",
+    "/home/huskypaul/dacon/submissions/eat75_musicdet25_dependencyfix/model/eat_fmc/runtime",
+    "/home/huskypaul/dacon/submissions/eat75_musicdet25_dependencyfix/model/eat_fmc/eat_architecture",
+    "/home/huskypaul/dacon/submissions/eat75_musicdet25_dependencyfix/model/eat_fmc/model_state.pt"
+  ],
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers"
+}

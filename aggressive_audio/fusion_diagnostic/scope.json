@@ -1,0 +1,12 @@
+{
+  "purpose": "FILE mean/max diagnostic, not DACON or SOTA validation",
+  "files": 64,
+  "source_reuse": "Sources reused in paired mixtures; not 64 independent original recordings",
+  "split": "FMC source holdout; ASV dev utterances outside branch model-selection subset",
+  "limits": [
+    "Upstream checkpoint overlap unknown",
+    "ASV speakers may match model-selection dev speakers",
+    "No component presence ground truth inferred from original music clips",
+    "CoSG/cloning generalization is not evaluated by this set"
+  ]
+}

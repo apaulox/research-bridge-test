@@ -1,0 +1,19 @@
+{
+  "separation_max_delta": 0.0,
+  "separation_changed_rng": [
+    "python"
+  ],
+  "separation_second_changed_rng": [
+    "python"
+  ],
+  "same_model_same_audio_scores": [
+    0.6721826791763306,
+    0.6728487014770508
+  ],
+  "df_changed_rng": [
+    "torch_cpu"
+  ],
+  "df_second_changed_rng": [
+    "torch_cpu"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "repo": "CodecFake/CodecFake_Plus_Dataset",
+  "revision": "5543f7efb44ba818e36093838202cb50ba126a99",
+  "path": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/assets/codecfake_cosg",
+  "subset": "CoSG actual generated speech",
+  "excluded": "CoRS codec round-trip resynthesis",
+  "license_card": "MIT; preserve upstream demo sources"
+}

@@ -1,0 +1,28 @@
+{
+  "archive": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/submit_eat_xlsr_demucs_resnet38_mean_v1.zip",
+  "bytes": 5472178987,
+  "sha256": "c5ff240658761712fbe59d57165e838b0651f5324825f97c13db718d2fd6e538",
+  "zip_crc_passed": true,
+  "offline_extracted_zip_inference_passed": true,
+  "blocked": [
+    "network",
+    "timm",
+    "fairseq"
+  ],
+  "files": 8,
+  "scenarios": [
+    "voice0_music0",
+    "voice0_music1",
+    "voice1_music0",
+    "voice1_music1",
+    "speech_only",
+    "original_music_clip",
+    "speech_only",
+    "original_music_clip"
+  ],
+  "template_order_preserved": true,
+  "mean_fusion_verified": true,
+  "adapted_heads_exact_match": true,
+  "python": "3.10.21 | packaged by conda-forge | (main, Aug 21 2026, 22:42:31) [GCC 14.4.0]",
+  "server_execution_verified": false
+}

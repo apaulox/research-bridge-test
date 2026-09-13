@@ -1,0 +1,193 @@
+    "tWexzTJPxQs",
+    "tWseBEYhE1M",
+    "tju-t_Bz_W8",
+    "tk4s-nlhmEQ",
+    "tmabzx6yxqs",
+    "tpamd6BKYU4",
+    "u1a5eyk-9ig",
+    "uGQ7QnKqeY4",
+    "vOAXAoHtl7o",
+    "vfscNjNneZg",
+    "vsDriIwNAmU",
+    "vtnuHbHbveg",
+    "w-qG-P9E1U4",
+    "wBe5tW8iJew",
+    "wSeT9dlfDTc",
+    "wTPI3MHqxSQ",
+    "yNIZaqTHUnc",
+    "yhbpAGdv_d8",
+    "yzT9nsHslAk",
+    "z4ewUsnIJKI",
+    "zCrpaLEq1VQ",
+    "zNSV9GkpRfM",
+    "zSSIGv82318",
+    "zSq2D_GF00o",
+    "zTuxNA1y6Os",
+    "zWEznZ40k2Q",
+    "zjsWFvUkh7M"
+  ],
+  "converted": 32612,
+  "existing": 0,
+  "protocols": {
+    "TTM01_dev.txt": {
+      "original": 1098,
+      "available": 1059,
+      "real": 510,
+      "fake": 549
+    },
+    "TTM01_eval.txt": {
+      "original": 1100,
+      "available": 1067,
+      "real": 517,
+      "fake": 550
+    },
+    "TTM01_train.txt": {
+      "original": 8788,
+      "available": 8514,
+      "real": 4120,
+      "fake": 4394
+    },
+    "TTM02_dev.txt": {
+      "original": 1098,
+      "available": 1059,
+      "real": 510,
+      "fake": 549
+    },
+    "TTM02_eval.txt": {
+      "original": 1100,
+      "available": 1067,
+      "real": 517,
+      "fake": 550
+    },
+    "TTM02_train.txt": {
+      "original": 8788,
+      "available": 8514,
+      "real": 4120,
+      "fake": 4394
+    },
+    "TTM03_dev.txt": {
+      "original": 1098,
+      "available": 1059,
+      "real": 510,
+      "fake": 549
+    },
+    "TTM03_eval.txt": {
+      "original": 1100,
+      "available": 1067,
+      "real": 517,
+      "fake": 550
+    },
+    "TTM03_train.txt": {
+      "original": 8788,
+      "available": 8514,
+      "real": 4120,
+      "fake": 4394
+    },
+    "TTM04_dev.txt": {
+      "original": 1098,
+      "available": 1059,
+      "real": 510,
+      "fake": 549
+    },
+    "TTM04_eval.txt": {
+      "original": 1100,
+      "available": 1067,
+      "real": 517,
+      "fake": 550
+    },
+    "TTM04_train.txt": {
+      "original": 8788,
+      "available": 8514,
+      "real": 4120,
+      "fake": 4394
+    },
+    "TTM05_dev.txt": {
+      "original": 1098,
+      "available": 1059,
+      "real": 510,
+      "fake": 549
+    },
+    "TTM05_eval.txt": {
+      "original": 1100,
+      "available": 1067,
+      "real": 517,
+      "fake": 550
+    },
+    "TTM05_train.txt": {
+      "original": 8788,
+      "available": 8514,
+      "real": 4120,
+      "fake": 4394
+    }
+  },
+  "paired_dev_rows": 1020
+}
+{"epoch": 1, "train_nll": 2.2323060650234074, "dev_eer": 0.4764705882352941}
+{"epoch": 2, "train_nll": 1.394896615383237, "dev_eer": 0.44313725490196076}
+{"epoch": 3, "train_nll": 1.3662919055583864, "dev_eer": 0.4019607843137255}
+{"epoch": 4, "train_nll": 1.3529656085857125, "dev_eer": 0.34901960784313724}
+{"epoch": 5, "train_nll": 1.349039771760157, "dev_eer": 0.3784313725490196}
+{"epoch": 6, "train_nll": 1.34728363410447, "dev_eer": 0.37254901960784315}
+{"epoch": 7, "train_nll": 1.3427370902179747, "dev_eer": 0.4019607843137255}
+{"epoch": 8, "train_nll": 1.3431124146594557, "dev_eer": 0.4411764705882353}
+{"epoch": 9, "train_nll": 1.340385570544605, "dev_eer": 0.41568627450980394}
+{"epoch": 10, "train_nll": 1.6957790846972502, "dev_eer": 0.4764705882352941}
+{"split": "TTM01", "generator": "MusicGen", "samples": 1067, "real": 517, "fake": 550, "eer": 0.35800773694390714, "roc_auc_fake": 0.6834587656057676}
+{"split": "TTM02", "generator": "MusicLDM", "samples": 1067, "real": 517, "fake": 550, "eer": 0.45079303675048354, "roc_auc_fake": 0.5618410409706347}
+{"split": "TTM03", "generator": "AudioLDM2", "samples": 1067, "real": 517, "fake": 550, "eer": 0.5895164410058027, "roc_auc_fake": 0.3781888517671883}
+{"split": "TTM04", "generator": "Stable Audio Open", "samples": 1067, "real": 517, "fake": 550, "eer": 0.31678916827853, "roc_auc_fake": 0.7473360295410586}
+{"split": "TTM05", "generator": "Mustango", "samples": 1067, "real": 517, "fake": 550, "eer": 0.46955512572533853, "roc_auc_fake": 0.5566766309126077}
+{
+  "generators": [
+    {
+      "split": "TTM01",
+      "generator": "MusicGen",
+      "samples": 1067,
+      "real": 517,
+      "fake": 550,
+      "eer": 0.35800773694390714,
+      "roc_auc_fake": 0.6834587656057676
+    },
+    {
+      "split": "TTM02",
+      "generator": "MusicLDM",
+      "samples": 1067,
+      "real": 517,
+      "fake": 550,
+      "eer": 0.45079303675048354,
+      "roc_auc_fake": 0.5618410409706347
+    },
+    {
+      "split": "TTM03",
+      "generator": "AudioLDM2",
+      "samples": 1067,
+      "real": 517,
+      "fake": 550,
+      "eer": 0.5895164410058027,
+      "roc_auc_fake": 0.3781888517671883
+    },
+    {
+      "split": "TTM04",
+      "generator": "Stable Audio Open",
+      "samples": 1067,
+      "real": 517,
+      "fake": 550,
+      "eer": 0.31678916827853,
+      "roc_auc_fake": 0.7473360295410586
+    },
+    {
+      "split": "TTM05",
+      "generator": "Mustango",
+      "samples": 1067,
+      "real": 517,
+      "fake": 550,
+      "eer": 0.46955512572533853,
+      "roc_auc_fake": 0.5566766309126077
+    }
+  ],
+  "mean_eer": 0.43693230174081243,
+  "score_definition": "NLL under real prior; higher means fake",
+  "checkpoint": "/home/huskypaul/dacon/musicdet/runs/musicdet_fmc_real_only_seed688_v1"
+}
+MusicDET real-only training completed.
+tail -F ~/dacon/musicdet/logs/continuation.log

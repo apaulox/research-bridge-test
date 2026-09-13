@@ -1,0 +1,12 @@
+{
+  "batch_first": false,
+  "attention_input_shape": [
+    16,
+    1,
+    768
+  ],
+  "same_sample_logit_alone": 31.578269958496094,
+  "same_sample_logit_in_batch16": 73.79022979736328,
+  "absolute_difference": 42.21195983886719,
+  "caveat": "Synthetic embeddings; proves batch dependence, not its DACON score impact"
+}

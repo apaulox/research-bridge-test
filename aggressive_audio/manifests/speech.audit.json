@@ -1,0 +1,26 @@
+{
+  "manifest": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/aggressive_audio/manifests/speech.jsonl",
+  "sha256": "391f5660dccb7daa8096d406b9e02eee608fa516bbe085d01700cdbfe2a0eace",
+  "counts": {
+    "train/0/human": 1024,
+    "train/1/A01": 184,
+    "train/1/A02": 178,
+    "train/1/A03": 171,
+    "train/1/A04": 184,
+    "train/1/A05": 157,
+    "train/1/A06": 150,
+    "dev/0/human": 256,
+    "dev/1/A01": 42,
+    "dev/1/A02": 39,
+    "dev/1/A03": 46,
+    "dev/1/A04": 46,
+    "dev/1/A05": 38,
+    "dev/1/A06": 45
+  },
+  "unique_sources": 40,
+  "notes": [
+    "Official LA train/dev speaker partitions; no PA replay-as-fake mapping.",
+    "AntiDeepfake post-training may include this corpus; these metrics are adaptation diagnostics.",
+    "TTS/VC coverage does NOT imply all requested modern cloning/neural-codec generators are covered."
+  ]
+}

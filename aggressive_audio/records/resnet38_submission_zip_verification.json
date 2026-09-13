@@ -1,0 +1,22 @@
+{
+  "archive": "/mnt/c/Users/husky_gp7j99y/Documents/ChatGPT/DACON/submit_eat_xlsr_aug_resnet38_mean_v1.zip",
+  "bytes": 5472113599,
+  "sha256": "002605f4cb92f50fd743202aa3c578e40ec2eeb111acb3774699af5d340ea190",
+  "zip_crc_passed": true,
+  "offline_extracted_zip_inference_passed": true,
+  "forbidden_dependencies": [
+    "fairseq",
+    "timm"
+  ],
+  "files": 64,
+  "reversed_template_order_preserved": true,
+  "max_probability_errors": {
+    "FILE_FAKE_PROB": 0.0,
+    "VOICE_FAKE_PROB": 0.0,
+    "MUSIC_FAKE_PROB": 0.0,
+    "VOICE_PRESENT_PROB": 0.0,
+    "MUSIC_PRESENT_PROB": 0.0
+  },
+  "python": "3.10.21 | packaged by conda-forge | (main, Aug 21 2026, 22:42:31) [GCC 14.4.0]",
+  "server_execution_verified": false
+}

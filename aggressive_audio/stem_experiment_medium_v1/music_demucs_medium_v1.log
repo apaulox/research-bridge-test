@@ -1,0 +1,16 @@
+{"event": "loaded", "branch": "music", "trainable_parameters": 447242, "train_rows": 1024, "dev_rows": 256}
+{"epoch": 0, "train_loss": null, "clean_eer": 0.1875, "stress_eer": 0.3671875, "selection_metric": 0.27734375, "seconds": 36.208054334999815, "max_gpu_gib": 1.1786556243896484}
+{"epoch": 1, "step": 0, "batches": 512, "loss": 0.09614360332489014}
+{"epoch": 1, "step": 100, "batches": 512, "loss": 0.12299376726150513}
+{"epoch": 1, "step": 200, "batches": 512, "loss": 0.5648413300514221}
+{"epoch": 1, "step": 300, "batches": 512, "loss": 0.8456407785415649}
+{"epoch": 1, "step": 400, "batches": 512, "loss": 0.6284987926483154}
+{"epoch": 1, "step": 500, "batches": 512, "loss": 1.4718294143676758}
+{"epoch": 1, "train_loss": 0.9830367673384899, "clean_eer": 0.2265625, "stress_eer": 0.34375, "selection_metric": 0.28515625, "seconds": 163.41926347899994, "max_gpu_gib": 1.2032113075256348}
+{"epoch": 2, "step": 0, "batches": 512, "loss": 1.2374449968338013}
+{"epoch": 2, "step": 100, "batches": 512, "loss": 0.7891220450401306}
+{"epoch": 2, "step": 200, "batches": 512, "loss": 0.5633808374404907}
+{"epoch": 2, "step": 300, "batches": 512, "loss": 1.3529841899871826}
+{"epoch": 2, "step": 400, "batches": 512, "loss": 1.3630766868591309}
+{"epoch": 2, "step": 500, "batches": 512, "loss": 0.6143234968185425}
+{"epoch": 2, "train_loss": 0.7847329483847716, "clean_eer": 0.18359375, "stress_eer": 0.328125, "selection_metric": 0.255859375, "seconds": 296.0751712439999, "max_gpu_gib": 1.2032113075256348}

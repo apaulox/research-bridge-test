@@ -1,0 +1,94 @@
+{
+  "music": {
+    "reference": "music_head_channel_1024_v1",
+    "retrained": "music_demucs_medium_v1",
+    "same_development_ids": true,
+    "A_original_head_original_input": {
+      "epoch": 2,
+      "train_loss": 0.6450279903874616,
+      "clean_eer": 0.046875,
+      "stress_eer": 0.1484375,
+      "selection_metric": 0.09765625,
+      "seconds": 244.05941838800027,
+      "max_gpu_gib": 1.2032113075256348
+    },
+    "B_original_head_demucs_input": {
+      "clean_eer": 0.1953125,
+      "stress_eer": 0.234375,
+      "selection_metric": 0.21484375
+    },
+    "C_retrained_head_demucs_input": {
+      "epoch": 2,
+      "train_loss": 0.7847329483847716,
+      "clean_eer": 0.18359375,
+      "stress_eer": 0.328125,
+      "selection_metric": 0.255859375,
+      "seconds": 296.0751712439999,
+      "max_gpu_gib": 1.2032113075256348
+    },
+    "fixed_epoch2_original": {
+      "epoch": 2,
+      "train_loss": 0.6450279903874616,
+      "clean_eer": 0.046875,
+      "stress_eer": 0.1484375,
+      "selection_metric": 0.09765625,
+      "seconds": 244.05941838800027,
+      "max_gpu_gib": 1.2032113075256348
+    },
+    "fixed_epoch2_demucs": {
+      "epoch": 2,
+      "train_loss": 0.7847329483847716,
+      "clean_eer": 0.18359375,
+      "stress_eer": 0.328125,
+      "selection_metric": 0.255859375,
+      "seconds": 296.0751712439999,
+      "max_gpu_gib": 1.2032113075256348
+    }
+  },
+  "speech": {
+    "reference": "speech_probe_channel_v1",
+    "retrained": "speech_demucs_medium_v1",
+    "same_development_ids": true,
+    "A_original_head_original_input": {
+      "epoch": 2,
+      "train_loss": 0.20631067757224741,
+      "clean_eer": 0.0078125,
+      "stress_eer": 0.015625,
+      "selection_metric": 0.01171875,
+      "seconds": 288.1285466680001,
+      "max_gpu_gib": 3.928673267364502
+    },
+    "B_original_head_demucs_input": {
+      "clean_eer": 0.0234375,
+      "stress_eer": 0.046875,
+      "selection_metric": 0.03515625
+    },
+    "C_retrained_head_demucs_input": {
+      "epoch": 2,
+      "train_loss": 0.23969760781002947,
+      "clean_eer": 0.015625,
+      "stress_eer": 0.0390625,
+      "selection_metric": 0.02734375,
+      "seconds": 282.37913337500004,
+      "max_gpu_gib": 3.928673267364502
+    },
+    "fixed_epoch2_original": {
+      "epoch": 2,
+      "train_loss": 0.20631067757224741,
+      "clean_eer": 0.0078125,
+      "stress_eer": 0.015625,
+      "selection_metric": 0.01171875,
+      "seconds": 288.1285466680001,
+      "max_gpu_gib": 3.928673267364502
+    },
+    "fixed_epoch2_demucs": {
+      "epoch": 2,
+      "train_loss": 0.23969760781002947,
+      "clean_eer": 0.015625,
+      "stress_eer": 0.0390625,
+      "selection_metric": 0.02734375,
+      "seconds": 282.37913337500004,
+      "max_gpu_gib": 3.928673267364502
+    }
+  }
+}

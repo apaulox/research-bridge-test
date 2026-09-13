@@ -1,0 +1,8 @@
+{
+  "reference": "resume_test_reference_1789141394",
+  "resumed": "resume_test_paused_1789141394",
+  "bitwise_equal": true,
+  "mismatch_parameters": [],
+  "performance_evidence": false,
+  "purpose": "Checkpoint correctness only; do not report tiny-run EER as model performance"
+}

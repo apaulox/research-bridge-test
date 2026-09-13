@@ -1,0 +1,17 @@
+{
+  "reference_run": "music_head_channel_1024_v1",
+  "same_train_dev_ids": true,
+  "same_initial_official_model": true,
+  "same_augmentation": "channel, 25% clean, 1-3 transforms",
+  "same_training": {
+    "seed": 688,
+    "epochs": 2,
+    "batch_size": 2,
+    "accumulate": 8,
+    "lr": 0.0001,
+    "last_layers": 0,
+    "samples": 64000,
+    "voice_overlay": false
+  },
+  "only_intended_change": "Demucs accompaniment input"
+}

@@ -1,0 +1,4 @@
+{"event": "loaded", "branch": "music", "trainable_parameters": 447242, "train_rows": 32, "dev_rows": 8}
+{"epoch": 0, "train_loss": null, "clean_eer": 0.0, "stress_eer": 0.75, "selection_metric": 0.375, "seconds": 1.245078598999953, "max_gpu_gib": 1.1786556243896484}
+{"epoch": 1, "step": 0, "batches": 16, "loss": 5.810995101928711}
+{"epoch": 1, "train_loss": 1.61454304959625, "clean_eer": 0.0, "stress_eer": 0.5, "selection_metric": 0.25, "seconds": 4.769433867999851, "max_gpu_gib": 1.2032113075256348}

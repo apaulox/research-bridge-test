@@ -1,0 +1,18 @@
+/home/huskypaul/miniforge3/envs/dacon-cu128/lib/python3.10/site-packages/torch/nn/utils/weight_norm.py:143: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+{"event": "loaded", "branch": "speech", "trainable_parameters": 2562, "train_rows": 1024, "dev_rows": 256}
+{"epoch": 0, "train_loss": null, "clean_eer": 0.03125, "stress_eer": 0.046875, "selection_metric": 0.0390625, "seconds": 34.95201267199991, "max_gpu_gib": 3.920240879058838}
+{"epoch": 1, "step": 0, "batches": 512, "loss": 0.017941558733582497}
+{"epoch": 1, "step": 100, "batches": 512, "loss": 0.17694157361984253}
+{"epoch": 1, "step": 200, "batches": 512, "loss": 2.0820865631103516}
+{"epoch": 1, "step": 300, "batches": 512, "loss": 0.004970002919435501}
+{"epoch": 1, "step": 400, "batches": 512, "loss": 0.11919853836297989}
+{"epoch": 1, "step": 500, "batches": 512, "loss": 0.001125189010053873}
+{"epoch": 1, "train_loss": 0.31803041867477333, "clean_eer": 0.0234375, "stress_eer": 0.046875, "selection_metric": 0.03515625, "seconds": 164.42540166699996, "max_gpu_gib": 3.928673267364502}
+{"epoch": 2, "step": 0, "batches": 512, "loss": 0.00015150182298384607}
+{"epoch": 2, "step": 100, "batches": 512, "loss": 0.016995830461382866}
+{"epoch": 2, "step": 200, "batches": 512, "loss": 0.002824912080541253}
+{"epoch": 2, "step": 300, "batches": 512, "loss": 0.015284459106624126}
+{"epoch": 2, "step": 400, "batches": 512, "loss": 0.0009498660219833255}
+{"epoch": 2, "step": 500, "batches": 512, "loss": 0.038505759090185165}
+{"epoch": 2, "train_loss": 0.23969760781002947, "clean_eer": 0.015625, "stress_eer": 0.0390625, "selection_metric": 0.02734375, "seconds": 282.37913337500004, "max_gpu_gib": 3.928673267364502}

@@ -1,0 +1,16 @@
+{
+  "source": "submit_eat75_musicdet25.zip",
+  "output": "submit_eat75_musicdet25_dependencyfix.zip",
+  "sha256": "0f6897ac41897b00a96b0d8ebad2a0ed570487c8d121c74aa78b7be3ee577cf9",
+  "bytes": 6268927531,
+  "changed_files": [
+    "model/eat_fmc/eat_architecture/eat_model.py",
+    "model/eat_fmc/eat_architecture/model_core.py",
+    "requirements.txt"
+  ],
+  "script_identical": true,
+  "other_zip_entries_identical_crc_and_size": true,
+  "timm_import_attempts": [],
+  "smoke": "Execution only, dummy inputs; no performance interpretation",
+  "limitation": "DACON installer logs unavailable; server-side torch/torchaudio conflict not directly reproduced"
+}
