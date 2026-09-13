@@ -24,4 +24,4 @@ report = dict(batch_first=model.crossAttention1.batch_first,
               absolute_difference=abs(alone-batched),
               caveat='Synthetic embeddings; proves batch dependence, not its DACON score impact')
 print(json.dumps(report, indent=2))
-(Path(__file__).resolve().parent / 'clam_batch_attention_check.json').write_text(json.dumps(report, indent=2))
+(Path(__file__).resolve().parents[1] / 'clam_batch_attention_check.json').write_text(json.dumps(report, indent=2))

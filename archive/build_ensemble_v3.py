@@ -10,7 +10,7 @@ import shutil
 import subprocess
 import sys
 
-W = Path(__file__).resolve().parent
+W = Path(__file__).resolve().parents[1]
 D = Path('/home/huskypaul/dacon')
 S = D / 'submissions/eat75_clam25_fmc_v3'
 V = D / 'clam/validation/ensemble_v3'
@@ -27,7 +27,7 @@ def main():
     if not S.exists():
         shutil.copytree(OLD / 'model', S / 'model', copy_function=os.link,
                         ignore=shutil.ignore_patterns('__pycache__', '*.pyc', '.cache'))
-    shutil.copy2(W / 'script_eat75_clam25_fmc_v3.py', S / 'script.py')
+    shutil.copy2(W / 'archive/script_eat75_clam25_fmc_v3.py', S / 'script.py')
     shutil.copy2(OLD / 'requirements.txt', S / 'requirements.txt')
     old, new = functions(OLD / 'script.py'), functions(S / 'script.py')
     changed = [k for k in old if old[k] != new.get(k)]
@@ -136,7 +136,7 @@ def main():
     dump(V/'report.json',report)
     dump(S/'model/ENSEMBLE_V3_INFO.json',report)
     local = D/'submissions/submit_eat75_clam25_fmc_v3.zip'
-    subprocess.run([sys.executable,str(W/'build_dacon_submission_zip.py'),'--source',str(S),'--output',str(local)],check=True)
+    subprocess.run([sys.executable,str(W/'common/build_dacon_submission_zip.py'),'--source',str(S),'--output',str(local)],check=True)
     output = W/local.name
     def digest(p):
         h=hashlib.sha256()
@@ -147,8 +147,8 @@ def main():
     with local.open('rb') as src,output.open('xb') as dst: shutil.copyfileobj(src,dst,8*1024*1024)
     assert digest(output)==sha
     report.update(zip_sha256=sha,zip_bytes=output.stat().st_size)
-    dump(W/'eat75_clam25_fmc_v3_manifest.json',report)
-    shutil.copy2(V/'submission.csv', W/'eat75_clam25_fmc_v3_smoke.csv')
+    dump(W/'results/eat75_clam25_fmc_v3_manifest.json',report)
+    shutil.copy2(V/'submission.csv', W/'results/eat75_clam25_fmc_v3_smoke.csv')
     print('DONE '+str(output),flush=True)
 
 if __name__ == '__main__':

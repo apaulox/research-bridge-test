@@ -14,7 +14,7 @@ import time
 import zipfile
 
 
-WORKSPACE = Path(__file__).resolve().parent
+WORKSPACE = Path(__file__).resolve().parents[1]
 STAGE = Path('/home/huskypaul/dacon/submissions/clam_official_v1')
 VALIDATION = Path('/home/huskypaul/dacon/clam/validation/official_v1/timm_audit')
 
@@ -104,7 +104,7 @@ def main():
     assert not loaded and not blocker.attempts, (loaded, blocker.attempts)
     with output.open() as handle:
         rows = list(csv.DictReader(handle))
-    with (WORKSPACE / 'clam_official_v1_smoke.csv').open() as handle:
+    with (WORKSPACE / 'results/clam_official_v1_smoke.csv').open() as handle:
         previous = list(csv.DictReader(handle))
     assert len(rows) == len(previous) == 3
     max_delta = 0.0
@@ -130,7 +130,7 @@ def main():
                   seconds=time.perf_counter() - started,
                   verdict='PASS: submitted CLAM pipeline runs without timm',
                   scope='WSL dacon-cu128, provided smoke audio; not a replica of the DACON server')
-    (WORKSPACE / 'clam_official_v1_timm_audit.json').write_text(json.dumps(result, indent=2) + '\n')
+    (WORKSPACE / 'results/clam_official_v1_timm_audit.json').write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result, indent=2), flush=True)
 
 

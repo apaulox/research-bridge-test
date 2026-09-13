@@ -12,7 +12,7 @@ import subprocess
 import zipfile
 import zlib
 
-W=Path(__file__).resolve().parent
+W=Path(__file__).resolve().parents[1]
 D=Path('/home/huskypaul/dacon')
 S=D/'submissions/eat75_musicdet25_dependencyfix'
 V=D/'musicdet/validation/dependencyfix'
@@ -81,7 +81,7 @@ def main():
     if not Path(sys.argv[4]).exists(): sys.argv[4]=str(D/'baseline/sample_submission.csv')
     m.main()
     assert not blocker.attempts
-    subprocess.run([sys.executable,str(W/'build_dacon_submission_zip.py'),'--source',str(S),'--output',str(LOCAL)],check=True)
+    subprocess.run([sys.executable,str(W/'common/build_dacon_submission_zip.py'),'--source',str(S),'--output',str(LOCAL)],check=True)
     with zipfile.ZipFile(SOURCE) as original,zipfile.ZipFile(LOCAL) as fixed:
         assert set(original.namelist())==set(fixed.namelist())
         changed=[name for name in original.namelist() if (original.getinfo(name).CRC,original.getinfo(name).file_size)!=(fixed.getinfo(name).CRC,fixed.getinfo(name).file_size)]
@@ -93,7 +93,7 @@ def main():
                 script_identical=True,other_zip_entries_identical_crc_and_size=True,timm_import_attempts=blocker.attempts,
                 smoke='Execution only, dummy inputs; no performance interpretation',
                 limitation='DACON installer logs unavailable; server-side torch/torchaudio conflict not directly reproduced')
-    (W/'eat75_musicdet25_dependencyfix_manifest.json').write_text(json.dumps(report,indent=2)+'\n')
+    (W/'results/eat75_musicdet25_dependencyfix_manifest.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2),flush=True)
 
 if __name__=='__main__':main()

@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parent
 
 def baseline_helpers():
     # Reuse the audited presence/separation operations to isolate model/fusion changes.
-    path = ROOT.parent / "script_eat75_musicdet25_fmc.py"
+    path = ROOT.parent / "common/script_eat75_musicdet25_fmc.py"
     spec = importlib.util.spec_from_file_location("dacon_base_helpers", path)
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module

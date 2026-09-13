@@ -10,7 +10,7 @@ import subprocess
 import sys
 
 
-WORKSPACE = Path(__file__).resolve().parent
+WORKSPACE = Path(__file__).resolve().parents[1]
 DACON = Path('/home/huskypaul/dacon')
 SOURCE = DACON / 'submissions/eat75_clam25_fmc_v2'
 STAGE = DACON / 'submissions/clam_official_v1'
@@ -27,7 +27,7 @@ def sha256(path):
 
 
 def main():
-    code = (WORKSPACE / 'script_clam_official.py').read_text(encoding='utf-8')
+    code = (WORKSPACE / 'archive/script_clam_official.py').read_text(encoding='utf-8')
     compile(code, 'script.py', 'exec')
     previous = ast.parse((SOURCE / 'script.py').read_text())
     current = ast.parse(code)
@@ -57,7 +57,7 @@ def main():
             shutil.copytree(SOURCE / 'model' / name, STAGE / 'model' / name,
                             copy_function=os.link,
                             ignore=shutil.ignore_patterns('__pycache__', '*.pyc', '.cache'))
-    shutil.copy2(WORKSPACE / 'script_clam_official.py', STAGE / 'script.py')
+    shutil.copy2(WORKSPACE / 'archive/script_clam_official.py', STAGE / 'script.py')
     shutil.copy2(SOURCE / 'requirements.txt', STAGE / 'requirements.txt')
     shutil.copy2(SOURCE / 'model/MODEL_INFO.txt', STAGE / 'model/MODEL_INFO.txt')
     official_head = DACON / 'clam/MoM-CLAM/best_model_triplet_loss_margin_0.2.pth'
@@ -95,7 +95,7 @@ def main():
     environment.update(HF_HUB_OFFLINE='1', TRANSFORMERS_OFFLINE='1', PYTHONDONTWRITEBYTECODE='1')
     with (VALIDATION / 'smoke.log').open('w') as log:
         try:
-            subprocess.run([sys.executable, str(WORKSPACE / 'verify_clam_official.py'),
+            subprocess.run([sys.executable, str(WORKSPACE / 'archive/verify_clam_official.py'),
                             '--stage', str(STAGE), '--validation', str(VALIDATION)],
                            check=True, env=environment, stdout=log, stderr=subprocess.STDOUT)
         except subprocess.CalledProcessError:
@@ -104,14 +104,14 @@ def main():
             raise
     print((VALIDATION / 'report.json').read_text(), flush=True)
     with (VALIDATION / 'package.log').open('w') as log:
-        subprocess.run([sys.executable, str(WORKSPACE / 'build_dacon_submission_zip.py'),
+        subprocess.run([sys.executable, str(WORKSPACE / 'common/build_dacon_submission_zip.py'),
                         '--source', str(STAGE), '--output', str(OUTPUT)],
                        check=True, env=environment, stdout=log, stderr=subprocess.STDOUT)
     summary = dict(info)
     summary.update(zip_bytes=OUTPUT.stat().st_size, zip_sha256=sha256(OUTPUT),
                    validation=json.loads((VALIDATION / 'report.json').read_text()))
-    (WORKSPACE / 'clam_official_v1_manifest.json').write_text(json.dumps(summary, indent=2) + '\n')
-    shutil.copy2(VALIDATION / 'submission.csv', WORKSPACE / 'clam_official_v1_smoke.csv')
+    (WORKSPACE / 'results/clam_official_v1_manifest.json').write_text(json.dumps(summary, indent=2) + '\n')
+    shutil.copy2(VALIDATION / 'submission.csv', WORKSPACE / 'results/clam_official_v1_smoke.csv')
     print(f'COMPLETE {OUTPUT} bytes={OUTPUT.stat().st_size} sha256={summary["zip_sha256"]}', flush=True)
 
 

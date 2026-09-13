@@ -8,8 +8,8 @@ local evaluation records, and submission packaging tools.
 - Windows workspace: `C:\Users\husky_gp7j99y\Documents\ChatGPT\DACON`
 - Training/inference: WSL Ubuntu-24.04, conda environment `dacon-cu128`
 - Python: `/home/huskypaul/miniforge3/envs/dacon-cu128/bin/python`
-- Dependency snapshots: `requirements-wsl-cu128.txt`, `wsl_environment/requirements-lock.txt`
-- Environment checks: `WSL_READY.md`, `wsl_environment/environment.json`
+- Dependency snapshots: `environment/requirements-wsl-cu128.txt`, `environment/wsl_environment/requirements-lock.txt`
+- Environment checks: `environment/WSL_READY.md`, `environment/wsl_environment/environment.json`
 
 Scripts currently contain machine-specific Windows and WSL paths. Adjust these paths
 and obtain the model/data assets before running on a different computer. Cloning this
@@ -34,4 +34,4 @@ Training resume requires the official base models, dataset assets and the corres
 `aggressive_audio/runs/*/checkpoint_latest.pt`, including optimizer and RNG state.
 
 The latest local submission is `submit_eat_xlsr_demucs_resnet38_mean_v1.zip` (5.10 GiB).
-Its SHA-256 sidecar is included in Git. The ZIP itself must be transferred separately.
+Its SHA-256 sidecar is included in Git under `results/`. The ZIP itself must be transferred separately.

@@ -90,7 +90,7 @@ report = dict(baseline_sample_count=len(actual), prediction_ranges_valid=True,
               baseline_script_sha256=digest(baseline / 'script.py'),
               notebook_kernel='dacon-cu128', musicdet_checkpoint_available=False)
 (root / 'logs/final_verification.json').write_text(json.dumps(report, indent=2))
-output_folder = workspace / 'wsl_environment'
+output_folder = workspace / 'environment/wsl_environment'
 output_folder.mkdir(exist_ok=True)
 for name in ['cuda_verification.json', 'environment.json', 'final_verification.json', 'baseline-smoke.log']:
     shutil.copy2(root / 'logs' / name, output_folder / name)

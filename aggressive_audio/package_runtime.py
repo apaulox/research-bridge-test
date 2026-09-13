@@ -11,7 +11,7 @@ STAGE = ROOT / "submission_eat_xlsr_aug_mean_v1"
 def main():
     runtime = STAGE / "model/runtime"
     runtime.mkdir(parents=True, exist_ok=True)
-    helpers = (ROOT.parent / "script_eat75_musicdet25_fmc.py").read_text()
+    helpers = (ROOT.parent / "common/script_eat75_musicdet25_fmc.py").read_text()
     helpers = helpers[:helpers.index("# 5. DF-Arena")]
     (runtime / "audio_helpers.py").write_text(helpers)
     source = (ROOT / "models.py").read_text()
@@ -20,7 +20,7 @@ def main():
     (runtime / "eat_loader.py").write_text("from pathlib import Path\nimport sys\nimport torch\n\n" + loader + "\n")
     shutil.copy2(ROOT / "submission_script.py", STAGE / "script.py")
     # These packages are provided by the DACON baseline image. Do not replace its CUDA torch stack.
-    shutil.copy2(ROOT.parent / "submission_audit/wsl/baseline_submit/requirements.txt", STAGE / "requirements.txt")
+    shutil.copy2(ROOT.parent / "results/submission_audit/wsl/baseline_submit/requirements.txt", STAGE / "requirements.txt")
     provenance = STAGE / "model/provenance"
     provenance.mkdir(exist_ok=True)
     for name in ["music_head_channel_1024_v1", "speech_probe_channel_v1"]:

@@ -1,5 +1,10 @@
 # DACON 증강 실험 · 재개 안내
 
+> 최신 Demucs 두 분기 실험은 [재개 안내](RESUME_DEMUCS_MEDIUM.md)와
+> [비교 결과](stem_experiment_medium_v1/RESULTS.md)를 보세요.
+> 아래 본문은 2026-09-12의 원본 mix 기반 실험 기록입니다.
+> 전체 폴더 안내는 [저장소 첫 화면](../README.md)에 있습니다.
+
 현재 작업: EAT 단독 음악 분기, AntiDeepfake XLS-R-1B(wav2vec 2.0 계열)+linear probe 음성 분기, 동일 성분 예측을 사용한 mean/max FILE 비교.
 
 2026-09-12 상태: 계획한 대조 학습과 64개 외부 파일의 전체 로컬 추론을 완료했다. 선택 모델은 `music_head_channel_1024_v1`과 `speech_probe_channel_v1`이다. mean/max FILE EER는 모두 17.0833%로, 이번 진단에서 mean 우위는 관찰되지 않았다. 상세 결과는 `RESULTS_2026-09-12.md`에 있다. 실행 중인 학습은 없으며 다음 작업은 더 독립적인 검증과 제출 환경·이용조건 확인이다.

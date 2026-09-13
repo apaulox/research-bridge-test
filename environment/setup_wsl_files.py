@@ -45,9 +45,11 @@ def main():
         shutil.copy2(path, notebooks / path.name)
     musicdet = root / 'musicdet'
     musicdet.mkdir()
-    for name in ['musicdet_probe.py', 'server_check.py', 'README_MusicDET.md', 'test_probe_contract.py']:
-        shutil.copy2(args.workspace / name, musicdet / name)
-    shutil.copytree(args.workspace / 'vendor', musicdet / 'vendor')
+    sources = ['archive/musicdet_probe.py', 'environment/server_check.py',
+               'results/README_MusicDET.md', 'archive/test_probe_contract.py']
+    for source in sources:
+        shutil.copy2(args.workspace / source, musicdet / Path(source).name)
+    shutil.copytree(args.workspace / 'archive/vendor', musicdet / 'vendor')
     (root / 'logs').mkdir()
     (root / 'setup_origin.json').write_text(json.dumps(dict(source=str(args.source),
         baseline=str(baseline), notebook_count=len(candidates)), indent=2))

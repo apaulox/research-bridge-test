@@ -9,7 +9,7 @@ import subprocess
 import sys
 import zipfile
 
-WORKSPACE = Path(__file__).resolve().parent
+WORKSPACE = Path(__file__).resolve().parents[1]
 DACON = Path('/home/huskypaul/dacon')
 SOURCE = DACON / 'submissions/clam_official_v1'
 STAGE = DACON / 'submissions/clam_official_v2'
@@ -33,7 +33,7 @@ def main():
     STAGE.mkdir(parents=True, exist_ok=resume)
     VALIDATION.mkdir(parents=True, exist_ok=True)
     (STAGE / 'model').mkdir(exist_ok=resume)
-    code = (WORKSPACE / 'script_clam_official_v2.py').read_text()
+    code = (WORKSPACE / 'archive/script_clam_official_v2.py').read_text()
     compile(code, 'script.py', 'exec')
     baseline = ast.parse((DACON / 'baseline/script.py').read_text())
     new = ast.parse(code)
@@ -45,7 +45,7 @@ def main():
         if not (STAGE / 'model' / name).exists():
             shutil.copytree(SOURCE / 'model' / name, STAGE / 'model' / name,
                             copy_function=os.link, ignore=shutil.ignore_patterns('__pycache__', '*.pyc', '.cache'))
-    shutil.copy2(WORKSPACE / 'script_clam_official_v2.py', STAGE / 'script.py')
+    shutil.copy2(WORKSPACE / 'archive/script_clam_official_v2.py', STAGE / 'script.py')
     shutil.copy2(SOURCE / 'requirements.txt', STAGE / 'requirements.txt')
     shutil.copy2(SOURCE / 'model/MODEL_INFO.txt', STAGE / 'model/MODEL_INFO.txt')
     assert (STAGE / 'requirements.txt').read_bytes() == (DACON / 'baseline/requirements.txt').read_bytes()
@@ -67,7 +67,7 @@ def main():
     env['PYTHONDONTWRITEBYTECODE'] = '1'
     with (VALIDATION / 'verification.log').open('w') as log:
         try:
-            subprocess.run([sys.executable, str(WORKSPACE / 'verify_clam_official_v2.py'),
+            subprocess.run([sys.executable, str(WORKSPACE / 'archive/verify_clam_official_v2.py'),
                             '--stage', str(STAGE), '--validation', str(VALIDATION)],
                            check=True, env=env, stdout=log, stderr=subprocess.STDOUT)
         except subprocess.CalledProcessError:
@@ -77,7 +77,7 @@ def main():
     report = json.loads((VALIDATION / 'report.json').read_text())
     print(json.dumps(report, indent=2), flush=True)
     with (VALIDATION / 'package.log').open('w') as log:
-        subprocess.run([sys.executable, str(WORKSPACE / 'build_dacon_submission_zip.py'),
+        subprocess.run([sys.executable, str(WORKSPACE / 'common/build_dacon_submission_zip.py'),
                         '--source', str(STAGE), '--output', str(LOCAL_ZIP)],
                        check=True, env=env, stdout=log, stderr=subprocess.STDOUT)
     expected_hash = digest(LOCAL_ZIP)
@@ -88,8 +88,8 @@ def main():
         assert archive.read('script.py') == (STAGE / 'script.py').read_bytes()
         assert archive.read('requirements.txt') == (STAGE / 'requirements.txt').read_bytes()
     manifest = dict(info, zip_sha256=expected_hash, zip_bytes=OUTPUT.stat().st_size, validation=report)
-    (WORKSPACE / 'clam_official_v2_manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
-    shutil.copy2(VALIDATION / 'submission.csv', WORKSPACE / 'clam_official_v2_smoke.csv')
+    (WORKSPACE / 'results/clam_official_v2_manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
+    shutil.copy2(VALIDATION / 'submission.csv', WORKSPACE / 'results/clam_official_v2_smoke.csv')
     print(f'COMPLETE {OUTPUT} bytes={OUTPUT.stat().st_size} SHA256={expected_hash}', flush=True)
 
 

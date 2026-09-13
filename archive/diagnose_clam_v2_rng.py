@@ -44,4 +44,4 @@ report.update(same_model_same_audio_scores=[score1, score2],
               df_changed_rng=[key for key in before if before[key] != middle[key]],
               df_second_changed_rng=[key for key in middle if middle[key] != after[key]])
 print(json.dumps(report, indent=2), flush=True)
-(Path(__file__).resolve().parent / 'clam_v2_rng_diagnostic.json').write_text(json.dumps(report, indent=2))
+(Path(__file__).resolve().parents[1] / 'clam_v2_rng_diagnostic.json').write_text(json.dumps(report, indent=2))

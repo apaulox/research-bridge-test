@@ -1,10 +1,10 @@
 import json
 from pathlib import Path
 
-root = Path(__file__).resolve().parent
+root = Path(__file__).resolve().parents[1]
 records = []
 for platform in ('windows', 'wsl'):
-    records.extend(json.loads((root / 'submission_audit' / platform / 'archive_inventory.json').read_text(encoding='utf-8')))
+    records.extend(json.loads((root / 'results/submission_audit' / platform / 'archive_inventory.json').read_text(encoding='utf-8')))
 by_name = {Path(r['path']).name: r for r in records}
 pairs = [
     ('submit_eat75_musicdet.zip', 'submit_eat75_musicdet25_fmc_v1.zip'),
@@ -26,4 +26,4 @@ for left,right in pairs:
               model_weights_same_crc_and_size=not any(n.endswith(('.pt','.pth','.bin','.safetensors','.th')) for n in changes))
     result.append(item)
     print(json.dumps(item))
-(root / 'submission_audit' / 'archive_comparisons.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
+(root / 'results/submission_audit' / 'archive_comparisons.json').write_text(json.dumps(result,indent=2),encoding='utf-8')

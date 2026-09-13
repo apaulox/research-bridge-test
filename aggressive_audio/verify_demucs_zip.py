@@ -82,7 +82,7 @@ def main():
               'server_execution_verified': False}
     (ROOT / 'records/demucs_submission_zip_verification.json').write_text(json.dumps(result, indent=2))
     shutil.copy2(output, ROOT / 'records/demucs_submission_smoke.csv')
-    ARCHIVE.with_suffix('.zip.sha256').write_text(digest.hexdigest() + '  ' + ARCHIVE.name + '\n')
+    (ROOT.parent / 'results' / (ARCHIVE.name + '.sha256')).write_text(digest.hexdigest() + '  ' + ARCHIVE.name + '\n')
     print(json.dumps(result, indent=2), flush=True)
 
 

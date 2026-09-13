@@ -7,7 +7,7 @@ from pathlib import Path
 
 import torch
 
-workspace = Path(__file__).resolve().parent
+workspace = Path(__file__).resolve().parents[1]
 dacon = Path('/home/huskypaul/dacon')
 
 
@@ -20,14 +20,14 @@ def load(name, path):
 
 def main():
     baseline = ast.parse((dacon / 'baseline/script.py').read_text())
-    v1 = ast.parse((workspace / 'script_clam_official.py').read_text())
+    v1 = ast.parse((workspace / 'archive/script_clam_official.py').read_text())
     old = {n.name: ast.dump(n) for n in baseline.body if isinstance(n, ast.FunctionDef)}
     new = {n.name: ast.dump(n) for n in v1.body if isinstance(n, ast.FunctionDef)}
     intentional = {'parse_arguments', 'predict_fake_scores_for_all_files', 'main'}
     baseline_diff = [name for name in old if old[name] != new.get(name)]
     assert set(baseline_diff) == intentional, baseline_diff
     official = load('official', dacon / 'clam/MoM-CLAM/models/clam.py')
-    submission = load('submission', workspace / 'script_clam_official.py')
+    submission = load('submission', workspace / 'archive/script_clam_official.py')
     model = official.CLAM(13, 13, 768, 768).eval()
     checkpoint = dacon / 'submissions/clam_official_v1/model/clam/best_model_triplet_loss_margin_0.2.pth'
     model.load_state_dict(torch.load(checkpoint, map_location='cpu', weights_only=True))
@@ -59,7 +59,7 @@ def main():
         'official_forward_vs_training_max_logit_delta': (official_batch-training_batch).abs().max().item(),
         'interpretation': 'Axis correction preserves v1 per-file predictions; batch16 reproduces published head behavior but retains peer dependence.'
     }
-    (workspace / 'clam_v2_contract_audit.json').write_text(json.dumps(result, indent=2))
+    (workspace / 'results/clam_v2_contract_audit.json').write_text(json.dumps(result, indent=2))
     print(json.dumps(result, indent=2))
 
 

@@ -55,4 +55,4 @@ report = dict(checked_assets=checked, different_assets=different_assets,
               baseline_self_max_delta=max(row['baseline_self_delta'] for row in rows),
               v2_vs_repeat_max_delta=max(row['v2_delta'] for row in rows), rows=rows)
 print(json.dumps(report, indent=2), flush=True)
-(Path(__file__).resolve().parent / 'clam_v2_voice_diagnostic.json').write_text(json.dumps(report, indent=2))
+(Path(__file__).resolve().parents[1] / 'clam_v2_voice_diagnostic.json').write_text(json.dumps(report, indent=2))
