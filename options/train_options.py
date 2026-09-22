@@ -11,6 +11,9 @@ from .base_options import BaseOptions
 class TrainOptions(BaseOptions):
 	def initialize(self):
 		BaseOptions.initialize(self)
+		self.parser.add_argument('--semantic_pool', choices=['avg', 'visual_attention'], default='avg')
+		self.parser.add_argument('--seed', type=int, default=42)
+		self.parser.add_argument('--lr_attention', type=float, default=0.000025)
 		self.parser.add_argument('--display_freq', type=int, default=50, help='frequency of displaying average loss')
 		self.parser.add_argument('--save_epoch_freq', type=int, default=50, help='frequency of saving checkpoints at the end of epochs')
 		self.parser.add_argument('--save_latest_freq', type=int, default=5000, help='frequency of saving the latest results')

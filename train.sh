@@ -1,5 +1,5 @@
 #!/bin/bash
-# Usage: ./train.sh <CHECKPOINT_NAME> [VISUAL_BACKBONE]
+# Usage: ./train.sh <CHECKPOINT_NAME> [VISUAL_BACKBONE] [avg|visual_attention] [SEED]
 
 set -eo pipefail
 
@@ -22,6 +22,8 @@ fi
 
 CHECKPOINT_NAME=$1
 VISUAL_BACKBONE=${2:-dinov2_vitb14_reg}
+SEMANTIC_POOL=${3:-avg}
+EXPERIMENT_SEED=${4:-42}
 PROJECT_ROOT="/home/huskypaul/DenseSSL_attention"
 CHECKPOINT_DIR="${PROJECT_ROOT}/checkpoints/${CHECKPOINT_NAME}"
 SPLIT_FILE="${PROJECT_ROOT}/splits/unseen1.json"
@@ -32,10 +34,14 @@ echo "🚀 Training Started"
 echo "📂 Checkpoints dir: ${CHECKPOINT_DIR}"
 echo "📄 Split file: ${SPLIT_FILE}"
 echo "👁️ Visual backbone: ${VISUAL_BACKBONE}"
+echo "Semantic pooling: ${SEMANTIC_POOL}"
+echo "Seed: ${EXPERIMENT_SEED}"
 echo "🐍 Python: $(command -v python)"
 echo "======================================"
 
-python train.py \
+python -u train.py \
+    --semantic_pool "${SEMANTIC_POOL}" \
+    --seed "${EXPERIMENT_SEED}" \
     --visual_backbone "${VISUAL_BACKBONE}" \
     --norm_semantic \
     --norm_spatial \
@@ -59,3 +65,12 @@ python train.py \
     --resume \
     --validation_batches 50 \
     --tensorboard True |& tee -a "${PROJECT_ROOT}/train_${CHECKPOINT_NAME}.log"
+
+# Reached only after successful training; checkpoints remain safe if upload fails.
+if [ "${WANDB_AUTO_UPLOAD:-1}" = "1" ]; then
+    if ! python -u publish_experiment.py "${CHECKPOINT_NAME}"; then
+        echo "Training completed, but W&B upload failed. Retry:"
+        echo "python publish_experiment.py ${CHECKPOINT_NAME}"
+        exit 1
+    fi
+fi

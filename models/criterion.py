@@ -79,8 +79,17 @@ class DenseAVContrastiveLoss(nn.Module):
     passed visual and audio features. Handles different batch sizes for
     Semantic (B_sem) and Spatial (B_spa).
     """
-    def __init__(self, loss_type="nce", semantic_temperature=0.07, spatial_temperature=0.2):
+    def __init__(self, loss_type="nce", semantic_temperature=0.07, spatial_temperature=0.2,
+                 semantic_pool="avg", feature_dim=384):
         super(DenseAVContrastiveLoss, self).__init__()
+        if semantic_pool not in ("avg", "visual_attention"):
+            raise ValueError("Unknown semantic pooling: " + semantic_pool)
+        self.semantic_pool = semantic_pool
+        # Direct zero allocation preserves the random stream used by baseline.
+        if semantic_pool == "visual_attention":
+            self.attention_weight = nn.Parameter(torch.zeros(feature_dim, feature_dim))
+        else:
+            self.register_parameter("attention_weight", None)
         self.loss_type = loss_type
         self.semantic_temperature = semantic_temperature
         self.spatial_temperature = spatial_temperature
@@ -124,6 +133,11 @@ class DenseAVContrastiveLoss(nn.Module):
             sim = torch.einsum("bdp, cdq -> bcpq", v_flat, a_flat)
             # For each audio bin, find the best matching visual patch (localization)
             sim_hw_max = sim.max(dim=2).values # [B_v, B_a, FT]
+            if self.semantic_pool == "visual_attention":
+                query = v_flat.mean(dim=2)
+                logits = torch.einsum("bd,de,ceq->bcq", query, self.attention_weight, a_flat)
+                weights = torch.softmax(logits, dim=-1)
+                return (weights * sim_hw_max).sum(dim=-1)
             sim_ft = sim_hw_max.mean(dim=2)    # [B_v, B_a]
             return sim_ft
             

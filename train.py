@@ -22,10 +22,13 @@ try:
 except ImportError:
     from tensorboardX import SummaryWriter
 
-def create_optimizer(nets, opt):
+def create_optimizer(nets, opt, contrastive_criterion):
     (net_visual, net_audio) = nets
     param_groups = [{'params': net_visual.parameters(), 'lr': opt.lr_visual},
                     {'params': net_audio.parameters(), 'lr': opt.lr_audio}]
+    if contrastive_criterion.attention_weight is not None:
+        param_groups.append({'params': [contrastive_criterion.attention_weight],
+                             'lr': opt.lr_attention})
     if opt.optimizer == 'sgd':
         return torch.optim.SGD(param_groups, momentum=opt.beta1, weight_decay=opt.weight_decay)
     elif opt.optimizer == 'adam':
@@ -38,6 +41,7 @@ def decrease_learning_rate(optimizer, decay_factor=0.94):
 def save_training_state(path, next_epoch, total_steps, best_err,
                         net_visual, net_audio, optimizer, contrastive_criterion):
     state = {
+        'ablation_config': contrastive_criterion.ablation_config,
         'next_epoch': next_epoch,
         'total_steps': total_steps,
         'best_err': best_err,
@@ -57,6 +61,8 @@ def save_training_state(path, next_epoch, total_steps, best_err,
 def load_training_state(path, net_visual, net_audio, optimizer,
                         contrastive_criterion, device):
     state = torch.load(path, map_location=device, weights_only=False)
+    if state.get('ablation_config') != contrastive_criterion.ablation_config:
+        raise ValueError('Resume configuration differs or is missing. Use a new experiment name for this ablation.')
     net_visual.load_state_dict(state['net_visual'])
     net_audio.load_state_dict(state['net_audio'])
     optimizer.load_state_dict(state['optimizer'])
@@ -96,6 +102,12 @@ def display_val(model, loss_criterion, writer, index, dataset_val, opt):
 #parse arguments
 opt = TrainOptions().parse()
 opt.device = torch.device("cuda")
+random.seed(opt.seed)
+np.random.seed(opt.seed)
+torch.manual_seed(opt.seed)
+torch.cuda.manual_seed_all(opt.seed)
+torch.backends.cudnn.benchmark = False
+torch.backends.cudnn.deterministic = True
 
 #construct data loader
 data_loader = CreateDataLoader(opt)
@@ -114,7 +126,7 @@ if opt.validation_on:
     opt.mode = 'train' #set it back
 
 if opt.tensorboard:
-    writer = SummaryWriter(comment=opt.name)
+    writer = SummaryWriter(log_dir=os.path.join(opt.checkpoints_dir, opt.name, 'tensorboard'))
 else:
     writer = None
 
@@ -138,15 +150,25 @@ model = torch.nn.DataParallel(model, device_ids=opt.gpu_ids)
 model.to(opt.device)
 
 # set up optimizer
-optimizer = create_optimizer(nets, opt)
 
 # set up loss function
 loss_criterion = torch.nn.MSELoss()
-contrastive_criterion = DenseAVContrastiveLoss()
+contrastive_criterion = DenseAVContrastiveLoss(semantic_pool=opt.semantic_pool)
+# Keep the historical fixed-temperature behavior; train only attention W.
+contrastive_criterion.log_temp_sem.requires_grad_(False)
+contrastive_criterion.log_temp_spa.requires_grad_(False)
+contrastive_criterion.ablation_config = {
+    'semantic_pool': opt.semantic_pool, 'seed': opt.seed,
+    'visual_backbone': opt.visual_backbone, 'lr_attention': opt.lr_attention,
+    'split_file': os.path.abspath(opt.split_file),
+    'norm_semantic': opt.norm_semantic, 'norm_spatial': opt.norm_spatial,
+}
 
 if(len(opt.gpu_ids) > 0):
     loss_criterion.cuda(opt.gpu_ids[0])
     contrastive_criterion.cuda(opt.gpu_ids[0])
+
+optimizer = create_optimizer(nets, opt, contrastive_criterion)
 
 # initialization
 start_epoch = 1
@@ -274,6 +296,9 @@ for epoch in range(start_epoch, opt.niter+1):
                             print('saving the best model (epoch %d, total_steps %d) with validation error %.3f\n' % (epoch, total_steps, val_err))
                             torch.save(net_visual.state_dict(), os.path.join('.', opt.checkpoints_dir, opt.name, 'visual_best.pth'))
                             torch.save(net_audio.state_dict(), os.path.join('.', opt.checkpoints_dir, opt.name, 'audio_best.pth'))
+                            torch.save({'state_dict': contrastive_criterion.state_dict(),
+                                        'ablation_config': contrastive_criterion.ablation_config},
+                                       os.path.join(opt.checkpoints_dir, opt.name, 'criterion_best.pth'))
 
                 if(opt.measure_time):
                         iter_start_time = time.time()
