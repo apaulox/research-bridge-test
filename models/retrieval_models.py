@@ -12,9 +12,13 @@ from torchvision.models import ResNet18_Weights
 from .networks import VisualNet, AudioNet, weights_init
 
 class ModelBuilder():
-    def build_visual(self, weights=''):
-        pretrained = True
-        net = VisualNet()
+    def build_visual(self, weights='', backbone='dinov2_vitb14_reg',
+                     dinov3_repo='', dinov3_weights=''):
+        net = VisualNet(
+            backbone=backbone,
+            dinov3_repo=dinov3_repo,
+            dinov3_weights=dinov3_weights,
+            pretrained=(len(weights) == 0))
 
         if len(weights) > 0:
             print('Loading weights for visual stream')

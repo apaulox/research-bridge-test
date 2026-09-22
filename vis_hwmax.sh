@@ -19,7 +19,7 @@ if [ -z "$1" ]; then
 fi
 
 CHECKPOINT_NAME=$1
-PROJECT_ROOT=".../DenseSSL"
+PROJECT_ROOT="/home/huskypaul/DenseSSL_attention"
 CHECKPOINT_DIR="${PROJECT_ROOT}/checkpoints/${CHECKPOINT_NAME}"
 
 echo "======================================"

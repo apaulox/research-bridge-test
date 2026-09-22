@@ -10,6 +10,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import functools
+import os
+import sys
 
 def unet_conv(input_nc, output_nc, norm_layer=nn.BatchNorm2d):
     downconv = nn.Conv2d(input_nc, output_nc, kernel_size=4, stride=2, padding=1)
@@ -45,9 +47,38 @@ def weights_init(m):
         m.weight.data.normal_(0.0, 0.02)
 
 class VisualNet(nn.Module):
-    def __init__(self):
+    def __init__(self, backbone='dinov2_vitb14_reg', dinov3_repo='',
+                 dinov3_weights='', pretrained=True):
         super(VisualNet, self).__init__()
-        self.feature_extraction = torch.hub.load('facebookresearch/dinov2', 'dinov2_vitb14_reg')
+        self.backbone = backbone
+        if backbone == 'dinov2_vitb14_reg':
+            self.patch_size = 14
+            self.feature_extraction = torch.hub.load(
+                'facebookresearch/dinov2', backbone, pretrained=pretrained)
+        elif backbone == 'dinov3_vitb16':
+            if not dinov3_repo:
+                raise ValueError('--dinov3_repo is required for the DINOv3 backbone')
+            if pretrained and not dinov3_weights:
+                raise ValueError(
+                    '--dinov3_weights must point to the official DINOv3 ViT-B/16 '
+                    'LVD-1689M .pth checkpoint')
+            if pretrained and not (dinov3_weights.startswith('http://') or
+                                   dinov3_weights.startswith('https://')):
+                dinov3_weights = os.path.abspath(os.path.expanduser(dinov3_weights))
+                if not os.path.isfile(dinov3_weights):
+                    raise FileNotFoundError(
+                        'DINOv3 weights not found: %s' % dinov3_weights)
+            dinov3_repo = os.path.abspath(os.path.expanduser(dinov3_repo))
+            if dinov3_repo not in sys.path:
+                sys.path.insert(0, dinov3_repo)
+            from dinov3.hub.backbones import dinov3_vitb16
+            self.patch_size = 16
+            load_kwargs = {'pretrained': pretrained}
+            if pretrained:
+                load_kwargs['weights'] = dinov3_weights
+            self.feature_extraction = dinov3_vitb16(**load_kwargs)
+        else:
+            raise ValueError('Unsupported visual backbone: %s' % backbone)
         for param in self.feature_extraction.parameters():
             param.requires_grad = False
             
@@ -79,11 +110,22 @@ class VisualNet(nn.Module):
         )
 
     def forward(self, x):
+        # Preserve the original DenseSSL 16x32 visual interface. DINOv3-B/16
+        # produces a 14x28 map for the same 224x448 input, so only the adapter
+        # resamples its patch map; all trainable downstream layers stay fixed.
+        target_h, target_w = x.shape[-2] // 14, x.shape[-1] // 14
         features = self.feature_extraction.forward_features(x)
         patch_tokens = features['x_norm_patchtokens']
         B, N, C = patch_tokens.shape
-        H, W = 16, 32
-        x = patch_tokens.permute(0, 2, 1).view(B, C, H, W)
+        H, W = x.shape[-2] // self.patch_size, x.shape[-1] // self.patch_size
+        if N != H * W or C != 768:
+            raise RuntimeError(
+                '%s returned patch tokens with shape %s; expected [B, %d, 768]'
+                % (self.backbone, tuple(patch_tokens.shape), H * W))
+        x = patch_tokens.permute(0, 2, 1).reshape(B, C, H, W)
+        if (H, W) != (target_h, target_w):
+            x = F.interpolate(
+                x, size=(target_h, target_w), mode='bilinear', align_corners=False)
         
         # Apply shared projection layer so features can be updated by contrastive loss
         updated_x = self.shared_proj(x)
