@@ -1,0 +1,16 @@
+======================================
+📊 Evaluation Started
+📂 Target outputs dir: /home/huskypaul/DenseSSL/outputs/densessl_unseen1_baseline
+======================================
+Evaluating testing example 10 : 000121
+Evaluating testing example 20 : 001521
+Evaluating testing example 30 : 001085
+Evaluating testing example 40 : 000696
+Evaluating testing example 50 : 001033
+Evaluating testing example 60 : 000922
+Evaluating testing example 70 : 001858
+Evaluating testing example 80 : 000692
+Evaluating testing example 90 : 001291
+Evaluating testing example 100 : 000255
+STFT L2 Distance:  0.8462914308676353 0.6983554724316513 0.06847938810294804
+Average Envelope Distance:  0.1315778471672764 0.05721221077522692 0.005610118829974336

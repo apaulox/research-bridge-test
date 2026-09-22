@@ -4,20 +4,31 @@ __pycache__/
 *$py.class
 *.so
 
-# Environments
+# Environments and credentials
 .env
+.env.*
 .venv
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
+.netrc
 
 # Logs and databases
 *.log
 *.sqlite
+wandb/
 
-# ML Checkpoints / Data (just in case they are generated later)
+# Model weights and generated data
 checkpoints/
 outputs/
 runs/
+*.pth
+*.pt
+*.ckpt
+*.tar.gz
+*.zip
+
+# Local rollback copies
+*.before-wandb

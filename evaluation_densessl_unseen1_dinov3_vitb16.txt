@@ -1,0 +1,16 @@
+======================================
+📊 Evaluation Started
+📂 Target outputs dir: /home/huskypaul/DenseSSL/outputs/densessl_unseen1_dinov3_vitb16
+======================================
+Evaluating testing example 10 : 000121
+Evaluating testing example 20 : 001521
+Evaluating testing example 30 : 001085
+Evaluating testing example 40 : 000696
+Evaluating testing example 50 : 001033
+Evaluating testing example 60 : 000922
+Evaluating testing example 70 : 001858
+Evaluating testing example 80 : 000692
+Evaluating testing example 90 : 001291
+Evaluating testing example 100 : 000255
+STFT L2 Distance:  0.8291560458377577 0.6962604934967245 0.06827395851699117
+Average Envelope Distance:  0.13050513073372152 0.05766386353852283 0.005654407027155374

@@ -53,7 +53,11 @@ def main():
     
     print(f"Loading weights from {opt.checkpoints_dir}...")
     builder = ModelBuilder()
-    net_visual = builder.build_visual(weights=opt.weights_visual)
+    net_visual = builder.build_visual(
+        weights=opt.weights_visual,
+        backbone=opt.visual_backbone,
+        dinov3_repo=opt.dinov3_repo,
+        dinov3_weights=opt.dinov3_weights)
     net_audio = builder.build_audio(
             ngf=opt.unet_ngf,
             input_nc=opt.unet_input_nc,

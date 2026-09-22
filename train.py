@@ -7,7 +7,9 @@
 # LICENSE file in the root directory of this source tree.
 
 import os
+import random
 import time
+import numpy as np
 import torch
 from options.train_options import TrainOptions
 from data.data_loader import CreateDataLoader
@@ -32,6 +34,46 @@ def create_optimizer(nets, opt):
 def decrease_learning_rate(optimizer, decay_factor=0.94):
     for param_group in optimizer.param_groups:
         param_group['lr'] *= decay_factor
+
+def save_training_state(path, next_epoch, total_steps, best_err,
+                        net_visual, net_audio, optimizer, contrastive_criterion):
+    state = {
+        'next_epoch': next_epoch,
+        'total_steps': total_steps,
+        'best_err': best_err,
+        'net_visual': net_visual.state_dict(),
+        'net_audio': net_audio.state_dict(),
+        'optimizer': optimizer.state_dict(),
+        'contrastive_criterion': contrastive_criterion.state_dict(),
+        'python_random_state': random.getstate(),
+        'numpy_random_state': np.random.get_state(),
+        'torch_random_state': torch.get_rng_state(),
+        'cuda_random_state': torch.cuda.get_rng_state_all() if torch.cuda.is_available() else None,
+    }
+    temporary_path = path + '.tmp'
+    torch.save(state, temporary_path)
+    os.replace(temporary_path, path)
+
+def load_training_state(path, net_visual, net_audio, optimizer,
+                        contrastive_criterion, device):
+    state = torch.load(path, map_location=device, weights_only=False)
+    net_visual.load_state_dict(state['net_visual'])
+    net_audio.load_state_dict(state['net_audio'])
+    optimizer.load_state_dict(state['optimizer'])
+    contrastive_criterion.load_state_dict(state['contrastive_criterion'])
+
+    random.setstate(state['python_random_state'])
+    np.random.set_state(state['numpy_random_state'])
+    torch.set_rng_state(state['torch_random_state'].cpu())
+    if torch.cuda.is_available() and state.get('cuda_random_state') is not None:
+        cuda_random_state = [rng_state.cpu() for rng_state in state['cuda_random_state']]
+        torch.cuda.set_rng_state_all(cuda_random_state)
+
+    return (
+        int(state['next_epoch']),
+        int(state['total_steps']),
+        float(state['best_err']),
+    )
 
 #used to display validation loss
 def display_val(model, loss_criterion, writer, index, dataset_val, opt):
@@ -78,7 +120,11 @@ else:
 
 # network builders
 builder = ModelBuilder()
-net_visual = builder.build_visual(weights=opt.weights_visual)
+net_visual = builder.build_visual(
+        weights=opt.weights_visual,
+        backbone=opt.visual_backbone,
+        dinov3_repo=opt.dinov3_repo,
+        dinov3_weights=opt.dinov3_weights)
 net_audio = builder.build_audio(
         ngf=opt.unet_ngf,
         input_nc=opt.unet_input_nc,
@@ -103,6 +149,7 @@ if(len(opt.gpu_ids) > 0):
     contrastive_criterion.cuda(opt.gpu_ids[0])
 
 # initialization
+start_epoch = 1
 total_steps = 0
 data_loading_time = []
 model_forward_time = []
@@ -113,7 +160,20 @@ batch_loss_sem = []
 batch_loss_spa = []
 best_err = float("inf")
 
-for epoch in range(1, opt.niter+1):
+training_state_path = opt.resume_path or os.path.join(
+    opt.checkpoints_dir, opt.name, 'training_latest.pth')
+if opt.resume:
+    if os.path.isfile(training_state_path):
+        start_epoch, total_steps, best_err = load_training_state(
+            training_state_path, net_visual, net_audio, optimizer,
+            contrastive_criterion, opt.device)
+        print('resumed training state from %s' % training_state_path)
+        print('continuing at epoch %d, total_steps %d, best validation %.6f' %
+              (start_epoch, total_steps, best_err))
+    else:
+        print('no training state found at %s; starting a new run' % training_state_path)
+
+for epoch in range(start_epoch, opt.niter+1):
         torch.cuda.synchronize()
         epoch_start_time = time.time()
 
@@ -227,3 +287,12 @@ for epoch in range(1, opt.niter+1):
         if(opt.learning_rate_decrease_itr > 0 and epoch % opt.learning_rate_decrease_itr == 0):
             decrease_learning_rate(optimizer, opt.decay_factor)
             print('decreased learning rate by ', opt.decay_factor)
+
+        save_training_state(
+            training_state_path, epoch + 1, total_steps, best_err,
+            net_visual, net_audio, optimizer, contrastive_criterion)
+        print('saved resumable training state for epoch %d to %s' %
+              (epoch + 1, training_state_path))
+
+if writer is not None:
+    writer.close()

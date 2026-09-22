@@ -23,6 +23,8 @@ class TrainOptions(BaseOptions):
 		self.parser.add_argument('--validation_freq', type=int, default=100, help='frequency of testing on validation set')
 		self.parser.add_argument('--validation_batches', type=int, default=10, help='number of batches to test for validation')
 		self.parser.add_argument('--enable_data_augmentation', type=bool, default=True, help='whether to augment input frame')
+		self.parser.add_argument('--resume', action='store_true', help='resume automatically from the latest full training state')
+		self.parser.add_argument('--resume_path', type=str, default='', help='optional path to a full training-state checkpoint')
 
 		#model arguments
 		self.parser.add_argument('--weights_visual', type=str, default='', help="weights for visual stream")

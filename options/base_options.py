@@ -17,9 +17,12 @@ class BaseOptions():
 		self.initialized = False
 
 	def initialize(self):
+		self.parser.add_argument('--visual_backbone', type=str, default='dinov2_vitb14_reg', choices=['dinov2_vitb14_reg', 'dinov3_vitb16'], help='frozen visual backbone')
+		self.parser.add_argument('--dinov3_repo', type=str, default='/home/huskypaul/dinov3', help='local clone of facebookresearch/dinov3')
+		self.parser.add_argument('--dinov3_weights', type=str, default='/home/huskypaul/dinov3_weights/dinov3_vitb16_pretrain_lvd1689m-73cec8be.pth', help='official DINOv3 ViT-B/16 LVD-1689M .pth checkpoint path or URL')
 		self.parser.add_argument('--split_file', type=str, default='', help='path to the JSON split file (e.g. splits/unseen1.json) with train/val/test keys')
-		self.parser.add_argument('--audio_dir', type=str, default='/home/jwlee/spatial/FAIR-Play/audios', help='path to the audio directory')
-		self.parser.add_argument('--video_dir', type=str, default='/home/jwlee/spatial/FAIR-Play/frames', help='path to the video frames directory')
+		self.parser.add_argument('--audio_dir', type=str, default='/home/huskypaul/FAIR-Play/audios', help='path to the audio directory')
+		self.parser.add_argument('--video_dir', type=str, default='/home/huskypaul/FAIR-Play/frames', help='path to the video frames directory')
 		self.parser.add_argument('--gpu_ids', type=str, default='0', help='gpu ids: e.g. 0  0,1,2, 0,2. use -1 for CPU')
 		self.parser.add_argument('--name', type=str, default='spatialAudioVisual', help='name of the experiment. It decides where to store models')
 		self.parser.add_argument('--checkpoints_dir', type=str, default='checkpoints/', help='models are saved here')
