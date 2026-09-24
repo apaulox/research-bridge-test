@@ -11,6 +11,7 @@ from .base_options import BaseOptions
 class TrainOptions(BaseOptions):
 	def initialize(self):
 		BaseOptions.initialize(self)
+		self.parser.add_argument('--aggregation_order', choices=['product_then_pool', 'pool_then_product'], default='product_then_pool')
 		self.parser.add_argument('--semantic_pool', choices=['avg', 'visual_attention'], default='avg')
 		self.parser.add_argument('--seed', type=int, default=42)
 		self.parser.add_argument('--lr_attention', type=float, default=0.000025)

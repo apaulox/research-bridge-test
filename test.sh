@@ -1,5 +1,8 @@
 #!/bin/bash
-# Usage: ./test.sh <CHECKPOINT_NAME> [VISUAL_BACKBONE]
+# Usage: ./test.sh <CHECKPOINT_NAME> [VISUAL_BACKBONE] [single|multi]
+set -eo pipefail
+source /home/huskypaul/miniforge3/etc/profile.d/conda.sh
+conda activate densessl
 
 if [ -z "$1" ]; then
   echo "Error: Checkpoint name is required."
@@ -9,7 +12,9 @@ fi
 
 CHECKPOINT_NAME=$1
 VISUAL_BACKBONE=${2:-dinov2_vitb14_reg}
-PROJECT_ROOT="/home/huskypaul/DenseSSL_attention"
+HEAD_LAYOUT=${3:-multi}
+PROJECT_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+cd "${PROJECT_ROOT}"
 WEIGHTS_DIR="${PROJECT_ROOT}/checkpoints/${CHECKPOINT_NAME}/mono2binaural"
 OUTPUT_DIR="${PROJECT_ROOT}/outputs/${CHECKPOINT_NAME}"
 SPLIT_FILE="${PROJECT_ROOT}/splits/unseen1.json"
@@ -21,7 +26,8 @@ echo "💾 Outputs will be saved to: ${OUTPUT_DIR}"
 echo "👁️ Visual backbone: ${VISUAL_BACKBONE}"
 echo "======================================"
 
-python demo_batch.py \
+python -u demo_batch.py \
+    --head_layout "${HEAD_LAYOUT}" \
     --visual_backbone "${VISUAL_BACKBONE}" \
     --split_file "${SPLIT_FILE}" \
     --weights_visual "${WEIGHTS_DIR}/visual_best.pth" \

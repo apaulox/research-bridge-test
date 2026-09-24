@@ -103,7 +103,7 @@ def display_val(model, loss_criterion, writer, index, dataset_val, opt):
 opt = TrainOptions().parse()
 opt.device = torch.device("cuda")
 random.seed(opt.seed)
-np.random.seed(opt.seed)
+np.random.seed(opt.seed % (2**32))
 torch.manual_seed(opt.seed)
 torch.cuda.manual_seed_all(opt.seed)
 torch.backends.cudnn.benchmark = False
@@ -136,12 +136,12 @@ net_visual = builder.build_visual(
         weights=opt.weights_visual,
         backbone=opt.visual_backbone,
         dinov3_repo=opt.dinov3_repo,
-        dinov3_weights=opt.dinov3_weights)
+        dinov3_weights=opt.dinov3_weights, head_layout=opt.head_layout)
 net_audio = builder.build_audio(
         ngf=opt.unet_ngf,
         input_nc=opt.unet_input_nc,
         output_nc=opt.unet_output_nc,
-        weights=opt.weights_audio)
+        weights=opt.weights_audio, head_layout=opt.head_layout)
 nets = (net_visual, net_audio)
 
 # construct our audio-visual model
@@ -153,11 +153,19 @@ model.to(opt.device)
 
 # set up loss function
 loss_criterion = torch.nn.MSELoss()
-contrastive_criterion = DenseAVContrastiveLoss(semantic_pool=opt.semantic_pool)
+contrastive_criterion = DenseAVContrastiveLoss(
+    semantic_pool=opt.semantic_pool,
+    feature_dim=512 if opt.head_layout == 'single' else 384,
+    aggregation_order=opt.aggregation_order)
 # Keep the historical fixed-temperature behavior; train only attention W.
 contrastive_criterion.log_temp_sem.requires_grad_(False)
 contrastive_criterion.log_temp_spa.requires_grad_(False)
 contrastive_criterion.ablation_config = {
+    'head_layout': opt.head_layout, 'aggregation_order': opt.aggregation_order,
+    'feature_dim': 512 if opt.head_layout == 'single' else 384,
+    'seed_text': str(opt.seed), 'numpy_seed': opt.seed % (2**32),
+    'seed_protocol': 'python=torch=cuda=seed; numpy=seed modulo 2**32',
+    'data_rng_protocol': 'reset before first epoch after model initialization; restore on resume',
     'semantic_pool': opt.semantic_pool, 'seed': opt.seed,
     'visual_backbone': opt.visual_backbone, 'lr_attention': opt.lr_attention,
     'split_file': os.path.abspath(opt.split_file),
@@ -184,16 +192,26 @@ best_err = float("inf")
 
 training_state_path = opt.resume_path or os.path.join(
     opt.checkpoints_dir, opt.name, 'training_latest.pth')
+resumed = False
 if opt.resume:
     if os.path.isfile(training_state_path):
         start_epoch, total_steps, best_err = load_training_state(
             training_state_path, net_visual, net_audio, optimizer,
             contrastive_criterion, opt.device)
+        resumed = True
         print('resumed training state from %s' % training_state_path)
         print('continuing at epoch %d, total_steps %d, best validation %.6f' %
               (start_epoch, total_steps, best_err))
     else:
         print('no training state found at %s; starting a new run' % training_state_path)
+
+if not resumed:
+    # Different head sizes consume different initialization RNG amounts.
+    # Reset data RNG only for new runs so workers start from the same stream.
+    random.seed(opt.seed)
+    np.random.seed(opt.seed % (2**32))
+    torch.manual_seed(opt.seed)
+    torch.cuda.manual_seed_all(opt.seed)
 
 for epoch in range(start_epoch, opt.niter+1):
         torch.cuda.synchronize()

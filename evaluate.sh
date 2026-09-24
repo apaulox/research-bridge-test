@@ -1,5 +1,8 @@
 #!/bin/bash
 # Usage: ./evaluate.sh <CHECKPOINT_NAME>
+set -eo pipefail
+source /home/huskypaul/miniforge3/etc/profile.d/conda.sh
+conda activate densessl
 
 if [ -z "$1" ]; then
   echo "Error: Checkpoint name is required."
@@ -8,7 +11,8 @@ if [ -z "$1" ]; then
 fi
 
 CHECKPOINT_NAME=$1
-PROJECT_ROOT="/home/huskypaul/DenseSSL_attention"
+PROJECT_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+cd "${PROJECT_ROOT}"
 OUTPUT_DIR="${PROJECT_ROOT}/outputs/${CHECKPOINT_NAME}"
 
 echo "======================================"

@@ -1,92 +1,92 @@
-# DenseSSL
+# DenseSSL Aggregation Ablation
 
-## 🛠️ Environment Setup (환경 설정 안내)
+DINOv3를 고정하고 contrastive head 구성과 pooling 순서를 비교한다.
+현재 실험은 **single-head + pool → product**다.
 
-이 프로젝트는 다양한 GPU 환경(예: RTX 30xx, 40xx, 구형 GPU 등)에서의 원활한 협업 및 재현(Reproduction)을 위해 **PyTorch를 각자의 하드웨어에 맞게 수동으로 먼저 설치**하는 방식을 채택하고 있습니다.
+## 기존 방식과의 차이
 
-아래의 순서대로 환경을 세팅해 주세요.
+| 항목 | 기존 Ours | Single-head + Pool → Product |
+| --- | --- | --- |
+| 영상 projection | Semantic·spatial 각각 384차원 | 768 → 512차원 projection 하나를 공유 |
+| 오디오 projection | Semantic·spatial 각각 384차원 | 512 → 512차원 projection 하나를 공유 |
+| 유사도 계산 | Token 간 내적 → 영상 max → 오디오 평균 | 영상 max·오디오 평균 → 내적 |
 
-### Step 1. 가상환경 생성 (권장)
-다른 프로젝트와의 패키지 충돌을 막기 위해 가상환경을 만들어주세요.
+영상은 공통 projection의 768차원 출력을 single projection에 넣고,
+같은 특징을 semantic·spatial loss에 사용한다.
+
+오디오는 기존 mono encoder와 spatial encoder를 유지한다.
+두 encoder의 출력에 같은 projection을 적용하며, BatchNorm 통계도 공유한다.
+Single-head는 encoder를 하나로 합친다는 뜻이 아니다.
+
+## Aggregation
+
+기존 방식은 오디오 위치마다 가장 유사한 영상 패치를 찾은 뒤 점수를 평균낸다.
+
+```text
+[HW, D] × [FT, D] → [HW, FT] 유사도 → HW max → FT 평균 → 점수
+```
+
+이번 방식은 영상과 오디오를 먼저 하나의 벡터로 요약한 뒤 내적한다.
+영상 max는 채널별 최댓값을 취한다.
+
+```text
+영상 [HW, 512] → HW max  → [512] ─┐
+                                 ├─ 내적 → 점수
+오디오 [FT, 512] → FT 평균 → [512] ─┘
+```
+
+두 방식 모두 token별 L2 정규화를 먼저 적용한다. Pooling 후 추가 정규화는 없다.
+선택한 aggregation을 semantic·spatial loss 양쪽에 사용한다.
+
+## 유지하는 조건
+
+- Frozen DINOv3 ViT-B/16과 기존 audio encoder·binaural decoder
+- Decoder에 들어가는 기존 384차원 visual feature
+- `MSE + semantic loss + spatial loss`와 각 loss의 가중치
+- 데이터 split, mask 범위, FFT 복원 방식, 학습률 일정
+
+Attention pooling은 사용하지 않는다. 기존 실험은 `DenseSSL`과
+`DenseSSL_attention`에 보존하고, 새 checkpoint와 로그는 이 폴더에 저장한다.
+
+## 실행
+
 ```bash
-conda create -n densessl python=3.10 -y
-conda activate densessl
+cd /home/huskypaul/DenseSSL_aggregation
+./train_aggregation.sh densessl_unseen1_dinov3_single_poolprod_sd3 single pool_then_product
 ```
 
-### Step 2. PyTorch 설치 (매우 중요 ⭐)
-본인 PC의 GPU 및 CUDA 버전에 호환되는 PyTorch 버전을 설치합니다.
-(정확한 설치 명령어는 [PyTorch 공식 홈페이지](https://pytorch.org/get-started/locally/)에서 직접 확인하는 것을 권장합니다.)
+`head_layout: single`, `aggregation_order: pool_then_product`를 확인한다.
+`semantic_pool: avg`는 attention을 사용하지 않는 설정이다.
 
-**[참고용 설치 명령어 예시]**
-- **NVIDIA GPU (CUDA 11.8 지원)**: 폭넓은 호환성을 원할 때
-  ```bash
-  pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-  ```
-- **NVIDIA GPU (CUDA 12.1 지원)**: 최신 그래픽카드(RTX 40xx 등) 사용 시
-  ```bash
-  pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-  ```
-- **Mac (Apple Silicon - M1/M2/M3)**:
-  ```bash
-  pip install torch torchvision torchaudio
-  ```
-
-### Step 3. 나머지 필수 패키지 설치
-PyTorch가 오류 없이 설치된 것을 확인한 후, 프로젝트 실행에 필요한 나머지 라이브러리들을 설치합니다.
 ```bash
-pip install -r requirements.txt
+./test.sh densessl_unseen1_dinov3_single_poolprod_sd3 dinov3_vitb16 single
+./evaluate.sh densessl_unseen1_dinov3_single_poolprod_sd3
 ```
 
----
-## 🚀 How to Run (실행 방법)
-환경 세팅이 완료되었다면 아래 명령어로 코드를 실행할 수 있습니다.
+## 비교 기준
 
-Project Root
-```bash
-cd .../DenseSSL
-```
+Single/multi는 같은 pooling 방식끼리, pooling 순서는 같은 head 구성끼리 비교한다.
+Single 512차원과 multi 384×2는 파라미터 수까지 동일한 조건은 아니다.
 
-```
-Root/
-│   # DenseSSL
-├── DenseSSL/
-│
-│   # FAIR-Play
-└── FAIR-Play/
-    ├── audios/                    # Training binaural audios
-    │   ├── 000001.wav
-    │   ├── ...
-    │   └── 001871.wav
-    │
-    └── frames/                    # Training images extracted from video (10fps)
-        ├── 000001/                # 98 frames for video id = 000001
-        │   ├── 000001.png
-        │   ├── ...
-        │   └── 000098.png
-        ├── ...
-        └── 001871/                # 99 frames for video id = 001871
-            ├── 000001.png
-            ├── ...
-            └── 000099.png
-```
-Make sure that you set your dataset directory correctly on @DenseSSL/options/base_options.py
+새 실험의 seed는 기존 DINOv3 체크포인트에서 확인한 PyTorch seed
+`16655445212791328023`을 사용한다. Python·CUDA에도 같은 값을 적용하고,
+NumPy에는 `seed % 2**32`를 사용한다. 기존 실행의 Python·NumPy 초기 seed는
+확인되지 않아 완전한 재현은 아니며, Ours 기준군도 같은 새 설정으로 다시 학습한다.
 
-Train
-```bash
-./train.sh <CHECKPOINT_NAME>
-```
+세부 설정과 검증 내용은 [AGGREGATION_ABLATION.md](AGGREGATION_ABLATION.md)에 정리했다.
 
-Infernce
-```bash
-./test.sh <CHECKPOINT_NAME>
-```
+## Single 512 / Pool → Product 결과
 
-Evaluate
-```bash
-./evaluate.sh <CHECKPOINT_NAME>
-```
+FAIR-Play unseen1, seed `16655445212791328023`, 1000 epochs.
+Validation loss가 가장 낮은 checkpoint는 epoch 291에서 저장됐다.
+동일한 104개 test clip의 평가 결과는 다음과 같다.
 
-Qualitative Visualization
-```bash
-./vis_hwmax.sh <CHECKPOINT_NAME>
-```
+| 지표 ↓ | 평균 | 표준편차 | 표준오차 |
+| --- | ---: | ---: | ---: |
+| STFT L2 | 0.822451 | 0.681647 | 0.066841 |
+| Envelope | 0.129860 | 0.056370 | 0.005528 |
+
+원본 평가 출력은 [evaluation_single_poolprod_sd3.txt](evaluation_single_poolprod_sd3.txt)에 있다.
+Best 모델 파일과 학습 기록은 [W&B run](https://wandb.ai/stringwoo22-hanyang-university/DenseSSL/runs/pool-densessl_unseen1_dinov3_single_poolprod_sd3)에 연결된
+`densessl_unseen1_dinov3_single_poolprod_sd3-best:v1` artifact에 보관했다.
+대용량 checkpoint와 FAIR-Play 데이터는 Git에 포함하지 않는다.

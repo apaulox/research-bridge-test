@@ -39,6 +39,7 @@ def main():
     os.chdir(source)
     sys.path.insert(0, str(source))
     sys.argv = ['demo_batch.py', '--visual_backbone', backbone,
+                '--head_layout', metadata['config'].get('head_layout', 'multi'),
                 '--split_file', str(bundle / 'split.json'),
                 '--weights_visual', str(bundle / 'weights/visual_best.pth'),
                 '--weights_audio', str(bundle / 'weights/audio_best.pth'),

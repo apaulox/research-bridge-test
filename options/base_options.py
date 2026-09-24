@@ -17,6 +17,7 @@ class BaseOptions():
 		self.initialized = False
 
 	def initialize(self):
+		self.parser.add_argument('--head_layout', choices=['single', 'multi'], default='multi')
 		self.parser.add_argument('--visual_backbone', type=str, default='dinov2_vitb14_reg', choices=['dinov2_vitb14_reg', 'dinov3_vitb16'], help='frozen visual backbone')
 		self.parser.add_argument('--dinov3_repo', type=str, default='/home/huskypaul/dinov3', help='local clone of facebookresearch/dinov3')
 		self.parser.add_argument('--dinov3_weights', type=str, default='/home/huskypaul/dinov3_weights/dinov3_vitb16_pretrain_lvd1689m-73cec8be.pth', help='official DINOv3 ViT-B/16 LVD-1689M .pth checkpoint path or URL')

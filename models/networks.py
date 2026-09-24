@@ -48,8 +48,11 @@ def weights_init(m):
 
 class VisualNet(nn.Module):
     def __init__(self, backbone='dinov2_vitb14_reg', dinov3_repo='',
-                 dinov3_weights='', pretrained=True):
+                 dinov3_weights='', pretrained=True, head_layout='multi'):
         super(VisualNet, self).__init__()
+        if head_layout not in ('single', 'multi'):
+            raise ValueError('Unknown head layout: ' + head_layout)
+        self.head_layout = head_layout
         self.backbone = backbone
         if backbone == 'dinov2_vitb14_reg':
             self.patch_size = 14
@@ -93,6 +96,14 @@ class VisualNet(nn.Module):
             nn.ReLU(inplace=True)
         )
             
+        # Single contrastive head consumes all 768 channels. Decoder keeps its
+        # historical 384-channel spatial input, independent of this ablation.
+        if head_layout == 'single':
+            self.single_proj = nn.Sequential(
+                nn.Conv2d(768, 512, 1, bias=False), nn.BatchNorm2d(512), nn.ReLU(inplace=True),
+                nn.Conv2d(512, 512, 1, bias=False), nn.BatchNorm2d(512))
+            return
+
         # Non-linear projection layers for each 384-channel head
         self.semantic_proj = nn.Sequential(
             nn.Conv2d(384, 384, kernel_size=1, bias=False),
@@ -132,6 +143,10 @@ class VisualNet(nn.Module):
         
         # Split the updated 768 channels into two 384-channel heads
         sem, spa = torch.chunk(updated_x, 2, dim=1)
+
+        if self.head_layout == 'single':
+            shared = self.single_proj(updated_x)
+            return torch.stack([shared, shared], dim=1), spa
         
         # Apply independent non-linear projection to each (for contrastive loss bottleneck)
         sem_proj = self.semantic_proj(sem)
@@ -144,8 +159,11 @@ class VisualNet(nn.Module):
         return out, spa
 
 class AudioNet(nn.Module):
-    def __init__(self, ngf=64, input_nc=2, output_nc=2):
+    def __init__(self, ngf=64, input_nc=2, output_nc=2, head_layout='multi'):
         super(AudioNet, self).__init__()
+        if head_layout not in ('single', 'multi'):
+            raise ValueError('Unknown head layout: ' + head_layout)
+        self.head_layout = head_layout
         #initialize layers
         self.audionet_convlayer1 = unet_conv(input_nc, ngf)
         self.audionet_convlayer2 = unet_conv(ngf, ngf * 2)
@@ -168,6 +186,12 @@ class AudioNet(nn.Module):
         self.audionet_upconvlayer5 = unet_upconv(ngf * 2, output_nc, True) #outermost layer use a sigmoid to bound the mask
         self.conv1x1 = create_conv(384, 8, 1, 0) #reduce dimension of extracted spatial visual features
         
+        if head_layout == 'single':
+            self.single_proj = nn.Sequential(
+                nn.Conv2d(ngf * 8, ngf * 8, 1, bias=False), nn.BatchNorm2d(ngf * 8), nn.ReLU(inplace=True),
+                nn.Conv2d(ngf * 8, 512, 1, bias=False), nn.BatchNorm2d(512))
+            return
+
         # Non-linear projection layers for contrastive learning (384-channels)
         self.semantic_proj = nn.Sequential(
             nn.Conv2d(ngf * 8, ngf * 8, kernel_size=1, bias=False),  # 512 -> 512
@@ -221,6 +245,14 @@ class AudioNet(nn.Module):
         audio_upconv3feature = self.audionet_upconvlayer3(torch.cat((audio_upconv2feature, audio_conv3feature), dim=1))
         audio_upconv4feature = self.audionet_upconvlayer4(torch.cat((audio_upconv3feature, audio_conv2feature), dim=1))
         mask_prediction = self.audionet_upconvlayer5(torch.cat((audio_upconv4feature, audio_conv1feature), dim=1)) * 2 - 1
+
+        if self.head_layout == 'single':
+            # One call shares both projection weights and BN statistics across
+            # mono-semantic and stereo-spatial features, without update ordering.
+            batch = audio_conv5feature.shape[0]
+            projected = self.single_proj(torch.cat((audio_conv5feature, spatial_conv5feature), dim=0))
+            semantic_audio_feat, spatial_audio_feat = projected.split(batch, dim=0)
+            return mask_prediction, spatial_conv5feature, semantic_audio_feat, spatial_audio_feat
         
         # Apply non-linear projections for contrastive learning heads
         semantic_audio_feat = self.semantic_proj(audio_conv5feature)

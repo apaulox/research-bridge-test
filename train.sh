@@ -1,5 +1,5 @@
 #!/bin/bash
-# Usage: ./train.sh <CHECKPOINT_NAME> [VISUAL_BACKBONE] [avg|visual_attention] [SEED]
+# Usage: ./train.sh <NAME> [BACKBONE] [POOL] [SEED] [single|multi] [AGGREGATION_ORDER]
 
 set -eo pipefail
 
@@ -24,7 +24,9 @@ CHECKPOINT_NAME=$1
 VISUAL_BACKBONE=${2:-dinov2_vitb14_reg}
 SEMANTIC_POOL=${3:-avg}
 EXPERIMENT_SEED=${4:-42}
-PROJECT_ROOT="/home/huskypaul/DenseSSL_attention"
+HEAD_LAYOUT=${5:-multi}
+AGGREGATION_ORDER=${6:-product_then_pool}
+PROJECT_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 CHECKPOINT_DIR="${PROJECT_ROOT}/checkpoints/${CHECKPOINT_NAME}"
 SPLIT_FILE="${PROJECT_ROOT}/splits/unseen1.json"
 cd "${PROJECT_ROOT}"
@@ -36,10 +38,14 @@ echo "📄 Split file: ${SPLIT_FILE}"
 echo "👁️ Visual backbone: ${VISUAL_BACKBONE}"
 echo "Semantic pooling: ${SEMANTIC_POOL}"
 echo "Seed: ${EXPERIMENT_SEED}"
+echo "Contrastive heads: ${HEAD_LAYOUT}"
+echo "Aggregation order: ${AGGREGATION_ORDER}"
 echo "🐍 Python: $(command -v python)"
 echo "======================================"
 
 python -u train.py \
+    --head_layout "${HEAD_LAYOUT}" \
+    --aggregation_order "${AGGREGATION_ORDER}" \
     --semantic_pool "${SEMANTIC_POOL}" \
     --seed "${EXPERIMENT_SEED}" \
     --visual_backbone "${VISUAL_BACKBONE}" \

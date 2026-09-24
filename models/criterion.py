@@ -80,8 +80,13 @@ class DenseAVContrastiveLoss(nn.Module):
     Semantic (B_sem) and Spatial (B_spa).
     """
     def __init__(self, loss_type="nce", semantic_temperature=0.07, spatial_temperature=0.2,
-                 semantic_pool="avg", feature_dim=384):
+                 semantic_pool="avg", feature_dim=384, aggregation_order='product_then_pool'):
         super(DenseAVContrastiveLoss, self).__init__()
+        if aggregation_order not in ('product_then_pool', 'pool_then_product'):
+            raise ValueError('Unknown aggregation order: ' + aggregation_order)
+        if aggregation_order == 'pool_then_product' and semantic_pool != 'avg':
+            raise ValueError('Pool-then-product cannot use visual attention')
+        self.aggregation_order = aggregation_order
         if semantic_pool not in ("avg", "visual_attention"):
             raise ValueError("Unknown semantic pooling: " + semantic_pool)
         self.semantic_pool = semantic_pool
@@ -123,6 +128,16 @@ class DenseAVContrastiveLoss(nn.Module):
         # Flatten spatial and temporal dimensions
         v_flat = v_feat.reshape(B_v, D_v, H * W)       # [B_v, D, HW]
         a_flat = a_feat.reshape(B_a, D_a, F_dim * T_dim) # [B_a, D, FT]
+
+        if self.aggregation_order == 'pool_then_product':
+            if mode not in ('semantic', 'spatial'):
+                raise ValueError('Unknown mode: ' + mode)
+            if normalize:
+                v_flat = F.normalize(v_flat, p=2, dim=1)
+                a_flat = F.normalize(a_flat, p=2, dim=1)
+            # Channelwise visual max and audio FT mean BEFORE the dot product.
+            # Keep token normalization; do not introduce post-pool normalization.
+            return v_flat.max(dim=2).values @ a_flat.mean(dim=2).T
 
         if mode == "semantic":
             if normalize:
