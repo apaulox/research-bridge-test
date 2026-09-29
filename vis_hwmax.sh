@@ -19,7 +19,7 @@ if [ -z "$1" ]; then
 fi
 
 CHECKPOINT_NAME=$1
-PROJECT_ROOT="/home/huskypaul/DenseSSL_attention"
+PROJECT_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 CHECKPOINT_DIR="${PROJECT_ROOT}/checkpoints/${CHECKPOINT_NAME}"
 
 echo "======================================"
@@ -27,6 +27,6 @@ echo "🖼️  Visualize HW Max Started"
 echo "📂 Target checkpoints dir: ${CHECKPOINT_DIR}"
 echo "======================================"
 
-python visualize_hw_max.py \
+python "${PROJECT_ROOT}/vis_hwmax.py" \
     --checkpoints_dir "${CHECKPOINT_DIR}" \
     --sample_ids 123 225 817 922 207 230 380

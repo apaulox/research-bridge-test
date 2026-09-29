@@ -1,5 +1,5 @@
 #!/bin/bash
-# Usage: ./train.sh <NAME> [BACKBONE] [POOL] [SEED] [single|multi] [AGGREGATION_ORDER]
+# Usage: ./train.sh NAME [BACKBONE] [SEED]
 
 set -eo pipefail
 
@@ -14,18 +14,15 @@ fi
 source "${CONDA_SH}"
 conda activate densessl
 
-if [ -z "$1" ]; then
+if [ "$#" -lt 1 ] || [ "$#" -gt 3 ]; then
   echo "Error: Checkpoint name is required."
-  echo "Usage: ./train.sh <CHECKPOINT_NAME> [dinov2_vitb14_reg|dinov3_vitb16]"
+  echo "Usage: ./train.sh <CHECKPOINT_NAME> [dinov2_vitb14_reg|dinov3_vitb16] [SEED]"
   exit 1
 fi
 
 CHECKPOINT_NAME=$1
-VISUAL_BACKBONE=${2:-dinov2_vitb14_reg}
-SEMANTIC_POOL=${3:-avg}
-EXPERIMENT_SEED=${4:-42}
-HEAD_LAYOUT=${5:-multi}
-AGGREGATION_ORDER=${6:-product_then_pool}
+VISUAL_BACKBONE=${2:-dinov3_vitb16}
+EXPERIMENT_SEED=${3:-42}
 PROJECT_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 CHECKPOINT_DIR="${PROJECT_ROOT}/checkpoints/${CHECKPOINT_NAME}"
 SPLIT_FILE="${PROJECT_ROOT}/splits/unseen1.json"
@@ -36,21 +33,13 @@ echo "🚀 Training Started"
 echo "📂 Checkpoints dir: ${CHECKPOINT_DIR}"
 echo "📄 Split file: ${SPLIT_FILE}"
 echo "👁️ Visual backbone: ${VISUAL_BACKBONE}"
-echo "Semantic pooling: ${SEMANTIC_POOL}"
 echo "Seed: ${EXPERIMENT_SEED}"
-echo "Contrastive heads: ${HEAD_LAYOUT}"
-echo "Aggregation order: ${AGGREGATION_ORDER}"
 echo "🐍 Python: $(command -v python)"
 echo "======================================"
 
 python -u train.py \
-    --head_layout "${HEAD_LAYOUT}" \
-    --aggregation_order "${AGGREGATION_ORDER}" \
-    --semantic_pool "${SEMANTIC_POOL}" \
     --seed "${EXPERIMENT_SEED}" \
     --visual_backbone "${VISUAL_BACKBONE}" \
-    --norm_semantic \
-    --norm_spatial \
     --split_file "${SPLIT_FILE}" \
     --name mono2binaural \
     --model audioVisual \
@@ -59,7 +48,6 @@ python -u train.py \
     --display_freq 10 \
     --save_latest_freq 100 \
     --batchSize 16 \
-    --spatial_num_samples 5 \
     --learning_rate_decrease_itr 10 \
     --niter 1000 \
     --lr_visual 0.000025 \

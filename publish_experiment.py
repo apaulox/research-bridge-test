@@ -26,12 +26,9 @@ def main():
         raise ValueError('Experiment must be a directory name')
     checkpoint = root / 'checkpoints' / args.experiment / 'mono2binaural'
     state = torch.load(checkpoint / 'training_latest.pth', map_location='cpu', weights_only=False)
-    config = state['ablation_config']
-    has_attention = 'attention_weight' in state['contrastive_criterion']
-    if has_attention != (config['semantic_pool'] == 'visual_attention'):
-        raise ValueError('Checkpoint pooling metadata and parameters disagree')
+    config = state['training_config']
     best = torch.load(checkpoint / 'criterion_best.pth', map_location='cpu', weights_only=False)
-    if best['ablation_config'] != config:
+    if best['training_config'] != config:
         raise ValueError('Best and latest checkpoint configurations disagree')
     history = defaultdict(dict)
     acc = EventAccumulator(str(checkpoint / 'tensorboard'), size_guidance={'scalars': 0}).Reload()
@@ -84,8 +81,8 @@ def main():
         with tempfile.TemporaryDirectory(prefix='densessl-publish-') as temp:
             temp = Path(temp)
             metadata = {'experiment': args.experiment, 'config': config, 'summary': summary,
-                        'git_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip(),
-                        'source_snapshot': 'Current working files, including uncommitted ablation changes',
+                        'git_commit': (subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip() if (root / '.git').exists() else None),
+                        'source_snapshot': 'Current working files, including uncommitted changes',
                         'dataset_included': False, 'checkpoint_kind': 'best validation; inference only, not optimizer resume'}
             (temp / 'metadata.json').write_text(json.dumps(metadata, indent=2))
             # Package versions, without URLs or credentials from pip configuration.

@@ -10,7 +10,7 @@ import sys
 
 # Ensure imports work from the scripts absolute location
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-from models.retrieval_models import ModelBuilder
+from models.models import ModelBuilder
 from models.audioVisual_model import AudioVisualModel
 from data.audioVisual_dataset import generate_spectrogram, normalize
 
@@ -22,13 +22,16 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--checkpoints_dir', type=str, default='checkpoints/unseen1_35', help='path to the specific checkpoint directory')
     parser.add_argument('--sample_ids', type=str, nargs='+', default=['123', '225', '817'], help='list of sample IDs')
-    parser.add_argument('--audio_dir', type=str, default='/home/jwlee/spatial/FAIR-Play/audios')
-    parser.add_argument('--video_dir', type=str, default='/home/jwlee/spatial/FAIR-Play/frames')
+    parser.add_argument('--audio_dir', type=str, default='/home/huskypaul/FAIR-Play/audios')
+    parser.add_argument('--video_dir', type=str, default='/home/huskypaul/FAIR-Play/frames')
     parser.add_argument('--gpu_ids', type=str, default='0', help='gpu to use')
     parser.add_argument('--audio_sampling_rate', type=int, default=16000)
     parser.add_argument('--audio_length', type=float, default=0.63)
     parser.add_argument('--output_name', type=str, default='hw_max_visualization.png', help='name of the output file')
     
+    parser.add_argument('--visual_backbone', default='dinov3_vitb16')
+    parser.add_argument('--dinov3_repo', default='/home/huskypaul/dinov3')
+    parser.add_argument('--dinov3_weights', default='')
     opt = parser.parse_args()
     
     opt.sample_ids = [str(int(sid)).zfill(6) for sid in opt.sample_ids]
@@ -150,48 +153,17 @@ def main():
     with torch.no_grad():
         output = model(data)
         
-    v_spa = output['spatial_visual_feat'] # [B, D, H, W]
-    B, D, H, W = v_spa.shape
-    a_spa = output['spatial_audio_feat'] # [B, D, F, T]
-    B, D_a, F_dim, T_dim = a_spa.shape
-    
-    print(f"Spatial visual feature shape: {v_spa.shape}")
-    print(f"Spatial audio feature shape: {a_spa.shape}")
-    
-    v_flat = v_spa.view(B, D, H * W)
-    a_flat = a_spa.view(B, D_a, F_dim * T_dim)
-    
-    # Check norm_spatial from opt.txt
-    opt_path = os.path.join(opt.checkpoints_dir, 'mono2binaural', 'opt.txt')
-    norm_spatial = False
-    if os.path.exists(opt_path):
-        with open(opt_path, 'r') as f:
-            for line in f:
-                if line.startswith('norm_spatial:'):
-                    norm_spatial = line.split(':')[1].strip().lower() == 'true'
-                    break
-    
     import torch.nn.functional as F
-    if norm_spatial:
-        v_flat = F.normalize(v_flat, p=2, dim=1)
-        a_flat = F.normalize(a_flat, p=2, dim=1)
-        
-    # NEW LOGIC: Audio-Visual Cross-Modal Similarity Aggregation
-    # Matches the criterion.py logic: einsum -> hw max -> ft avg
-    # sim: [B, HW, FT]
-    sim = torch.einsum("bdp, bdq -> bpq", v_flat, a_flat)
-    
-    # 1. hw max: For each audio bin (FT), find the visual patch (HW) with the maximum similarity
-    max_hw_indices_per_ft = sim.argmax(dim=1) # [B, F_dim * T_dim]
-    
-    # 2. ft avg (voting distribution): Count votes for each patch to create a heatmap
-    vote_heatmaps = torch.zeros((B, H * W), dtype=torch.float32, device=device)
-    for i in range(B):
-        counts = torch.bincount(max_hw_indices_per_ft[i], minlength=H*W)
-        vote_heatmaps[i] = counts.float()
-        
-    vote_heatmaps = vote_heatmaps.view(B, H, W)
-    
+    visual = output['visual_feat']
+    B, D, H, W = visual.shape
+    visual = F.normalize(visual.flatten(2), p=2, dim=1)
+    # Count which HW location supplies each channel's max, before the dot product.
+    # This is a channel-max diagnostic, not an audio-conditioned localization map.
+    indices = visual.argmax(dim=2)
+    vote_heatmaps = torch.stack([
+        torch.bincount(row, minlength=H * W).float() for row in indices
+    ]).reshape(B, H, W)
+
     # Plotting
     ncols = min(B, 4)
     nrows = (B + 3) // 4

@@ -15,20 +15,17 @@ from options.train_options import TrainOptions
 from data.data_loader import CreateDataLoader
 from models.models import ModelBuilder
 from models.audioVisual_model import AudioVisualModel
-from models.criterion import DenseAVContrastiveLoss
+from models.criterion import AudioVisualContrastiveLoss
 
 try:
     from torch.utils.tensorboard import SummaryWriter
 except ImportError:
     from tensorboardX import SummaryWriter
 
-def create_optimizer(nets, opt, contrastive_criterion):
+def create_optimizer(nets, opt):
     (net_visual, net_audio) = nets
     param_groups = [{'params': net_visual.parameters(), 'lr': opt.lr_visual},
                     {'params': net_audio.parameters(), 'lr': opt.lr_audio}]
-    if contrastive_criterion.attention_weight is not None:
-        param_groups.append({'params': [contrastive_criterion.attention_weight],
-                             'lr': opt.lr_attention})
     if opt.optimizer == 'sgd':
         return torch.optim.SGD(param_groups, momentum=opt.beta1, weight_decay=opt.weight_decay)
     elif opt.optimizer == 'adam':
@@ -41,7 +38,7 @@ def decrease_learning_rate(optimizer, decay_factor=0.94):
 def save_training_state(path, next_epoch, total_steps, best_err,
                         net_visual, net_audio, optimizer, contrastive_criterion):
     state = {
-        'ablation_config': contrastive_criterion.ablation_config,
+        'training_config': contrastive_criterion.training_config,
         'next_epoch': next_epoch,
         'total_steps': total_steps,
         'best_err': best_err,
@@ -61,8 +58,8 @@ def save_training_state(path, next_epoch, total_steps, best_err,
 def load_training_state(path, net_visual, net_audio, optimizer,
                         contrastive_criterion, device):
     state = torch.load(path, map_location=device, weights_only=False)
-    if state.get('ablation_config') != contrastive_criterion.ablation_config:
-        raise ValueError('Resume configuration differs or is missing. Use a new experiment name for this ablation.')
+    if state.get('training_config') != contrastive_criterion.training_config:
+        raise ValueError('Resume configuration differs or is missing. Use a new experiment name for this architecture.')
     net_visual.load_state_dict(state['net_visual'])
     net_audio.load_state_dict(state['net_audio'])
     optimizer.load_state_dict(state['optimizer'])
@@ -88,8 +85,7 @@ def display_val(model, loss_criterion, writer, index, dataset_val, opt):
         for i, val_data in enumerate(dataset_val):
             if i < opt.validation_batches:
                 output = model.forward(val_data)
-                b = opt.batchSize
-                loss = loss_criterion(output['binaural_spectrogram'][:b], output['audio_gt'][:b])
+                loss = loss_criterion(output['binaural_spectrogram'], output['audio_gt'])
                 losses.append(loss.item()) 
             else:
                 break
@@ -136,12 +132,12 @@ net_visual = builder.build_visual(
         weights=opt.weights_visual,
         backbone=opt.visual_backbone,
         dinov3_repo=opt.dinov3_repo,
-        dinov3_weights=opt.dinov3_weights, head_layout=opt.head_layout)
+        dinov3_weights=opt.dinov3_weights)
 net_audio = builder.build_audio(
         ngf=opt.unet_ngf,
         input_nc=opt.unet_input_nc,
         output_nc=opt.unet_output_nc,
-        weights=opt.weights_audio, head_layout=opt.head_layout)
+        weights=opt.weights_audio)
 nets = (net_visual, net_audio)
 
 # construct our audio-visual model
@@ -153,30 +149,25 @@ model.to(opt.device)
 
 # set up loss function
 loss_criterion = torch.nn.MSELoss()
-contrastive_criterion = DenseAVContrastiveLoss(
-    semantic_pool=opt.semantic_pool,
-    feature_dim=512 if opt.head_layout == 'single' else 384,
-    aggregation_order=opt.aggregation_order)
-# Keep the historical fixed-temperature behavior; train only attention W.
-contrastive_criterion.log_temp_sem.requires_grad_(False)
-contrastive_criterion.log_temp_spa.requires_grad_(False)
-contrastive_criterion.ablation_config = {
-    'head_layout': opt.head_layout, 'aggregation_order': opt.aggregation_order,
-    'feature_dim': 512 if opt.head_layout == 'single' else 384,
-    'seed_text': str(opt.seed), 'numpy_seed': opt.seed % (2**32),
-    'seed_protocol': 'python=torch=cuda=seed; numpy=seed modulo 2**32',
-    'data_rng_protocol': 'reset before first epoch after model initialization; restore on resume',
-    'semantic_pool': opt.semantic_pool, 'seed': opt.seed,
-    'visual_backbone': opt.visual_backbone, 'lr_attention': opt.lr_attention,
+if opt.contrastive_weight < 0 or not np.isfinite(opt.contrastive_weight):
+    raise ValueError('contrastive_weight must be finite and nonnegative')
+contrastive_criterion = AudioVisualContrastiveLoss(opt.contrastive_temperature)
+contrastive_criterion.training_config = {
+    'architecture': 'image_mono_384_v1', 'pooling': 'pool_then_product',
+    'feature_dim': 384, 'token_l2_normalization': True,
+    'contrastive_weight': opt.contrastive_weight,
+    'contrastive_temperature': opt.contrastive_temperature,
+    'seed': opt.seed, 'seed_text': str(opt.seed), 'numpy_seed': opt.seed % (2**32),
+    'data_rng_protocol': 'reset after model initialization; restore on resume',
+    'visual_backbone': opt.visual_backbone,
     'split_file': os.path.abspath(opt.split_file),
-    'norm_semantic': opt.norm_semantic, 'norm_spatial': opt.norm_spatial,
 }
 
 if(len(opt.gpu_ids) > 0):
     loss_criterion.cuda(opt.gpu_ids[0])
     contrastive_criterion.cuda(opt.gpu_ids[0])
 
-optimizer = create_optimizer(nets, opt, contrastive_criterion)
+optimizer = create_optimizer(nets, opt)
 
 # initialization
 start_epoch = 1
@@ -186,8 +177,7 @@ model_forward_time = []
 model_backward_time = []
 batch_loss = []
 batch_loss_mse = []
-batch_loss_sem = []
-batch_loss_spa = []
+batch_loss_contrastive = []
 best_err = float("inf")
 
 training_state_path = opt.resume_path or os.path.join(
@@ -206,8 +196,7 @@ if opt.resume:
         print('no training state found at %s; starting a new run' % training_state_path)
 
 if not resumed:
-    # Different head sizes consume different initialization RNG amounts.
-    # Reset data RNG only for new runs so workers start from the same stream.
+    # Reset the data RNG after model initialization for reproducible sampling.
     random.seed(opt.seed)
     np.random.seed(opt.seed % (2**32))
     torch.manual_seed(opt.seed)
@@ -230,30 +219,17 @@ for epoch in range(start_epoch, opt.niter+1):
                 model.zero_grad()
                 output = model.forward(data)
 
-                b = opt.batchSize
 
                 # compute mask mse loss
-                loss_mse = loss_criterion(output['binaural_spectrogram'][:b], output['audio_gt'][:b])
+                loss_mse = loss_criterion(output['binaural_spectrogram'], output['audio_gt'])
                 
-                # compute contrastive loss
-                s_samples = getattr(opt, 'spatial_num_samples', 0)
-                contrastive_out = contrastive_criterion(
-                    v_sem=output['semantic_visual_feat'][:b], 
-                    a_sem=output['semantic_audio_feat'][:b],
-                    v_spa=output['spatial_visual_feat'], 
-                    a_spa=output['spatial_audio_feat'],
-                    s=s_samples,
-                    norm_semantic=getattr(opt, 'norm_semantic', False),
-                    norm_spatial=getattr(opt, 'norm_spatial', False)
-                )
+                contrastive_out = contrastive_criterion(output['visual_feat'], output['audio_feat'])
                 loss_contrastive = contrastive_out['loss']
-                
-                loss = loss_mse + loss_contrastive
-                
+                loss = loss_mse + opt.contrastive_weight * loss_contrastive
+
                 batch_loss.append(loss.item())
                 batch_loss_mse.append(loss_mse.item())
-                batch_loss_sem.append(contrastive_out['loss_semantic'].item())
-                batch_loss_spa.append(contrastive_out['loss_spatial'].item())
+                batch_loss_contrastive.append(loss_contrastive.item())
 
                 if(opt.measure_time):
                     torch.cuda.synchronize()
@@ -274,18 +250,15 @@ for epoch in range(start_epoch, opt.niter+1):
                         print('Display training progress at (epoch %d, total_steps %d)' % (epoch, total_steps))
                         avg_loss = sum(batch_loss) / len(batch_loss)
                         avg_loss_mse = sum(batch_loss_mse) / len(batch_loss_mse)
-                        avg_loss_sem = sum(batch_loss_sem) / len(batch_loss_sem)
-                        avg_loss_spa = sum(batch_loss_spa) / len(batch_loss_spa)
-                        print('Average loss: %.3f (mse: %.3f, sem: %.3f, spa: %.3f)' % (avg_loss, avg_loss_mse, avg_loss_sem, avg_loss_spa))
+                        avg_loss_contrastive = sum(batch_loss_contrastive) / len(batch_loss_contrastive)
+                        print('Average loss: %.3f (mse: %.3f, contrastive: %.3f)' % (avg_loss, avg_loss_mse, avg_loss_contrastive))
                         batch_loss = []
                         batch_loss_mse = []
-                        batch_loss_sem = []
-                        batch_loss_spa = []
+                        batch_loss_contrastive = []
                         if opt.tensorboard:
                             writer.add_scalar('data/loss', avg_loss, total_steps)
                             writer.add_scalar('data/loss_mse', avg_loss_mse, total_steps)
-                            writer.add_scalar('data/loss_sem', avg_loss_sem, total_steps)
-                            writer.add_scalar('data/loss_spa', avg_loss_spa, total_steps)
+                            writer.add_scalar('data/loss_contrastive', avg_loss_contrastive, total_steps)
                         if(opt.measure_time):
                                 print('average data loading time: ' + str(sum(data_loading_time)/len(data_loading_time)))
                                 print('average forward time: ' + str(sum(model_forward_time)/len(model_forward_time)))
@@ -315,7 +288,7 @@ for epoch in range(start_epoch, opt.niter+1):
                             torch.save(net_visual.state_dict(), os.path.join('.', opt.checkpoints_dir, opt.name, 'visual_best.pth'))
                             torch.save(net_audio.state_dict(), os.path.join('.', opt.checkpoints_dir, opt.name, 'audio_best.pth'))
                             torch.save({'state_dict': contrastive_criterion.state_dict(),
-                                        'ablation_config': contrastive_criterion.ablation_config},
+                                        'training_config': contrastive_criterion.training_config},
                                        os.path.join(opt.checkpoints_dir, opt.name, 'criterion_best.pth'))
 
                 if(opt.measure_time):

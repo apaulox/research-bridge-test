@@ -11,10 +11,7 @@ from .base_options import BaseOptions
 class TrainOptions(BaseOptions):
 	def initialize(self):
 		BaseOptions.initialize(self)
-		self.parser.add_argument('--aggregation_order', choices=['product_then_pool', 'pool_then_product'], default='product_then_pool')
-		self.parser.add_argument('--semantic_pool', choices=['avg', 'visual_attention'], default='avg')
 		self.parser.add_argument('--seed', type=int, default=42)
-		self.parser.add_argument('--lr_attention', type=float, default=0.000025)
 		self.parser.add_argument('--display_freq', type=int, default=50, help='frequency of displaying average loss')
 		self.parser.add_argument('--save_epoch_freq', type=int, default=50, help='frequency of saving checkpoints at the end of epochs')
 		self.parser.add_argument('--save_latest_freq', type=int, default=5000, help='frequency of saving the latest results')
@@ -36,11 +33,8 @@ class TrainOptions(BaseOptions):
 		self.parser.add_argument('--unet_ngf', type=int, default=64, help="unet base channel dimension")
 		self.parser.add_argument('--unet_input_nc', type=int, default=2, help="input spectrogram number of channels")
 		self.parser.add_argument('--unet_output_nc', type=int, default=2, help="output spectrogram number of channels")
-		self.parser.add_argument('--spatial_num_samples', type=int, default=3,
-			help="number of spatial samples (s) per anchor for spatial contrastive loss; "
-			     "batch size must be divisible by (s+1)")
-		self.parser.add_argument('--norm_semantic', action='store_true', help='apply l2 normalization for semantic similarity')
-		self.parser.add_argument('--norm_spatial', action='store_true', help='apply l2 normalization for spatial similarity')
+		self.parser.add_argument('--contrastive_weight', type=float, default=1.0)
+		self.parser.add_argument('--contrastive_temperature', type=float, default=0.07)
 
 		#optimizer arguments
 		self.parser.add_argument('--lr_visual', type=float, default=0.0001, help='learning rate for visual stream')

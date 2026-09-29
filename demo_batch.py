@@ -135,12 +135,12 @@ def main():
         weights=opt.weights_visual,
         backbone=opt.visual_backbone,
         dinov3_repo=opt.dinov3_repo,
-        dinov3_weights=opt.dinov3_weights, head_layout=opt.head_layout)
+        dinov3_weights=opt.dinov3_weights)
     net_audio = builder.build_audio(
             ngf=opt.unet_ngf,
             input_nc=opt.unet_input_nc,
             output_nc=opt.unet_output_nc,
-            weights=opt.weights_audio, head_layout=opt.head_layout)
+            weights=opt.weights_audio)
     nets = (net_visual, net_audio)
 
     # construct our audio-visual model
