@@ -13,8 +13,8 @@ class AudioVisualModel(torch.nn.Module):
 
     def forward(self, input):
         mono = input['audio_mix_spec']
-        visual = self.net_visual(input['frame'])
-        mask, audio = self.net_audio(mono, visual)
+        visual, decoder_visual = self.net_visual(input['frame'])
+        mask, audio = self.net_audio(mono, decoder_visual)
         real = mono[:, 0, :-1] * mask[:, 0] - mono[:, 1, :-1] * mask[:, 1]
         imag = mono[:, 0, :-1] * mask[:, 1] + mono[:, 1, :-1] * mask[:, 0]
         output = {

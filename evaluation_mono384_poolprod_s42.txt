@@ -1,0 +1,41 @@
+DenseSSL_new single-head evaluation record (seed 42)
+===================================================
+
+Experiment: densessl_unseen1_dinov3_mono384_poolprod_s42
+Workspace: /home/huskypaul/DenseSSL_new
+Code commit at recording time: 70ef2a8 (not independently verified as the training-start commit)
+Model: frozen DINOv3 ViT-B/16; image-mono single contrastive head;
+       visual 768 -> 384, mono audio 512 -> 384; pool then product;
+       binaural L-R spectrogram MSE.
+Seed: 42
+Split: FAIR-Play unseen1, 104 test clips.
+Training: 1000 epochs completed; latest resumable state points to epoch 1001.
+Best checkpoint: epoch 431, step 358400, validation MSE 0.570 (rounded log value).
+Inference: test.sh loads visual_best.pth and audio_best.pth.
+Evaluation: evaluate.py --normalization True; lower is better.
+Numbers below: mean / sample standard deviation / standard error.
+
+STFT L2 Distance:
+  mean  0.8502354901821281
+  std   0.716818693861925
+  SE    0.07028985591750093
+
+Average Envelope Distance:
+  mean  0.13107701965894264
+  std   0.05786463267652768
+  SE    0.005674094060855641
+
+Source: re-ran ./evaluate.sh on the generated s42 outputs on 2026-09-29.
+Outputs: /home/huskypaul/DenseSSL_new/outputs/densessl_unseen1_dinov3_mono384_poolprod_s42
+Checkpoint: /home/huskypaul/DenseSSL_new/checkpoints/densessl_unseen1_dinov3_mono384_poolprod_s42/mono2binaural
+Training log: /home/huskypaul/DenseSSL_new/train_densessl_unseen1_dinov3_mono384_poolprod_s42.log
+
+Reproduce:
+  cd /home/huskypaul/DenseSSL_new
+  ./test.sh densessl_unseen1_dinov3_mono384_poolprod_s42 dinov3_vitb16
+  ./evaluate.sh densessl_unseen1_dinov3_mono384_poolprod_s42
+
+Previous seed result (sd3): STFT L2 0.8277678541624203;
+                            Envelope Distance 0.1293173272950718.
+The seed-42 point estimate is higher on both metrics. Two seeds alone do not
+establish a statistically reliable difference from Ours or between seeds.

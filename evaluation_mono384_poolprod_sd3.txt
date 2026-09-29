@@ -1,0 +1,109 @@
+DenseSSL_new 실험 결과 기록
+===========================
+
+1. 실험 식별
+실험명: densessl_unseen1_dinov3_mono384_poolprod_sd3
+작업환경: /home/huskypaul/DenseSSL_new
+Git 브랜치: gitpush_Dense_single_new
+기록 시 확인한 Git commit: 70ef2a8eb84123364f90a7561b002576f70e68e5
+위 commit은 기록 당시 코드 상태이며, 학습 시작 시점의 commit을 별도로 검증한 것은 아님.
+
+2. 모델 및 목적함수
+Frozen DINOv3 ViT-B/16, 영상–mono 단일 contrastive head.
+Visual projection: 768 -> 384 -> 384.
+동일한 384차원 visual feature map을 decoder와 contrastive 경로에서 공유.
+Mono 입력: L+R의 complex spectrogram (2채널은 실수부/허수부).
+Mono encoder feature: 512차원.
+Audio contrastive projection: 512 -> 512 -> 384.
+Token별 채널 방향 L2 정규화 후 visual HW max, audio FT mean.
+Pooling된 두 embedding의 내적으로 B x B similarity 계산.
+동일 영상–mono 쌍을 positive로 하는 양방향 InfoNCE 사용.
+Temperature: 0.07 (고정).
+Total loss = L-R complex spectrogram MSE + 1.0 * contrastive loss.
+별도 stereo encoder, semantic/spatial head 및 loss, spatial 추가 샘플링 없음.
+Decoder에는 pooling 전 visual feature map을 전달하므로 영상의 공간 정보는 사용함.
+GT L-R은 MSE 정답으로만 사용하며 encoder/decoder의 직접 입력이 아님.
+
+3. 학습 설정 및 완료 상태
+Dataset/split: FAIR-Play, splits/unseen1.json.
+Train: 832 clips / Validation: 104 clips / Test: 104 clips.
+Seed: 16655445212791328023.
+Python/Torch/CUDA: 위 seed. NumPy: seed % (2**32).
+Batch size: 16.
+Epochs: 1000. 로그에서 epoch 1000 완료 및 epoch 1001 재개 상태 저장 확인.
+Optimizer: Adam, beta1=0.9, weight_decay=0.0005.
+Initial LR: visual=0.000025, audio=0.00025.
+LR schedule: 10 epochs마다 0.94배.
+Sampling rate: 16000 Hz. Audio crop: 0.63 s.
+Validation: 기존 Ours 정책과 같이 매번 shuffle, 16개 완전 배치 6개(96 clips) 평가.
+마지막 8 clips는 제외하며, 동일 크기 배치 MSE를 단순 평균.
+Validation/best checkpoint 선택에는 contrastive loss를 포함하지 않고 MSE만 사용.
+
+4. Best checkpoint
+마지막 best 갱신 로그: epoch 402, total_steps 334400.
+Best validation MSE: 0.568 (로그에 출력된 반올림 값).
+Checkpoint directory:
+/home/huskypaul/DenseSSL_new/checkpoints/densessl_unseen1_dinov3_mono384_poolprod_sd3/mono2binaural
+추론 스크립트는 visual_best.pth 및 audio_best.pth를 로드함.
+training_latest.pth는 epoch 1000 완료 후 재개용 상태이며 best weights와 구분됨.
+
+5. Test 평가 결과 (104 clips)
+출처: 사용자가 제공한 현재 실험의 전체 test 추론 및 evaluation 출력.
+평가: evaluate.py, normalization=True.
+아래 값의 순서는 mean / sample standard deviation / standard error.
+
+STFT L2 Distance:
+Mean = 0.8277678541624203
+Std  = 0.699362323390879
+SE   = 0.06857811796234
+
+Average Envelope Distance:
+Mean = 0.1293173272950718
+Std  = 0.05731159073580068
+SE   = 0.0056198638368632915
+
+두 지표 모두 낮을수록 좋음.
+STFT L2 Distance는 코드상 좌우 채널 각각의 complex STFT 실수부/허수부 MSE를 합한 값.
+Envelope Distance는 좌우 채널 각각의 Hilbert envelope RMSE를 합한 값.
+예측과 GT는 각각 전체 파형의 최대 절댓값으로 정규화한 뒤 평가함.
+
+6. 같은 test 결과 폴더에서 계산한 mono 복제 기준
+출처: 현재 결과 폴더에 대해 evaluate.py --normalization True --real_mono True 실행.
+mixed_mono.wav를 좌우에 동일하게 복제하여 동일한 GT와 비교.
+
+STFT L2 Distance:
+Mean = 1.0984183363974667
+Std  = 0.9203496095080662
+SE   = 0.09024770419632941
+
+Average Envelope Distance:
+Mean = 0.14793124612277517
+Std  = 0.06118818747972319
+SE   = 0.005999995422316967
+
+현재 NEW는 이 두 지표에서 mono 복제 기준보다 낮은 오차를 보임.
+이 비교만으로 기존 Ours보다 우수하거나 공간 표현이 우수하다고 확정할 수 없음.
+
+7. 해석 및 공통 점검 사항
+- Single head는 공간 정보가 전혀 없다는 뜻이 아님. 영상 feature와 L-R MSE 감독은 유지됨.
+- 현재 결과는 한 seed의 결과. Seed 간 평균/표준편차나 통계적 우위를 주장하지 않음.
+- head, pooling 순서, stereo 경로, loss, decoder visual feature가 함께 달라졌으므로
+  기존 Ours와의 차이를 head 수 하나의 영향으로 해석할 수 없음.
+- GT stereo RMS 기반 정규화와 256-bin spectrogram의 기존 ISTFT 처리가 남아 있음.
+  기존 Ours에도 적용된 처리이며 이번 비교에서는 변경하지 않음.
+  이들이 현재 성능의 원인이라는 결론은 내리지 않음.
+- 다른 seed 42 실험 명령어는 안내했으나, 이 기록에는 해당 결과가 포함되지 않음.
+
+8. 파일 위치 및 재평가 명령어
+학습 로그:
+/home/huskypaul/DenseSSL_new/train_densessl_unseen1_dinov3_mono384_poolprod_sd3.log
+추론 결과:
+/home/huskypaul/DenseSSL_new/outputs/densessl_unseen1_dinov3_mono384_poolprod_sd3
+
+source /home/huskypaul/miniforge3/etc/profile.d/conda.sh
+conda activate densessl
+cd /home/huskypaul/DenseSSL_new
+bash evaluate.sh densessl_unseen1_dinov3_mono384_poolprod_sd3
+
+Mono 복제 기준 재평가:
+python evaluate.py --results_root outputs/densessl_unseen1_dinov3_mono384_poolprod_sd3 --normalization True --real_mono True

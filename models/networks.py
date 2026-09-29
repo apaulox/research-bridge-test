@@ -82,16 +82,16 @@ class VisualNet(nn.Module):
         for param in self.feature_extraction.parameters():
             param.requires_grad = False
             
-        # One 384-channel map feeds both reconstruction and contrastive learning.
-        self.projection = nn.Sequential(
+        # Shared trainable 768-channel representation for both objectives.
+        # The 384-channel projection below remains contrastive-only.
+        self.shared_proj = nn.Sequential(
+            nn.Conv2d(768, 768, 1, bias=False), nn.BatchNorm2d(768), nn.ReLU(inplace=True),
+            nn.Conv2d(768, 768, 1, bias=False), nn.BatchNorm2d(768), nn.ReLU(inplace=True))
+        self.contrastive_projection = nn.Sequential(
             nn.Conv2d(768, 384, 1, bias=False), nn.BatchNorm2d(384), nn.ReLU(inplace=True),
             nn.Conv2d(384, 384, 1, bias=False), nn.BatchNorm2d(384))
 
     def forward(self, x):
-        # Preserve the original DenseSSL 16x32 visual interface. DINOv3-B/16
-        # produces a 14x28 map for the same 224x448 input, so only the adapter
-        # resamples its patch map to retain the decoder's spatial dimensions.
-        target_h, target_w = x.shape[-2] // 14, x.shape[-1] // 14
         features = self.feature_extraction.forward_features(x)
         patch_tokens = features['x_norm_patchtokens']
         B, N, C = patch_tokens.shape
@@ -101,11 +101,8 @@ class VisualNet(nn.Module):
                 '%s returned patch tokens with shape %s; expected [B, %d, 768]'
                 % (self.backbone, tuple(patch_tokens.shape), H * W))
         x = patch_tokens.permute(0, 2, 1).reshape(B, C, H, W)
-        if (H, W) != (target_h, target_w):
-            x = F.interpolate(
-                x, size=(target_h, target_w), mode='bilinear', align_corners=False)
-        
-        return self.projection(x)
+        x = self.shared_proj(x)
+        return self.contrastive_projection(x), x
 
 class AudioNet(nn.Module):
     def __init__(self, ngf=64, input_nc=2, output_nc=2):
@@ -117,13 +114,13 @@ class AudioNet(nn.Module):
         self.audionet_convlayer4 = unet_conv(ngf * 4, ngf * 8)
         self.audionet_convlayer5 = unet_conv(ngf * 8, ngf * 8)
         
-        self.visual_proj = nn.Conv2d(4096, 512, kernel_size=1)
-        self.audionet_upconvlayer1 = unet_upconv(1024, ngf * 8) # 1024 = 512 (projected visual) + 512 (audio feature)
+        self.visual_pool = nn.AdaptiveAvgPool2d((7, 14))
+        self.audionet_upconvlayer1 = unet_upconv(1296, ngf * 8) # 1296 = 784 visual + 512 mono audio
         self.audionet_upconvlayer2 = unet_upconv(ngf * 16, ngf *4)
         self.audionet_upconvlayer3 = unet_upconv(ngf * 8, ngf * 2)
         self.audionet_upconvlayer4 = unet_upconv(ngf * 4, ngf)
         self.audionet_upconvlayer5 = unet_upconv(ngf * 2, output_nc, True) #outermost layer use a sigmoid to bound the mask
-        self.conv1x1 = create_conv(384, 8, 1, 0) #reduce dimension of extracted spatial visual features
+        self.conv1x1 = create_conv(768, 8, 1, 0)
         
         self.projection = nn.Sequential(
             nn.Conv2d(ngf * 8, ngf * 8, 1, bias=False), nn.BatchNorm2d(ngf * 8), nn.ReLU(inplace=True),
@@ -137,12 +134,10 @@ class AudioNet(nn.Module):
         audio_conv4feature = self.audionet_convlayer4(audio_conv3feature)
         audio_conv5feature = self.audionet_convlayer5(audio_conv4feature)
 
-        # Use the shared 384-channel visual map without contrastive normalization or pooling.
-        visual_feat = self.conv1x1(visual_feat) # [B, 8, 16, 32]
-        visual_feat = visual_feat.reshape(visual_feat.shape[0], -1, 1, 1) # flatten to [B, 4096, 1, 1]
-        # visual_feat = visual_feat.repeat(1, 1, audio_conv5feature.shape[-2], audio_conv5feature.shape[-1]) # tile to [B, 4096, H_a, W_a]
-        visual_feat = self.visual_proj(visual_feat) # [B, 512, 1, 1]
-        visual_feat = visual_feat.repeat(1, 1, audio_conv5feature.shape[-2], audio_conv5feature.shape[-1]) # tile to [B, 512, H_a, W_a]
+        visual_feat = self.visual_pool(visual_feat)  # [B, 768, 7, 14]
+        visual_feat = self.conv1x1(visual_feat)      # [B, 8, 7, 14]
+        visual_feat = visual_feat.reshape(visual_feat.shape[0], 784, 1, 1)
+        visual_feat = visual_feat.expand(-1, -1, audio_conv5feature.shape[-2], audio_conv5feature.shape[-1])
         
         audioVisual_feature = torch.cat((visual_feat, audio_conv5feature), dim=1)
         

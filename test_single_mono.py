@@ -4,8 +4,9 @@ import copy
 import os
 from pathlib import Path
 import random
+import sys
 import tempfile
-from types import SimpleNamespace
+from types import ModuleType, SimpleNamespace
 from unittest.mock import patch
 
 import numpy as np
@@ -19,13 +20,38 @@ from data.custom_dataset_data_loader import CustomDatasetDataLoader
 
 
 class FakeDino(nn.Module):
-    def __init__(self):
+    def __init__(self, patch_size=14):
         super().__init__()
         self.scale = nn.Parameter(torch.ones(1))
+        self.patch_size = patch_size
 
     def forward_features(self, images):
-        tokens = F.avg_pool2d(images, 14, 14).flatten(2).transpose(1, 2)
+        tokens = F.avg_pool2d(images, self.patch_size, self.patch_size).flatten(2).transpose(1, 2)
         return {'x_norm_patchtokens': tokens.repeat(1, 1, 256) * self.scale}
+
+
+def check_dinov3_decoder_shapes():
+    dinov3 = ModuleType('dinov3')
+    hub = ModuleType('dinov3.hub')
+    backbones = ModuleType('dinov3.hub.backbones')
+    backbones.dinov3_vitb16 = lambda **kwargs: FakeDino(patch_size=16)
+    with patch.dict(sys.modules, {'dinov3': dinov3, 'dinov3.hub': hub,
+                                  'dinov3.hub.backbones': backbones}):
+        visual = VisualNet(backbone='dinov3_vitb16', dinov3_repo='.', pretrained=False)
+    audio = AudioNet()
+    visual.eval()
+    audio.eval()
+    with torch.no_grad():
+        contrastive, decoder_source = visual(torch.randn(1, 3, 224, 448))
+        pooled = audio.visual_pool(decoder_source)
+        reduced = audio.conv1x1(pooled)
+    assert decoder_source.shape == (1, 768, 14, 28)
+    assert contrastive.shape == (1, 384, 14, 28)
+    assert pooled.shape == (1, 768, 7, 14)
+    assert reduced.shape == (1, 8, 7, 14)
+    assert reduced.flatten(1).shape == (1, 784)
+    assert audio.audionet_upconvlayer1[0].in_channels == 1296
+    print('PASS: DINOv3 native 14x28, decoder 7x14 -> 8 -> 784, no interpolation')
 
 
 def nonzero(grads):
@@ -81,7 +107,7 @@ def check_model_and_resume():
         audio = AudioNet()
         model = AudioVisualModel((visual, audio), SimpleNamespace())
         criterion = AudioVisualContrastiveLoss()
-        criterion.training_config = {'architecture': 'image_mono_384_v1'}
+        criterion.training_config = {'architecture': 'image_mono_2p5d_784_shared768_v3'}
         inputs = {'frame': torch.randn(2, 3, 224, 448),
                   'audio_mix_spec': torch.randn(2, 2, 257, 64),
                   'audio_diff_spec': torch.randn(2, 2, 257, 64)}
@@ -89,16 +115,25 @@ def check_model_and_resume():
         hook = audio.conv1x1.register_forward_pre_hook(lambda module, args: decoder_inputs.append(args[0]))
         output = model(inputs)
         hook.remove()
-        assert decoder_inputs[0] is output['visual_feat']
+        assert decoder_inputs[0].shape == (2, 768, 7, 14)
+        assert decoder_inputs[0].requires_grad is True
         assert output['visual_feat'].shape == (2, 384, 16, 32)
         assert output['audio_feat'].shape == (2, 384, 8, 2)
         assert output['binaural_spectrogram'].shape == (2, 2, 256, 64)
         mse = F.mse_loss(output['binaural_spectrogram'], output['audio_gt'])
         contrastive = criterion(output['visual_feat'], output['audio_feat'])['loss']
-        # Both objectives update the same visual projection and mono encoder.
-        shared = (visual.projection[0].weight, audio.audionet_convlayer1[0].weight)
-        nonzero(torch.autograd.grad(mse, shared, retain_graph=True))
-        nonzero(torch.autograd.grad(contrastive, shared + (audio.projection[-2].weight,), retain_graph=True))
+        # Both objectives update the 768-channel visual trunk and mono encoder.
+        # The contrastive head and decoder reduction stay branch-specific.
+        mono_weight = audio.audionet_convlayer1[0].weight
+        shared_weight = visual.shared_proj[0].weight
+        visual_weight = visual.contrastive_projection[0].weight
+        decoder_weight = audio.conv1x1[0].weight
+        nonzero(torch.autograd.grad(mse, (shared_weight, decoder_weight, mono_weight), retain_graph=True))
+        nonzero(torch.autograd.grad(contrastive, (shared_weight, visual_weight, mono_weight,
+                                                 audio.projection[-2].weight), retain_graph=True))
+        assert torch.autograd.grad(mse, visual_weight, allow_unused=True, retain_graph=True)[0] is None
+        assert torch.autograd.grad(contrastive, decoder_weight, allow_unused=True,
+                                   retain_graph=True)[0] is None
         assert torch.autograd.grad(mse, audio.projection[-2].weight, allow_unused=True, retain_graph=True)[0] is None
         assert torch.autograd.grad(contrastive, audio.audionet_upconvlayer5[0].weight,
                                    allow_unused=True, retain_graph=True)[0] is None
@@ -123,15 +158,15 @@ def check_model_and_resume():
             checkpoint = str(Path(directory) / 'state.pth')
             scope['save_training_state'](checkpoint, 2, 2, 0.5, visual, audio, optimizer, criterion)
             expected_random = (random.random(), np.random.rand(), torch.rand(1))
-            saved = visual.projection[0].weight.detach().clone()
-            saved_moment = optimizer.state[visual.projection[0].weight]['exp_avg'].clone()
+            saved = visual.contrastive_projection[0].weight.detach().clone()
+            saved_moment = optimizer.state[visual.contrastive_projection[0].weight]['exp_avg'].clone()
             with torch.no_grad():
-                visual.projection[0].weight.zero_()
-                optimizer.state[visual.projection[0].weight]['exp_avg'].zero_()
+                visual.contrastive_projection[0].weight.zero_()
+                optimizer.state[visual.contrastive_projection[0].weight]['exp_avg'].zero_()
             result = scope['load_training_state'](checkpoint, visual, audio, optimizer, criterion, 'cpu')
             assert result == (2, 2, 0.5)
-            torch.testing.assert_close(visual.projection[0].weight, saved)
-            torch.testing.assert_close(optimizer.state[visual.projection[0].weight]['exp_avg'], saved_moment)
+            torch.testing.assert_close(visual.contrastive_projection[0].weight, saved)
+            torch.testing.assert_close(optimizer.state[visual.contrastive_projection[0].weight]['exp_avg'], saved_moment)
             assert random.random() == expected_random[0] and np.random.rand() == expected_random[1]
             torch.testing.assert_close(torch.rand(1), expected_random[2])
             restored_visual = VisualNet(backbone='dinov2_vitb14_reg', pretrained=False)
@@ -148,7 +183,7 @@ def check_model_and_resume():
                 pass
             else:
                 raise AssertionError('Incompatible checkpoint accepted')
-        print('PASS: shared decoder map, both gradient routes, target-free inference, optimizer/RNG resume, strict reload')
+        print('PASS: shared visual trunk and mono encoder; separate heads; target-free inference, optimizer/RNG resume, strict reload')
 
 
 def check_batches():
@@ -178,6 +213,7 @@ def check_batches():
 if __name__ == '__main__':
     torch.set_num_threads(2)
     torch.manual_seed(7)
+    check_dinov3_decoder_shapes()
     check_formula()
     check_model_and_resume()
     check_batches()

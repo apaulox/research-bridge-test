@@ -22,7 +22,9 @@ def main():
     mse = F.mse_loss(out['binaural_spectrogram'], out['audio_gt'])
     contrastive = criterion(out['visual_feat'], out['audio_feat'])['loss']
     (mse + contrastive).backward()
-    for p in (visual.projection[0].weight, audio.projection[-2].weight,
+    for p in (visual.shared_proj[0].weight, visual.contrastive_projection[0].weight,
+              audio.conv1x1[0].weight,
+              audio.projection[-2].weight,
               audio.audionet_convlayer1[0].weight, audio.audionet_upconvlayer5[0].weight):
         assert p.grad is not None and torch.isfinite(p.grad).all() and p.grad.abs().sum() > 0
     assert all(p.grad is None for p in visual.feature_extraction.parameters())

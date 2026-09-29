@@ -13,9 +13,10 @@ class Visual(nn.Module):
     def __init__(self):
         super().__init__()
         self.projection = nn.Conv2d(3, 384, 1)
+        self.decoder_source = nn.Conv2d(3, 768, 1)
 
     def forward(self, x):
-        return self.projection(x)
+        return self.projection(x), self.decoder_source(x)
 
 
 class Audio(nn.Module):
@@ -23,7 +24,7 @@ class Audio(nn.Module):
         super().__init__()
         self.projection = nn.Conv2d(2, 384, 1)
         self.mask = nn.Conv2d(2, 2, 1)
-        self.visual = nn.Linear(384, 2)
+        self.visual = nn.Linear(768, 2)
 
     def forward(self, mono, visual):
         bias = self.visual(visual.mean((2, 3)))[:, :, None, None]
@@ -61,7 +62,7 @@ def main():
                     runpy.run_path('train.py', run_name='__main__')
                 state = torch.load(root / 'smoke/training_latest.pth', map_location='cpu', weights_only=False)
                 assert state['next_epoch'] == epochs + 1 and state['total_steps'] == epochs * 2
-                assert state['training_config']['architecture'] == 'image_mono_384_v1'
+                assert state['training_config']['architecture'] == 'image_mono_2p5d_784_shared768_v3'
                 assert state['contrastive_criterion'].keys() == {'temperature'}
         best = torch.load(root / 'smoke/criterion_best.pth', map_location='cpu', weights_only=False)
         assert best['training_config'] == state['training_config']

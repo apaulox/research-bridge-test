@@ -153,7 +153,8 @@ if opt.contrastive_weight < 0 or not np.isfinite(opt.contrastive_weight):
     raise ValueError('contrastive_weight must be finite and nonnegative')
 contrastive_criterion = AudioVisualContrastiveLoss(opt.contrastive_temperature)
 contrastive_criterion.training_config = {
-    'architecture': 'image_mono_384_v1', 'pooling': 'pool_then_product',
+    'architecture': 'image_mono_2p5d_784_shared768_v3', 'pooling': 'pool_then_product',
+    'decoder_visual': 'shared768_native_hw_to_avg7x14_conv8_flatten784',
     'feature_dim': 384, 'token_l2_normalization': True,
     'contrastive_weight': opt.contrastive_weight,
     'contrastive_temperature': opt.contrastive_temperature,
