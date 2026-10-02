@@ -7,6 +7,7 @@
 # LICENSE file in the root directory of this source tree.
 
 from .base_options import BaseOptions
+import secrets
 
 class TrainOptions(BaseOptions):
 	def initialize(self):
@@ -15,6 +16,7 @@ class TrainOptions(BaseOptions):
 		self.parser.add_argument('--save_epoch_freq', type=int, default=50, help='frequency of saving checkpoints at the end of epochs')
 		self.parser.add_argument('--save_latest_freq', type=int, default=5000, help='frequency of saving the latest results')
 		self.parser.add_argument('--niter', type=int, default=1000, help='# of epochs to train')
+		self.parser.add_argument('--seed', type=int, default=secrets.randbits(63), help='random seed for a new training run')
 		self.parser.add_argument('--learning_rate_decrease_itr', type=int, default=-1, help='how often is the learning rate decreased by six percent')
 		self.parser.add_argument('--decay_factor', type=float, default=0.94, help='learning rate decay factor')
 		self.parser.add_argument('--tensorboard', type=bool, default=False, help='use tensorboard to visualize loss change ')		

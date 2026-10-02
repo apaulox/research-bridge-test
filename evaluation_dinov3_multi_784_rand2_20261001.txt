@@ -1,0 +1,18 @@
+Experiment: densessl_unseen1_dinov3_multi_784_rand2_20261001
+Seed: 8472947719116703939
+======================================
+📊 Evaluation Started
+📂 Target outputs dir: /home/huskypaul/DenseSSL/outputs/densessl_unseen1_dinov3_multi_784_rand2_20261001
+======================================
+Evaluating testing example 10 : 000121
+Evaluating testing example 20 : 001521
+Evaluating testing example 30 : 001085
+Evaluating testing example 40 : 000696
+Evaluating testing example 50 : 001033
+Evaluating testing example 60 : 000922
+Evaluating testing example 70 : 001858
+Evaluating testing example 80 : 000692
+Evaluating testing example 90 : 001291
+Evaluating testing example 100 : 000255
+STFT L2 Distance:  0.8271803769748658 0.6909242881208069 0.06775070052967688
+Average Envelope Distance:  0.1295772289427427 0.057265461843138445 0.005615340526789731

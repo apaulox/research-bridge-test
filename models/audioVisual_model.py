@@ -42,7 +42,7 @@ class AudioVisualModel(torch.nn.Module):
         audio_r = 0.5 * (audio_mix - audio_diff)
         audio_spatial = torch.cat((audio_l, audio_r), dim=1)
         
-        # Pass the original un-projected 768-ch visual feature map [B, 768, H, W] to AudioNet for U-Net decoding
+        # Decode from the spatial 384-channel slice, before its contrastive projection.
         mask_prediction, spatial_feature, semantic_audio_feat, spatial_audio_feat = self.net_audio(audio_mix, audio_spatial, visual_feature_org)
 
         #complex masking to obtain the predicted spectrogram

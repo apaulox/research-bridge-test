@@ -96,6 +96,12 @@ def display_val(model, loss_criterion, writer, index, dataset_val, opt):
 #parse arguments
 opt = TrainOptions().parse()
 opt.device = torch.device("cuda")
+random.seed(opt.seed)
+np.random.seed(opt.seed % (2**32))
+torch.manual_seed(opt.seed)
+torch.cuda.manual_seed_all(opt.seed)
+torch.backends.cudnn.benchmark = False
+torch.backends.cudnn.deterministic = True
 
 #construct data loader
 data_loader = CreateDataLoader(opt)
@@ -162,16 +168,25 @@ best_err = float("inf")
 
 training_state_path = opt.resume_path or os.path.join(
     opt.checkpoints_dir, opt.name, 'training_latest.pth')
+resumed = False
 if opt.resume:
     if os.path.isfile(training_state_path):
         start_epoch, total_steps, best_err = load_training_state(
             training_state_path, net_visual, net_audio, optimizer,
             contrastive_criterion, opt.device)
+        resumed = True
         print('resumed training state from %s' % training_state_path)
         print('continuing at epoch %d, total_steps %d, best validation %.6f' %
               (start_epoch, total_steps, best_err))
     else:
         print('no training state found at %s; starting a new run' % training_state_path)
+
+if not resumed:
+    # Model initialization consumes RNG; start data sampling from the chosen seed.
+    random.seed(opt.seed)
+    np.random.seed(opt.seed % (2**32))
+    torch.manual_seed(opt.seed)
+    torch.cuda.manual_seed_all(opt.seed)
 
 for epoch in range(start_epoch, opt.niter+1):
         torch.cuda.synchronize()

@@ -1,0 +1,28 @@
+DenseSSL Ours multi-head evaluation (random seed)
+================================================
+
+Experiment: densessl_unseen1_dinov3_multi_784_rand_20261001
+Workspace: /home/huskypaul/DenseSSL
+Actual seed: 6737642008972729775
+Backbone: frozen DINOv3 ViT-B/16; native 768x14x28 patch map
+Decoder visual path: spatial 384x14x28 -> adaptive average pool 384x7x14
+                     -> 1x1 convolution 384 to 8 -> flatten 784
+Training: 1000 epochs completed; FAIR-Play unseen1 split.
+Best checkpoint: epoch 908, step 755200, validation MSE 0.560 (rounded log value).
+Inference: visual_best.pth and audio_best.pth; 104 test outputs generated.
+Evaluation: evaluate.py with normalization=True; lower is better.
+Values are mean / sample standard deviation / standard error.
+
+STFT L2 Distance:          0.8172569124816129 / 0.6782631095837472 / 0.06650916982918556
+Average Envelope Distance: 0.12843228278395075 / 0.055713367167051574 / 0.005463145122168376
+
+Source: ./evaluate.sh densessl_unseen1_dinov3_multi_784_rand_20261001 rerun on 2026-10-01.
+Outputs: /home/huskypaul/DenseSSL/outputs/densessl_unseen1_dinov3_multi_784_rand_20261001
+Checkpoint: /home/huskypaul/DenseSSL/checkpoints/densessl_unseen1_dinov3_multi_784_rand_20261001/mono2binaural
+Training log: /home/huskypaul/DenseSSL/train_densessl_unseen1_dinov3_multi_784_rand_20261001.log
+
+Reevaluate:
+  source /home/huskypaul/miniforge3/etc/profile.d/conda.sh
+  conda activate densessl
+  cd /home/huskypaul/DenseSSL
+  ./evaluate.sh densessl_unseen1_dinov3_multi_784_rand_20261001
